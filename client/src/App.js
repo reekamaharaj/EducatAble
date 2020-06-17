@@ -1,9 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Question from "./pages/Questions";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Question from './pages/Questions';
 // import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
+import NoMatch from './pages/NoMatch';
+import Login from './pages/Login';
+import Nav from './components/Nav';
 
 function App() {
   return (
@@ -11,8 +12,8 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Question} />
-          <Route exact path="/books" component={Question} />
+          <Route exact path='/' component={Question} />
+          <Route exact path='/login' component={Login} />
           {/* <Route exact path="/books/:id" component={Detail} /> */}
           <Route component={NoMatch} />
         </Switch>
