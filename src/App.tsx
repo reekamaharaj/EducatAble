@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Question from "./pages/Questions";
-// import Detail from "./pages/Detail";
+import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import { Button } from "@material-ui/core";
+
 
 function App() {
   return (
@@ -12,8 +14,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Question} />
-          <Route exact path="/books" component={Question} />
-          {/* <Route exact path="/books/:id" component={Detail} /> */}
+          <Route exact path="/login" component={Login} />
           <Route component={NoMatch} />
         </Switch>
       </div>
