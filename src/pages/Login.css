@@ -1,19 +1,19 @@
-.App {
+.Login {
   text-align: center;
 }
 
-.App-logo {
+.Login-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .Login-logo {
+    animation: Login-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
+.Login-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -24,11 +24,11 @@
   color: white;
 }
 
-.App-link {
+.Login-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes Login-logo-spin {
   from {
     transform: rotate(0deg);
   }

@@ -30,11 +30,11 @@ function Nav() {
             <AppBar position='static'>
                 <Toolbar className={classes.root}>
                     <Typography variant='h5'>EducatAble</Typography>
-                    <Button className={classes.mainBtn}>Home</Button>
-                    <Button className={classes.mainBtn}>FAQ</Button>
+                    <a href="/"><Button className={classes.mainBtn}>Home</Button></a>
+                    <a href="/FAQ"><Button className={classes.mainBtn}>FAQ</Button></a>
                     <Typography className={classes.space}>{' '}</Typography>
-                    <Button className={classes.mainBtn}>Log-In</Button> |
-                    <Button className={classes.mainBtn}>Register</Button>
+                    <a href="/login"><Button className={classes.mainBtn}>Log-In</Button></a> |
+                    <a href="/register"><Button className={classes.mainBtn}>Register</Button></a>
                 </Toolbar>
             </AppBar>
         </div>
