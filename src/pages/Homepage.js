@@ -9,13 +9,20 @@ const useStyles = makeStyles({
         backgroundColor: '#72A0C1',
     },
     learnMoreButton: {
-        backgroundColor: '#fff',
-        padding: '10px',
-        margin: '20px'
+        backgroundColor: '#72A0C1',
+        color: '#fff',
+        padding: '15px 25px',
+        margin: '20px',
+        border: '2px #fff solid',
+        borderRadius: '15px',
+        '&:hover': {
+            color: '#72A0C1',
+            backgroundColor: '#fff' 
+        }
     },
 })
 
-function Questions() {
+function Homepage() {
     const classes = useStyles();
     return <Container className={classes.root}>
                 <Logo />
@@ -23,4 +30,4 @@ function Questions() {
             </Container>
 }
 
-export default Questions;
+export default Homepage;

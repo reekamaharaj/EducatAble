@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Question from "./pages/Questions";
+import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
@@ -13,7 +13,7 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Question} />
+          <Route exact path="/" component={Homepage} />
           <Route exact path="/login" component={Login} />
           <Route component={NoMatch} />
         </Switch>
