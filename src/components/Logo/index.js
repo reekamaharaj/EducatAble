@@ -7,6 +7,9 @@ const useStyles = makeStyles({
     root: {
         color: '#fff',
         fontWeight: '700'
+    },
+    contentPlacing: {
+       justifyContent: 'center'
     }
 })
 export default function Logo() {
@@ -14,7 +17,7 @@ export default function Logo() {
 
     return (
         <div style={{width: '100%'}}>
-        <Box display='flex'>
+        <Box display='flex' className={classes.contentPlacing}>
             <img src='https://via.placeholder.com/250' alt='logo placeholder'/>
             <Typography variant='h1' className={classes.root}>EducatAble</Typography>
         </Box>
