@@ -6,10 +6,14 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     root: {
         color: '#fff',
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingLeft: '10px'
     },
     contentPlacing: {
-       justifyContent: 'center'
+        justifyContent: 'center'
+    },
+    picStyles: {
+        width: '700px'
     }
 })
 export default function Logo() {
@@ -18,8 +22,10 @@ export default function Logo() {
     return (
         <div style={{width: '100%'}}>
         <Box display='flex' className={classes.contentPlacing}>
-            <img src='https://via.placeholder.com/250' alt='logo placeholder'/>
-            <Typography variant='h1' className={classes.root}>EducatAble</Typography>
+            <img src='/images/open-figures.png' alt='logo placeholder' className={classes.picStyles}/>
+        </Box>
+        <Box display='flex' className={classes.contentPlacing}>
+            <Typography variant='h2' className={classes.root}> EducatAble</Typography>
         </Box>
         </div>
     )
