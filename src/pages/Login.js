@@ -1,13 +1,12 @@
-import React from "react";
-import "./Login.css";
-import { UserForm } from "../components/UserForm";
+import React from 'react';
+import { LoginUserForm } from '../components/LoginUserForm';
 
 function Login() {
-    return (
-        <div className="Login">
-            <UserForm />
-        </div>
-    );
+  return (
+    <div className='LoginUserForm'>
+      <LoginUserForm />
+    </div>
+  );
 }
 
 export default Login;
