@@ -16,7 +16,10 @@ const useStyles = makeStyles({
         margin: '10px',
         padding: '10px 20px',
         color: 'white',
-        fontSize: '16px'
+        fontSize: '16px',
+    },
+    linkStyling: {
+        textDecoration: 'none'
     },
     space: {
         flexGrow: 1
@@ -30,11 +33,11 @@ function Nav() {
             <AppBar position='static'>
                 <Toolbar className={classes.root}>
                     <Typography variant='h5'>EducatAble</Typography>
-                    <a href="/"><Button className={classes.mainBtn}>Home</Button></a>
-                    <a href="/FAQ"><Button className={classes.mainBtn}>FAQ</Button></a>
+                    <a href="/" className={classes.linkStyling}><Button className={classes.mainBtn}>Home</Button></a>
+                    <a href="/FAQ" className={classes.linkStyling}><Button className={classes.mainBtn}>FAQ</Button></a>
                     <Typography className={classes.space}>{' '}</Typography>
-                    <a href="/login"><Button className={classes.mainBtn}>Log-In</Button></a> |
-                    <a href="/register"><Button className={classes.mainBtn}>Register</Button></a>
+                    <a href="/login" className={classes.linkStyling}><Button className={classes.mainBtn}>Log-In</Button></a> |
+                    <a href="/register" className={classes.linkStyling}><Button className={classes.mainBtn}>Register</Button></a>
                 </Toolbar>
             </AppBar>
         </div>
