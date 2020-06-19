@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import './style.css';
-import FormUserDetails from '../FormUserDetails';
+import RegisterUserDetails from '../RegisterUserDetails';
 import Confirm from '../Confirm';
+// import Success from '../Success';
 
-export class UserForm extends Component {
+export class RegisterUserForm extends Component {
   state = {
     step: 1,
     firstName: '',
     lastName: '',
     email: '',
+    password: '',
   };
 
   //Proceed to next step
@@ -34,13 +36,13 @@ export class UserForm extends Component {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email } = this.state;
-    const values = { firstName, lastName, email };
+    const { firstName, lastName, email, password } = this.state;
+    const values = { firstName, lastName, email, password };
 
     switch (step) {
       case 1:
         return (
-          <FormUserDetails
+          <RegisterUserDetails
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
@@ -60,4 +62,4 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm;
+export default RegisterUserForm;
