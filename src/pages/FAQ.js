@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import { useAuth } from '../context/auth';
 
-export default class FAQ extends Component {
-  render() {
-    return <div></div>;
+function FAQ(props) {
+  const { setAuthTokens } = useAuth();
+
+  function logOut() {
+    setAuthTokens();
   }
+
+  return (
+    <div>
+      <div>FAQ Page</div>
+      <Button onClick={logOut}>Log Out</Button>
+    </div>
+  );
 }
+
+export default FAQ;
