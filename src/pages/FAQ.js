@@ -12,7 +12,7 @@ function FAQ(props) {
   return (
     <div>
       <div>FAQ Page</div>
-      <Button onClick={logOut}>Log Out</Button>
+      {/* <Button onClick={logOut}>Log Out</Button> */}
     </div>
   );
 }
