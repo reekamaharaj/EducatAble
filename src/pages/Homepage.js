@@ -1,9 +1,12 @@
 import React from "react";
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import Logo from '../components/Logo/index';
 import LearnMore from '../components/LearnMore/index';
-import Section from '../components/Section/index';
+import DYKSection from '../components/DYKSection/index';
+import Footer from '../components/Footer/index';
+
 const useStyles = makeStyles({
     root: {
         backgroundColor: '#72A0C1',
@@ -13,15 +16,22 @@ const useStyles = makeStyles({
 
 function Homepage() {
     const classes = useStyles();
-   return <div style={{ width: '100%'}}>
+   return <div style={{ width: '100%'}} className={classes.root}>
         <Container className={classes.root}>
             <Logo />
             <LearnMore />
         </Container>
-        <Container>
-            <Section />
-            <Section />
-        </Container>
+        <Box 
+        display="flex"
+        flexWrap="nowrap"
+        p={1}
+        m={1}>
+       
+            <DYKSection/>
+            <DYKSection/>
+       
+        </Box>
+        <Footer />
         </div>
 }
 

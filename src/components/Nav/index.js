@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Icon from '@material-ui/core/Icon';
 
 
 const useStyles = makeStyles({
@@ -23,6 +24,9 @@ const useStyles = makeStyles({
     },
     space: {
         flexGrow: 1
+    },
+    iconSpacing: {
+        paddingRight: '5px'
     }
 })
 function Nav() {
@@ -33,11 +37,11 @@ function Nav() {
             <AppBar position='static'>
                 <Toolbar className={classes.root}>
                     <Typography variant='h5'>EducatAble</Typography>
-                    <a href="/" className={classes.linkStyling}><Button className={classes.mainBtn}>Home</Button></a>
-                    <a href="/FAQ" className={classes.linkStyling}><Button className={classes.mainBtn}>FAQ</Button></a>
+                    <a href="/" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>home</Icon> Home</Button></a>
+                    <a href="/FAQ" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>FAQ</Button></a>
                     <Typography className={classes.space}>{' '}</Typography>
-                    <a href="/login" className={classes.linkStyling}><Button className={classes.mainBtn}>Log-In</Button></a> |
-                    <a href="/register" className={classes.linkStyling}><Button className={classes.mainBtn}>Register</Button></a>
+                    <a href="/login" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>account_circle</Icon>Log-In</Button></a> |
+                    <a href="/register" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>how_to_reg</Icon>Register</Button></a>
                 </Toolbar>
             </AppBar>
         </div>
