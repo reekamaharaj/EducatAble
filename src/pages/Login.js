@@ -14,7 +14,7 @@ function Login(props) {
 
   function postLogin() {
     axios
-      .post('http://localhost:5000/auth/login', {
+      .post('http://localhost:5000/api/login', {
         userName,
         password,
       })
