@@ -13,6 +13,8 @@ const useStyles = makeStyles({
         border: '2px #fff solid',
         borderRadius: '15px',
         justifyContent: 'center',
+        transitionDuration: '0.4s',
+        transitionTimingFunction: 'linear',
         '&:hover': {
             color: '#72A0C1',
             backgroundColor: '#fff' 

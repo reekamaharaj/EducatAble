@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 function Homepage() {
     const classes = useStyles();
-   return <div style={{ width: '100%'}} className={classes.root}>
+    return <div style={{ width: '100%'}} className={classes.root}>
         <Container className={classes.root}>
             <Logo />
             <LearnMore />
@@ -26,10 +26,8 @@ function Homepage() {
         flexWrap="nowrap"
         p={1}
         m={1}>
-       
             <DYKSection/>
             <DYKSection/>
-       
         </Box>
         <Footer />
         </div>
