@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import { useAuth } from '../context/auth';
+// import { useAuth } from '../context/auth';
 
 function FAQ(props) {
   const { setAuthTokens } = useAuth();
 
-  function logOut() {
-    setAuthTokens();
-  }
+  // function logOut() {
+  //   setAuthTokens();
+  // }
 
   return (
     <div>
