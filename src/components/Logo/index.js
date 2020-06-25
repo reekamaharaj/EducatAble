@@ -7,6 +7,8 @@ const useStyles = makeStyles({
     root: {
         color: '#fff',
         fontWeight: '700',
+        fontSize: '68px',
+        letterSpacing: '3px',
         paddingLeft: '10px'
     },
     contentPlacing: {

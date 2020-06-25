@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import Logo from '../components/Logo/index';
 import LearnMore from '../components/LearnMore/index';
 import DYKSection from '../components/DYKSection/index';
+import Resources from '../components/Resources/index';
 import Footer from '../components/Footer/index';
 
 const useStyles = makeStyles({
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
 
 function Homepage() {
     const classes = useStyles();
-   return <div style={{ width: '100%'}} className={classes.root}>
+    return <div style={{ width: '100%'}} className={classes.root}>
         <Container className={classes.root}>
             <Logo />
             <LearnMore />
@@ -26,10 +27,8 @@ function Homepage() {
         flexWrap="nowrap"
         p={1}
         m={1}>
-       
             <DYKSection/>
-            <DYKSection/>
-       
+            <Resources />
         </Box>
         <Footer />
         </div>

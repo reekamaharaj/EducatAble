@@ -4,7 +4,6 @@ import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import FAQ from './pages/FAQ';
-import NoMatch from './pages/NoMatch';
 import Nav from './components/Nav';
 import { AuthContext } from './context/auth';
 import PrivateRoute from './PrivateRoute';
@@ -18,6 +17,7 @@ function App(props) {
     setAuthTokens(data);
   };
   return (
+
     <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Router>
         <div>
@@ -32,6 +32,7 @@ function App(props) {
         </div>
       </Router>
     </AuthContext.Provider>
+
   );
 }
 
