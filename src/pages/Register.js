@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-// import { useAuth } from "../context/auth";
-import { Redirect } from "react-router";
 import { TextField, Button, Card } from "@material-ui/core";
 
 function Register(props) {
-    const [isRegistered, setRegistered] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    // const { setAuthTokens } = useAuth();
+    let email;
+    let password;
 
     function postRegister() {
         axios
@@ -20,19 +15,13 @@ function Register(props) {
             })
             .then((result) => {
                 if (result.status === 200) {
-                    // setAuthTokens(result.data);
-                    setRegistered(true);
+                    
                 } else {
-                    setIsError(true);
+                    
                 }
             });
             //very basic registration setup. Still needs authentication and validation to be added. BUT it will create a user and enter them into the database.
     }
-
-    //works -> will comment out until logout is set up
-    // if (isRegistered === true) {
-    //     return <Redirect to="/login" />;
-    // }
 
     return (
         <React.Fragment>
@@ -78,7 +67,6 @@ function Register(props) {
                         <Link to="/login" style={styles.link}>
                             Already have an account?
                         </Link>
-                        { isError &&<Error>The username or password provided were incorrect!</Error> }
                     </Button>
                 </Card>
             </div>

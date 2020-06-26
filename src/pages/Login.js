@@ -1,37 +1,28 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
-// import { useAuth } from '../context/auth';
-import { Redirect } from "react-router";
+import React from "react";
+import { Link } from "react-router-dom";
+// import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
 function Login(props) {
-    // const [isLoggedIn, setLoggedIn] = useState(false);
-    // const [isError, setIsError] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    // const { setAuthTokens } = useAuth();
+    let email;
+    let password;
 
     function postLogin() {
         console.log("login attempt");
-        axios
-            .post("/auth/login", {
-                email,
-                password,
-            })
-            .then((result) => {
-                if (result.status === 200) {
-                    // setAuthTokens(result.data);
-                    setRegistered(true);
-                } else {
-                    setIsError(true);
-                }
-            });
+        // axios
+        //     .post("/auth/login", {
+        //         email,
+        //         password,
+        //     })
+        //     .then((result) => {
+        //         if (result.status === 200) {
+                    
+        //         } else {
+                    
+        //         }
+        //     });
     }
 
-    // if (isLoggedIn) {
-    //   return <Redirect to='/' />;
-    // }
     return (
         <React.Fragment>
             <br />
@@ -74,7 +65,6 @@ function Login(props) {
                     <Link to="/register" style={styles.link}>
                         Don't have an account?
                     </Link>
-                    {/* { isError &&<Error>The username or password provided were incorrect!</Error> } */}
                 </Button>
             </Card>
         </React.Fragment>
