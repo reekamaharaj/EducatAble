@@ -1,27 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
 function Login(props) {
-    let email;
-    let password;
+    const [isError, setIsError] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [resText, setResText] = useState('');
 
     function postLogin() {
-        console.log("login attempt");
         axios
             .post("/auth/login", {
                 email,
-                password,
+                password
             })
-            .then((result) => {
+            .then((result) => { 
                 if (result.status === 200) {
-                    
+                    alert("Logined with email: " + email),
+                        setError(false);
+                        setResText("Logined yay");
                 } else {
-                    
+                    setIsError(true);
+                    setResText("Username or password was incorrect");
                 }
             });
     }
+
 
     return (
         <React.Fragment>

@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
 function Register(props) {
-    let email;
-    let password;
+    const [isError, setIsError] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [resText, setResText] = useState('');
 
     function postRegister() {
         axios
             .post("/auth/register", {
                 email,
-                password
+                password,
             })
             .then((result) => {
                 if (result.status === 200) {
-                    
+                    alert("Registered with email: " + email),
+                        setError(false);
+                        setResText("Registered yay");
                 } else {
-                    
+                    setIsError(true);
+                    setResText("Error")
                 }
             });
-            //very basic registration setup. Still needs authentication and validation to be added. BUT it will create a user and enter them into the database.
     }
 
     return (
         <React.Fragment>
             <div>
                 <br />
+                <p resText={}/>
                 <Card style={styles.card}>
                     <br />
                     <TextField
