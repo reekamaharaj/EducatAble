@@ -10,7 +10,9 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "start": "webpack-dev-server --hot --mode development"
+    "start-client": "webpack-dev-server --hot --mode development",
+    "start-server": "nodemon server.js",
+    "start": "concurrently \"npm:start-client\" \"npm:start-server\""
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
@@ -40,7 +42,9 @@
     "@types/react-router": "^5.1.7",
     "@types/react-router-dom": "^5.1.5",
     "awesome-typescript-loader": "^5.2.1",
+    "concurrently": "^5.2.0",
     "css-loader": "^3.6.0",
+    "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "style-loader": "^1.2.1",
     "typescript": "^3.9.5",
