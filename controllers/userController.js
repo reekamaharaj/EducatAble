@@ -35,7 +35,7 @@ module.exports = {
 
     //for creating a new user; post controller for register
     createUser: function (req, res) {
-        const email = req.body.email;
+        let email = req.body.email;
         //checks to see if the email is already in the db
         db.User.findOne({email}, function(err, found){
             if (err) {
@@ -48,7 +48,7 @@ module.exports = {
                 db.User.create(req.body)
                 .then((dbModel) => res.json(dbModel))
                 .catch((err) => res.status(422).json(err));
-                res.session.email = email;
+                req.session.email = email;
                 res.send("Registered and logged in email: " + email);
                 console.log("Registered and logged in email: " + email);
             }

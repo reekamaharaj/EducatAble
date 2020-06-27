@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
-function Register(props) {
+function Register() {
     const [isError, setIsError] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -11,20 +11,20 @@ function Register(props) {
 
     function postRegister(){
         axios
-            .post("/auth/register", {
-                email,
-                password
-            })
-            .then((result) => {
-                const data = result.data;
-                if (result.status === 200) {
-                    setIsError(false);
-                    return setResText(data);
-                } else {
-                    setIsError(true);
-                    setResText("Error")
-                }
-            });
+        .post("/auth/register", {
+            email,
+            password
+        })
+        .then((result) => {
+            const data = result.data;
+            if (result.status === 200) {
+                setIsError(false);
+                return setResText(data);
+            } else {
+                setIsError(true);
+                setResText("Error");
+            }
+        });
     }
     return (
         <React.Fragment>
@@ -71,7 +71,6 @@ function Register(props) {
                         <Link to="/login" style={styles.link}>
                             Already have an account?
                         </Link>
-                        { isError &&<p>The username or password provided were incorrect!</p> }
                     </Button>
                 </Card>
             </div>

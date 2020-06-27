@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
-function Login(props) {
+function Login() {
     const [isError, setIsError] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -71,7 +71,6 @@ function Login(props) {
                         <Link to="/register" style={styles.link}>
                             Don't have an account?
                         </Link>
-                        { isError &&<p>The username or password provided were incorrect!</p> }
                     </Button>
                 </Card>
         </React.Fragment>

@@ -1,14 +1,14 @@
 
 
 
-      "scripts": {
+"scripts": {
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
     "start": "webpack-dev-server --hot --mode development"
   },
 
-        "scripts": {
+"scripts": {
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
