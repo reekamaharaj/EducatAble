@@ -4,10 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
 
-const MongoStore = require("connect-mongo")(session);
-
 const routes = require("./routes");
-const { collection } = require("./models/user");
 
 //Express setup
 const app = express();
@@ -24,14 +21,10 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("public"));
 }
 
-//sessions setup
-const sessionStore = new MongoStore({ mongooseConnection: collection, collection: "sessions"});
-
 app.use(session({
     secret: process.env.SECRET,
-    resave: false, 
-    saveUninitialized: true,
-    store: sessionStore
+    resave: true, 
+    saveUninitialized: true
 }));
 
 //Routes

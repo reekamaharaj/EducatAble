@@ -9,18 +9,18 @@ function Login(props) {
 
     function postLogin() {
         console.log("login attempt");
-        // axios
-        //     .post("/auth/login", {
-        //         email,
-        //         password,
-        //     })
-        //     .then((result) => {
-        //         if (result.status === 200) {
+        axios
+            .post("/auth/login", {
+                email,
+                password,
+            })
+            .then((result) => {
+                if (result.status === 200) {
                     
-        //         } else {
+                } else {
                     
-        //         }
-        //     });
+                }
+            });
     }
 
     return (

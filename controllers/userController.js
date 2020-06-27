@@ -6,13 +6,17 @@ module.exports = {
         const email = req.body.email;
         const password = req.body.password;
         //checks to see if email has been registered
-        db.User.findOne({email: email}, function(err, found){
+        db.User.findOne({email: email}, async function(err, found){
             if(err){
                 console.log(err);
             }
             if(found){
-
-                console.log("Logged in with email: " + email);
+                if (await found.isValidPassword(password)){
+                    console.log("Logged in with email: " + email);
+                } else {
+                    console.log("invalid password");
+                }
+                
             } else {
                 console.log("Account does not exist for this email, register or try another email");
             }
@@ -38,22 +42,3 @@ module.exports = {
         });
     }
 };
-
-//Anytime someone logs in or tries to register, it'll run the find method first. If valid, it'll post to mongodb and return userName, (possibly email), hashed password, and a token to client
-                /* Things to do/have done
-                [x] Check if email exists
-                [ ] Check if password if valid
-                [ ] If password if valid then Session will start for that user
-                [ ] Alert user if they logged in
-                [ ] Alert user if the email or password was invalid
-                */
-                //bcrypt compare req.body.password to user password...
-
-                /* Things to do/have done
-                [x] Check if email exists
-                [ ] If email exists, alert user
-                [ ] If email does not exist, register user
-                    sessiono for user would start, alert user that they are registered and logged in
-                [ ] Validation for email and password
-                */
-                //if the email has been registered this will console.log... **should alert the user so they know to either login or register a new email**
