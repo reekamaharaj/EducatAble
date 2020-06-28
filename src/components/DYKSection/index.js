@@ -20,11 +20,12 @@ const useStyles = makeStyles({
 
 export default function DYKSection() {
     const classes = useStyles();
-
+   
     return (
         <div style={{width: '50%'}} className={classes.root}>
             <Box display='flex' className={classes.boxStyle}>
                 <Typography variant='h2'>Did you know?</Typography>
+
             </Box>
             <Box display='flex' className={classes.boxStyle}>
                 <Typography variant='p'>Cat ipsum dolor sit amet, cheetah tomcat munchkin. Burmese havana brown, grimalkin singapura so american bobtail but tiger, yet american shorthair. </Typography>

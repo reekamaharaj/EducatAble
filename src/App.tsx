@@ -27,7 +27,6 @@ function App(props) {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <PrivateRoute path='/FAQ' component={FAQ} />
-            <Route component={NoMatch} />
           </Switch>
         </div>
       </Router>
