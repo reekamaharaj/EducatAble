@@ -1,7 +1,7 @@
-const db = require("../models");
-const { response } = require("express");
+import db from "../models";
+import { response } from "express";
 
-module.exports = {
+export default {
     //find a user on login; post controller for login
     findUser: (req,res,next)=>{
         const email = req.body.email;

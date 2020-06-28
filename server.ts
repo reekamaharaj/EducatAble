@@ -1,10 +1,11 @@
 //Dependencies
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const session = require("express-session");
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
+import session from "express-session";
+import { routes } from "./routes";
 
-const routes = require("./routes");
+dotenv.config();
 
 //Express setup
 const app = express();

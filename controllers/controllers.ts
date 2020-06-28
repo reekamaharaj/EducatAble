@@ -1,7 +1,7 @@
-const db = require("../models");
+import db from "../models";
 
 // Defining methods for the booksController
-module.exports = {
+export default {
     //to find all saved questions
     findAll: function (req, res) {
         db.Question.find(req.query)
@@ -33,5 +33,5 @@ module.exports = {
             .then((dbModel) => dbModel.remove())
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
-    },
+    }
 };
