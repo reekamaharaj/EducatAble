@@ -5,7 +5,7 @@
         "strict": true,
         "noImplicitReturns": false,
         "noImplicitAny": false,
-        "module": "es6",
+        "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,

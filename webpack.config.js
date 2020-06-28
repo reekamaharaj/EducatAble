@@ -1,13 +1,14 @@
-import { resolve as _resolve, join } from 'path';
+const webpack = require('webpack');
+const path = require('path');
 
 const config = {
   entry: ['react-hot-loader/patch', './src/index.tsx'],
   output: {
-    path: _resolve(__dirname, 'public/dist'),
+    path: path.resolve(__dirname, 'public/dist'),
     filename: 'bundle.js',
   },
   devServer: {
-    contentBase: join(__dirname, './public'),
+    contentBase: path.join(__dirname, './public'),
     publicPath: '/dist/',
     compress: true,
     port: 5000,
@@ -38,4 +39,4 @@ const config = {
   },
 };
 
-export default config;
+module.exports = config;

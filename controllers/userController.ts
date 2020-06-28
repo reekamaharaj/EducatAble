@@ -3,7 +3,7 @@ import { Response, Request } from "express";
 
 export default {
     //find a user on login; post controller for login
-    findUser: (req: Request,res: Response)=>{
+    findUser: (req: Request, res: Response)=>{
         const email = req.body.email;
         const password = req.body.password;
         //checks to see if email has been registered
@@ -14,7 +14,7 @@ export default {
                 }
                 if(found){
                     if (await found.isValidPassword(password)){
-                        req.session.email = email;
+                        req.session!.email = email;
                         res.send("Logged in with email: " + email);
                         console.log("Logged in with email: " + email);
                     } else {
@@ -34,7 +34,7 @@ export default {
     },
 
     //for creating a new user; post controller for register
-    createUser: function (req: Request,res: Response) {
+    createUser: function (req: Request, res: Response) {
         let email = req.body.email;
         //checks to see if the email is already in the db
         db.User.findOne({email}, function(err, found){
@@ -48,7 +48,7 @@ export default {
                 db.User.create(req.body)
                 .then((dbModel) => res.json(dbModel))
                 .catch((err) => res.status(422).json(err));
-                req.session.email = email;
+                req.session!.email = email;
                 res.send("Registered and logged in email: " + email);
                 console.log("Registered and logged in email: " + email);
             }
@@ -57,9 +57,14 @@ export default {
         });
     },
 
-    logOut: function (req: Request,res: Response) {
-        req.session.destroy();
-        res.send("logged out");
+    logOut: function (req: Request, res: Response) {
+        if( req.session ){
+            req.session.destroy(function(){});
+            res.send("logged out");
+        } else {
+            res.status(200);
+        }
+        
     },
 
     loginPage: function(req, res) {
