@@ -17,6 +17,7 @@
         "controllers/**/*",
         "models/**/*",
         "routes/**/*",
-        "server.ts"
+        "server.ts",
+        "modules.d.ts"
     ]
 }

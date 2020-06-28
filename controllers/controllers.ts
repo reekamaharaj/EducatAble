@@ -15,23 +15,36 @@ export default {
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
+
     //to create a new questions -> user and admin
     create: function (req, res) {
         db.Question.create(req.body)
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
+
     //to update an existing question -> Admin only
     update: function (req, res) {
         db.Question.findOneAndUpdate({ _id: req.params.id }, req.body)
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
+
     //to remove an existing question -> Admin only
-    remove: function (req, res) {
-        db.Question.findById({ _id: req.params.id })
-            .then((dbModel) => dbModel.remove())
-            .then((dbModel) => res.json(dbModel))
-            .catch((err) => res.status(422).json(err));
+    remove: async function (req, res) {
+        try {
+            const dbModel = await db.Question.findById({ _id: req.params.id });
+
+            if(dbModel) {
+                dbModel.remove();
+                res.json(dbModel);
+            }
+            else {
+                res.status(422);
+            }
+        } catch(err){
+            res.status(422).json(err);
+        }
+        
     }
 };
