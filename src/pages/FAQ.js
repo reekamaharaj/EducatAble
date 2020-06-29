@@ -1,3 +1,4 @@
+
 import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
@@ -43,7 +44,6 @@ function FAQ(props) {
                         community.
                     </Typography>
                 </Box>
-
                 {savedQA.length > 0 ? (
                     /* Questions Section */
                     <Box className={classes.boxStyle}>

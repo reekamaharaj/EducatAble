@@ -2,6 +2,8 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require("express-session");
+
 const routes = require("./routes");
 
 //Express setup
@@ -18,6 +20,13 @@ app.set("trust proxy", 1);
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("public"));
 }
+
+app.use(session({
+    secret: process.env.SECRET,
+    resave: true, 
+    saveUninitialized: true
+}));
+
 //Routes
 app.use(routes);
 
