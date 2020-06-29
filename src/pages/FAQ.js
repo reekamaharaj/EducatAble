@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Question from "../components/Question";
 import Footer from '../components/Footer/index';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const savedQA = [
     {
@@ -71,6 +72,12 @@ const useStyle = makeStyles({
         color: 'white',
         fontFamily: "Roboto, sans-serif",
     },
+    mainBtn: {
+        margin: '10px',
+        padding: '10px 20px',
+        color: 'white',
+        fontSize: '16px',
+    },
 });
 
 function FAQ(props) {
@@ -94,7 +101,10 @@ function FAQ(props) {
                 <Typography variant="p" className={classes.paraStyles}>
                         Have a question that wasn't answered below? Ask a question and get a response from Admins!
                 </Typography>
-                <TextField label='Ask a question' className={classes.inputStyle} />
+                <form>
+                    <TextField label='Ask a question' className={classes.inputStyle} />
+                    <Button className={classes.mainBtn}>Submit</Button>
+                </form>
                 </Box>
                 {/* End question component */}
 
