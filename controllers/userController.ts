@@ -65,13 +65,5 @@ export default {
             res.status(200);
         }
         
-    },
-
-    loginPage: function(req: Request, res: Response) {
-        if (req.session!.email) {
-            res.send("You are logged in as: " + req.session!.email);
-        } else {
-            res.render("login");
-        }
     }
 };

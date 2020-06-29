@@ -1,11 +1,11 @@
 import * as React from "react";
-import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Question from "../components/Question";
 import Footer from "../components/Footer";
 
+// const savedQA = [];
 const savedQA = [
     {
         question: "What is it like to be deaf?",
@@ -73,53 +73,53 @@ const useStyle = makeStyles({
         fontWeight: "700",
         color: "white",
         backgroundColor: "#72A0C1",
-    }
+    },
 });
 
-// const [resText, setResText] = React.useState("");
-// function logOut() {
-//     axios.post("/auth/logout").then((result) => {
-//         const data = result.data;
-//         if (result.status === 200) {
-//             console.log(data);
-//             return setResText(data);
-//         } else {
-//             return setResText("Not logged in, you can't log out.");
-//         }
-//     });
-// }
+const guest = "something"; //Guest User!
+// const guest=""; //Registered User!
 
 function FAQ(props) {
     const classes = useStyle();
 
     return (
-        <div>
+        <>
+            {guest ? (
+                //Guest User!
+                <p>Form would go here for users to submit something</p>
+            ) : (
+                //Registered User!
+                <p>Register or login if you have a question!</p>
+            )}
             <div>
-                <Box className={classes.boxStyle}>
-                    <Typography variant="h2">
-                        Frequently Asked Questions
-                    </Typography>
-                    <Typography variant="h6">
-                        All Questions have been answered by a member of the Deaf
-                        community.
-                    </Typography>
-                </Box>
-                {savedQA.length > 0 ? (
-                    /* Questions Section */
+                <div>
                     <Box className={classes.boxStyle}>
-                        {savedQA.map((qa) => (
-                            <Question key={qa._id} 
-                                question={qa.question}
-                                answer={qa.answer}
-                            />
-                        ))}
+                        <Typography variant="h2">
+                            Frequently Asked Questions
+                        </Typography>
+                        <Typography variant="h6">
+                            All Questions have been answered by a member of the
+                            Deaf community.
+                        </Typography>
                     </Box>
-                ) : (
-                    <p>No questions</p>
-                )}
+                    {savedQA.length > 0 ? (
+                        /* Questions Section */
+                        <Box className={classes.boxStyle}>
+                            {savedQA.map((qa) => (
+                                <Question
+                                    key={qa._id}
+                                    question={qa.question}
+                                    answer={qa.answer}
+                                />
+                            ))}
+                        </Box>
+                    ) : (
+                        <p>No questions</p>
+                    )}
+                </div>
+                <Footer />
             </div>
-            <Footer />
-        </div>
+        </>
     );
 }
 export default FAQ;
