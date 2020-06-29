@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Question from "../components/Question";
+import Footer from '../components/Footer/index';
 
 
 const savedQA = [
@@ -94,6 +95,7 @@ function FAQ(props) {
                     <p>No questions</p>
                 )}
             </div>
+            <Footer />
         </div>
     );
 }
