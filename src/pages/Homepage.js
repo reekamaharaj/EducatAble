@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Logo from '../components/Logo/index';
 import LearnMore from '../components/LearnMore/index';
 import DYKSection from '../components/DYKSection/index';
-import Resources from '../components/Resources/index';
+import Resources from '../components/ResourceSection/index';
 import Footer from '../components/Footer/index';
 
 const useStyles = makeStyles({

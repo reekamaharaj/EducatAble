@@ -9,7 +9,6 @@ import Nav from './components/Nav';
 function App(props) {
   
   return (
-
     <Router>
       <div>
         <Nav />
