@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import * as React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
 function Register() {
-    const [isError, setIsError] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [resText, setResText] = useState('');
+    const [isError, setIsError] = React.useState(false);
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [resText, setResText] = React.useState('');
 
     function postRegister(){
         axios
@@ -27,7 +27,7 @@ function Register() {
         });
     }
     return (
-        <React.Fragment>
+        <>
             <div>
                 <br />
                 <Card style={styles.card}>
@@ -74,7 +74,7 @@ function Register() {
                     </Button>
                 </Card>
             </div>
-        </React.Fragment>
+        </>
     );
 }
 const styles = {

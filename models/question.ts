@@ -1,4 +1,4 @@
-import { default as mongoose, Schema, Document } from "mongoose";
+import { model, Schema, Document } from "mongoose";
 import { User } from "./user";
 
 export interface Question extends Document {
@@ -19,6 +19,6 @@ const questionSchema = new Schema({
     answeredBy: { type: Schema.Types.ObjectId, ref: "User"}
 });
 
-const Question = mongoose.model<Question>("Question", questionSchema);
+const Question = model<Question>("Question", questionSchema);
 
 export default Question;
