@@ -77,6 +77,7 @@ const useStyle = makeStyles({
         padding: '10px 20px',
         color: 'white',
         fontSize: '16px',
+        float: 'right'
     },
 });
 
