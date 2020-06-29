@@ -5,9 +5,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import FAQ from './pages/FAQ';
 import Nav from './components/Nav';
+import LearnMore from './pages/LearnMore';
 
 function App(props) {
-  
   return (
     <Router>
       <div>
@@ -17,10 +17,10 @@ function App(props) {
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
           <Route path='/FAQ' component={FAQ} />
+          <Route path='/learnmore' component={LearnMore} />
         </Switch>
       </div>
     </Router>
-
   );
 }
 
