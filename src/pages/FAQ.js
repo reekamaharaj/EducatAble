@@ -4,18 +4,20 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Question from "../components/Question";
 import Footer from "../components/Footer";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 // const savedQA = [];
 const savedQA = [
     {
         question: "What is it like to be deaf?",
-        answer: "I cannot speak for all deaf folks out there, but I do know that there’s a large continuum of experiences of what it’s like to be deaf. There are varying levels of deafnesses too, it’s never really the same among the community. Some are hard of hearing, some are TOTALLY deaf (like me), some have hearing in one ear and zero hearing in the other. Point bottom, it varies. If you were born deaf , your world is silent. And you don’t really know any other unless you experience having a cochlear implant. Imagine you’re walking in a brightly lit room, and someone switches the light off, and all of the sudden there’s darkness. Or if you’re in the middle of a dream and you’re screaming (in your dream) and no one can hear you, and you can’t hear yourself.",
+        answer:
+            "I cannot speak for all deaf folks out there, but I do know that there’s a large continuum of experiences of what it’s like to be deaf. There are varying levels of deafnesses too, it’s never really the same among the community. Some are hard of hearing, some are TOTALLY deaf (like me), some have hearing in one ear and zero hearing in the other. Point bottom, it varies. If you were born deaf , your world is silent. And you don’t really know any other unless you experience having a cochlear implant. Imagine you’re walking in a brightly lit room, and someone switches the light off, and all of the sudden there’s darkness. Or if you’re in the middle of a dream and you’re screaming (in your dream) and no one can hear you, and you can’t hear yourself.",
     },
     {
         question: "Do all Deaf people know sign language?",
-        answer: "Short answer is, no. Deaf people sign, talk, or sign and talk at the same time. Deaf people make their choices on how they prefer to communicate. Try your best to be accommodating to how deaf people would like to communicate with you. Deaf people often are oppressed by the hearing world and often have to jump hoops to be able to communicate with others that are not willing to do so. If you encounter a deaf person who signs, either get your phone or pen and paper and you can communicate with them that way. If a deaf person prefers to gesture, pay close attention to what they’re trying to tell you. If a deaf person who speaks, be sure to look in their face, be clear and enunciate what you’re saying.",
+        answer:
+            "Short answer is, no. Deaf people sign, talk, or sign and talk at the same time. Deaf people make their choices on how they prefer to communicate. Try your best to be accommodating to how deaf people would like to communicate with you. Deaf people often are oppressed by the hearing world and often have to jump hoops to be able to communicate with others that are not willing to do so. If you encounter a deaf person who signs, either get your phone or pen and paper and you can communicate with them that way. If a deaf person prefers to gesture, pay close attention to what they’re trying to tell you. If a deaf person who speaks, be sure to look in their face, be clear and enunciate what you’re saying.",
     },
     {
         question: "Can all Deaf people read lips?",
@@ -62,7 +64,7 @@ const savedQA = [
         question: "How can I learn American Sign Language?",
         answer:
             "There are many ways to do so! First, ask yourself, is American Sign Language something that you really want to learn because it seems easy? It’s not easy. I picked up American Sign Language at the age of 21 and 7 years later, I’m still learning with full immersion in the language. The ASL App is a fantastic start: https://theaslapp.com/. If you want more, look into your local community college for classes. Many community colleges will offer ASL classes. Or, hire a deaf person to be your tutor!",
-    }
+    },
 ];
 
 const useStyle = makeStyles({
@@ -75,21 +77,21 @@ const useStyle = makeStyles({
         backgroundColor: "#72A0C1",
     },
     inputStyle: {
-        width: '100%',
-        backgroundColor: '#72A0C1',
+        width: "100%",
+        backgroundColor: "#72A0C1",
     },
     boxStyleTwo: {
-        padding: '20px',
-        backgroundColor: '#72A0C1',
-        color: 'white',
+        padding: "20px",
+        backgroundColor: "#72A0C1",
+        color: "white",
         fontFamily: "Roboto, sans-serif",
     },
     mainBtn: {
-        margin: '10px',
-        padding: '10px 20px',
-        color: 'white',
-        fontSize: '16px',
-        float: 'right'
+        margin: "10px",
+        padding: "10px 20px",
+        color: "white",
+        fontSize: "16px",
+        float: "right",
     },
 });
 
@@ -103,12 +105,7 @@ function FAQ(props) {
         <>
             {guest ? (
                 //Guest User!
-                <p>Form would go here for users to submit something</p>
-            ) : (
-                //Registered User!
-                <p>Register or login if you have a question!</p>
-            )}
-            <div>
+                <>
                 <Box className={classes.boxStyle}>
                     <Typography variant="h2">
                         Frequently Asked Questions
@@ -118,21 +115,10 @@ function FAQ(props) {
                         community.
                     </Typography>
                 </Box>
-                {/* Question component that should only be visible on log on */}
-                
-                <Box className={classes.boxStyleTwo}>
-                <Typography variant="p" className={classes.paraStyles}>
-                        Have a question that wasn't answered below? Ask a question and get a response from Admins!
-                </Typography>
-                <form>
-                    <TextField label='Ask a question' className={classes.inputStyle} />
-                    <Button className={classes.mainBtn}>Submit</Button>
-                </form>
-                </Box>
-                {/* End question component */}
-
-                {savedQA.length > 0 ? (
-                    /* Questions Section */
+                </>
+            ) : (
+                //Registered User!
+                <>
                     <Box className={classes.boxStyle}>
                         <Typography variant="h2">
                             Frequently Asked Questions
@@ -142,21 +128,38 @@ function FAQ(props) {
                             Deaf community.
                         </Typography>
                     </Box>
-                    {savedQA.length > 0 ? (
-                        /* Questions Section */
-                        <Box className={classes.boxStyle}>
-                            {savedQA.map((qa) => (
-                                <Question
-                                    key={qa._id}
-                                    question={qa.question}
-                                    answer={qa.answer}
-                                />
-                            ))}
-                        </Box>
-                    ) : (
-                        <p>No questions</p>
-                    )}
-                </div>
+                    {/* Question component that should only be visible on log on */}
+
+                    <Box className={classes.boxStyleTwo}>
+                        <Typography variant="p" className={classes.paraStyles}>
+                            Have a question that wasn't answered below? Ask a
+                            question and get a response from Admins!
+                        </Typography>
+                        <form>
+                            <TextField
+                                label="Ask a question"
+                                className={classes.inputStyle}
+                            />
+                            <Button className={classes.mainBtn}>Submit</Button>
+                        </form>
+                    </Box>
+                </>
+            )}
+            <div>
+                {savedQA.length > 0 ? (
+                    /* Questions Section */
+                    <Box className={classes.boxStyle}>
+                        {savedQA.map((qa) => (
+                            <Question
+                                key={qa._id}
+                                question={qa.question}
+                                answer={qa.answer}
+                            />
+                        ))}
+                    </Box>
+                ) : (
+                    <p>No questions</p>
+                )}
                 <Footer />
             </div>
         </>
