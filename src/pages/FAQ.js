@@ -70,7 +70,7 @@ const useStyle = makeStyles({
         backgroundColor: '#72A0C1',
         color: 'white',
         fontFamily: "Roboto, sans-serif",
-    }
+    },
 });
 
 function FAQ(props) {
@@ -91,10 +91,10 @@ function FAQ(props) {
                 {/* Question component that should only be visible on log on */}
                 
                 <Box className={classes.boxStyleTwo}>
-                <Typography variant="p">
+                <Typography variant="p" className={classes.paraStyles}>
                         Have a question that wasn't answered below? Ask a question and get a response from Admins!
                 </Typography>
-                    <TextField label='Ask a question' className={classes.inputStyle} />
+                <TextField label='Ask a question' className={classes.inputStyle} />
                 </Box>
                 {/* End question component */}
 
