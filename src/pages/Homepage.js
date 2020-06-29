@@ -2,11 +2,11 @@ import * as React from "react";
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Logo from '../components/Logo/index';
-import LearnMore from '../components/LearnMore/index';
-import DYKSection from '../components/DYKSection/index';
-import Resources from '../components/Resources/index';
-import Footer from '../components/Footer/index';
+import Logo from '../components/Logo';
+import LearnMore from '../components/LearnMore';
+import DYKSection from '../components/DYKSection';
+import Resources from '../components/Resources';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles({
     root: {

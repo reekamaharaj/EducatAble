@@ -4,7 +4,6 @@ import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
 function Login() {
-    const [isError, setIsError] = React.useState(false);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [resText, setResText] = React.useState("");
@@ -18,11 +17,9 @@ function Login() {
         .then((result) => { 
             const data = result.data;
             if (result.status === 200) {
-                setIsError(false);
                 console.log(data);
                 return setResText(data);
             } else {
-                setIsError(true);
                 return setResText("Username or password was incorrect");
             }
         });

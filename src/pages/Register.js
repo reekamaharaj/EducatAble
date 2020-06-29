@@ -4,7 +4,6 @@ import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
 function Register() {
-    const [isError, setIsError] = React.useState(false);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [resText, setResText] = React.useState('');
@@ -18,10 +17,8 @@ function Register() {
         .then((result) => {
             const data = result.data;
             if (result.status === 200) {
-                setIsError(false);
                 return setResText(data);
             } else {
-                setIsError(true);
                 setResText("Error");
             }
         });
@@ -77,6 +74,7 @@ function Register() {
         </>
     );
 }
+
 const styles = {
     button: {
         margin: 10,
@@ -103,6 +101,7 @@ const styles = {
         color: "white",
     },
 };
+
 export default Register;
 
 
