@@ -1,4 +1,4 @@
-import path from "path";
+import * as path from "path";
 import { Router } from "express";
 import { router as questionRouter } from "./api/question";
 import { router as userRouter } from "./auth/user";

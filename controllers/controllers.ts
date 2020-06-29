@@ -4,33 +4,57 @@ import { Response, Request } from "express";
 // Defining methods for the booksController
 export default {
     //to find all saved questions
-    findAll: function (req: Request, res: Response) {
-        db.Question.find(req.query)
-            .sort({ date: -1 })
-            .then((dbModel) => res.json(dbModel))
-            .catch((err) => res.status(422).json(err));
+    findAll: async function (req: Request, res: Response) {
+        try {
+            const dbModel = await db.Question.find(req.body);
+            if (dbModel) {
+                res.json(dbModel);
+            } else {
+                console.log("Couldn't find that");
+            }
+        } catch (err) {
+            console.log("Something went wrong");
+        }
     },
     //for saving a specific question, favorites, or admin to look at later?
-    findById: function (req: Request, res: Response) {
-        db.Question.findById(req.params.id)
-            .then((dbModel) => res.json(dbModel))
-            .catch((err) => res.status(422).json(err));
+    findById: async function (req: Request, res: Response) {
+        try {
+            const dbModel = await db.Question.findById(req.params.id);
+            if (dbModel) {
+                res.json(dbModel);
+            } else {
+                console.log("Couldn't find that");
+            }
+        } catch (err) {
+            console.log("Something went wrong");
+        }
     },
-
     //to create a new questions -> user and admin
-    create: function (req: Request, res: Response) {
-        db.Question.create(req.body)
-            .then((dbModel) => res.json(dbModel))
-            .catch((err) => res.status(422).json(err));
+    create: async function (req: Request, res: Response) {
+        try {
+            const dbModel = await db.Question.create(req.body);
+            if (dbModel) {
+                res.json(dbModel);
+            } else {
+                console.log("Couldn't create that");
+            }
+        } catch (err) {
+            console.log("Something went wrong");
+        }
     },
-
     //to update an existing question -> Admin only
-    update: function (req: Request, res: Response) {
-        db.Question.findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then((dbModel) => res.json(dbModel))
-            .catch((err) => res.status(422).json(err));
+    update: async function (req: Request, res: Response) {
+        try {
+            const dbModel = await db.Question.findOneAndUpdate({ _id: req.params.id }, req.body);
+            if (dbModel) {
+                res.json(dbModel);
+            } else {
+                console.log("Couldn't update that");
+            }
+        } catch (err) {
+            console.log("Something went wrong");
+        }
     },
-
     //to remove an existing question -> Admin only
     remove: async function (req: Request, res: Response) {
         try {
@@ -41,11 +65,10 @@ export default {
                 res.json(dbModel);
             }
             else {
-                res.status(422);
+                console.log("Couldn't remove that");
             }
         } catch(err){
-            res.status(422).json(err);
+            console.log("Something went wrong");
         }
-        
     }
 };

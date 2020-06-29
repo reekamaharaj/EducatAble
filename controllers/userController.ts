@@ -26,7 +26,8 @@ export default {
                     console.log("Account does not exist for this email, register or try another email");
                 }
             } catch(err) {
-                res.status(500).send(err);
+                res.status(500).send(err)
+                console.log(err);
             }
         }).then(function(){
             res.status(200);
@@ -34,27 +35,26 @@ export default {
     },
 
     //for creating a new user; post controller for register
-    createUser: function (req: Request, res: Response) {
-        let email = req.body.email;
-        //checks to see if the email is already in the db
-        db.User.findOne({email}, function(err, found){
-            if (err) {
-                console.log(err);
-            }
-            if (found){
-                res.send("Email already associated with an account");
-                console.log("Email already associated with an account");
+    createUser: async (req: Request, res: Response) => {
+        try {
+            const email = req.body.email;
+            //checks to see if the email is already in the db
+            const user = await db.User.findOne({email})
+    
+            if (user) {
+                console.log("Email associated with an account already.");
             } else {
-                db.User.create(req.body)
-                .then((dbModel) => res.json(dbModel))
-                .catch((err) => res.status(422).json(err));
-                req.session!.email = email;
-                res.send("Registered and logged in email: " + email);
-                console.log("Registered and logged in email: " + email);
+                try {
+                    await db.User.create(req.body);
+                    req.session!.email = email;
+                    console.log("Registered, and logged in");
+                } catch (createFailed) {
+                    console.log("Something didn't work");
+                }
             }
-        }).then(function(){
-            res.status(200);
-        });
+        } catch (err) {
+            console.log("Something really didn't work");
+        }
     },
 
     logOut: function (req: Request, res: Response) {
@@ -67,11 +67,11 @@ export default {
         
     },
 
-    loginPage: function(req, res) {
-        if (req.session.email) {
-            res.send("You are logged in as: " + req.session.email);
+    loginPage: function(req: Request, res: Response) {
+        if (req.session!.email) {
+            res.send("You are logged in as: " + req.session!.email);
         } else {
-            res.render("login")
+            res.render("login");
         }
     }
 };

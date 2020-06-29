@@ -78,7 +78,9 @@ function bork(num){
 
 try{
     console.log(bork("boop"));
-} catch(error){console.log("nope");}
+} catch(error){
+    console.log("nope");
+    }
 ```
 
 try catch can be used to catch errors :3

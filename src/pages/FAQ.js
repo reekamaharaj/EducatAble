@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Question from "../components/Question";
-import Footer from "../components/Footer/index";
+import Footer from "../components/Footer";
 
 const savedQA = [
     {
@@ -108,7 +108,7 @@ function FAQ(props) {
                     /* Questions Section */
                     <Box className={classes.boxStyle}>
                         {savedQA.map((qa) => (
-                            <Question
+                            <Question key={qa._id} 
                                 question={qa.question}
                                 answer={qa.answer}
                             />
