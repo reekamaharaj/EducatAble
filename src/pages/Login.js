@@ -41,17 +41,18 @@ function Login() {
                 password
             })
             .then((result) => {
-                const data = result.data;
+                const token = result.data;
                 if (result.status === 200) {
-                    return console.log(data);
+                    localStorage.setItem("token", token);
+                    return console.log(token);
                 } else {
                     return console.log("nothing happened");
                 }
             });
     }
 
-    const guest="something"; //Guest User!
-    // const guest=""; //Registered User!
+    const guest = !localStorage.getItem("token");
+    const logout = () => localStorage.removeItem("token");
 
     return (
         <>
@@ -105,6 +106,9 @@ function Login() {
                 //Registered User!
                 <Card style={styles.card}>
                     <p>You are logged in</p>
+                    <Button variant="contained"
+                            onClick={logout}
+                            style={styles.button}>Logout</Button>
                 </Card>
             )}
         </>

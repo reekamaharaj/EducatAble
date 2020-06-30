@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import FAQ from './pages/FAQ';
 import Nav from './components/Nav';
 
-function App(props) {
+function App() {
   
   return (
 

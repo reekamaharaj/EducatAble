@@ -4,11 +4,10 @@ import controllers from "../../controllers/controllers";
 export const router = Router();
 
 // Matches with "/api/question"
-router.route("/").get(controllers.findAll).post(controllers.create);
+router.route("/FAQ").get(controllers.findAll);
+router.route("/FAQ").post(controllers.create);
 
 // Matches with "/api/question/:id"
-router
-    .route("/:id")
-    .get(controllers.findById)
-    .put(controllers.update)
-    .delete(controllers.remove);
+router.route("/FAQ/:id").get(controllers.findById);
+router.route("/FAQ/:id").put(controllers.update);
+router.route("/FAQ/:id").delete(controllers.remove);

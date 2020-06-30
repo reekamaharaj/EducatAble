@@ -2,7 +2,6 @@
 import * as dotenv from "dotenv";
 import * as express from "express";
 import * as mongoose from "mongoose";
-import * as session from "express-session";
 import { routes } from "./routes";
 
 dotenv.config();
@@ -17,12 +16,6 @@ app.use(express.json());
 
 //Avoid using default session cookie name, 
 app.set("trust proxy", 1);
-
-app.use(session({
-    secret: process.env.SECRET || "secret",
-    resave: true, 
-    saveUninitialized: true
-}));
 
 //Routes
 app.use(routes);

@@ -95,6 +95,15 @@ const useStyle = makeStyles({
     },
 });
 
+function deleteQs(){
+    alert("will delete questions");
+}
+
+function popQs(){
+    alert("will populate questions");
+}
+
+
 const guest = "something"; //Guest User!
 // const guest=""; //Registered User!
 
@@ -148,6 +157,7 @@ function FAQ(props) {
             <div>
                 {savedQA.length > 0 ? (
                     /* Questions Section */
+                    <>
                     <Box className={classes.boxStyle}>
                         {savedQA.map((qa) => (
                             <Question
@@ -157,8 +167,12 @@ function FAQ(props) {
                             />
                         ))}
                     </Box>
-                ) : (
+                    <Button onClick={deleteQs} className={classes.mainBtn}>Delete Q</Button>
+                    </>
+                ) : (<>
                     <p>No questions</p>
+                    <Button onClick={popQs} className={classes.mainBtn}>Populate Q</Button>
+                    </>
                 )}
                 <Footer />
             </div>

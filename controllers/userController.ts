@@ -1,5 +1,6 @@
 import db from "../models";
 import { Response, Request } from "express";
+import * as jwt from "jsonwebtoken";
 
 export default {
     //find a user on login; post controller for login
@@ -14,8 +15,8 @@ export default {
                 }
                 if(found){
                     if (await found.isValidPassword(password)){
-                        req.session!.email = email;
-                        res.send("Logged in with email: " + email);
+                        const token = jwt.sign(email, "secretthing");
+                        res.send(token);
                         console.log("Logged in with email: " + email);
                     } else {
                         res.send("Password was wrong");
@@ -43,27 +44,21 @@ export default {
     
             if (user) {
                 console.log("Email associated with an account already.");
+                res.send("Email has account");
             } else {
                 try {
                     await db.User.create(req.body);
-                    req.session!.email = email;
+                    const token = jwt.sign(email, "secretthing");
+                    res.send(token);
                     console.log("Registered, and logged in");
+                    
                 } catch (createFailed) {
                     console.log("Something didn't work");
+                    res.send("something broke");
                 }
             }
         } catch (err) {
             console.log("Something really didn't work");
         }
-    },
-
-    logOut: function (req: Request, res: Response) {
-        if( req.session ){
-            req.session.destroy(function(){});
-            res.send("logged out");
-        } else {
-            res.status(200);
-        }
-        
     }
 };

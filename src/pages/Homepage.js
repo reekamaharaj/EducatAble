@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container } from "@material-ui/core/Container";
+import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Logo from "../components/Logo";
@@ -15,11 +15,12 @@ const useStyles = makeStyles({
 });
 
 function Homepage() {
+    console.log("function started");
     const classes = useStyles();
 
     const guest="something"; //Guest User!
     // const guest=""; //Registered User!
-
+    console.log("above return");
     return (
         <>
         {guest ? (
