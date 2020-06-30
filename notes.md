@@ -22,7 +22,6 @@
     - [ ] View questions submitted
     - [ ] Ability to delete/edit existing questions
     - [ ] Ability to add questions
-    - [ ] 
 - [ ] Random "did you know" generation. New thing everyday?
 
 ### Other
@@ -119,6 +118,16 @@
     "start-server": "nodemon server.js",
     "start": "concurrently \"npm:start-client\" \"npm:start-server\""
   }
+  ```
+
+  ```sh
+    "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production",
+    "start": "webpack-dev-server --hot --mode development",
+    "start-server": "ts-node-dev server.ts"
+  },
   ```
 ---
 Typescript is infering the "something" types

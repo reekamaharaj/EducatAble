@@ -40,7 +40,7 @@ function Homepage() {
             ) : (
                 //Registered User!
                 <>
-                    <p>You are logged </p>
+                    <p>You are logged in </p>
                     <Button variant="contained" onClick={logout}>
                         Logout
                     </Button>
