@@ -88,7 +88,17 @@ function LearnMore() {
             className={classes.large}
           />
           <Typography variant='subtitle1' className={classes.bio}>
-            yoooo it's troovis! bio about troovis goes here.
+            My full name is Travis Jacob Sceroler, but my friends call me Jake.
+            Please, call me Jake. Currently, I am an IT specialist for Houston
+            Community College, but I am using my free time to learn how to be a
+            full-stack web developer. That in itself is one hell of a pill to
+            swallow. Especially within a 6 month period. For now, I adapt myself
+            to either front or back needs for websites. The funny thing is, when
+            I write code for front-end development, it tends to be rather color
+            muted. Well, that’s because I’m color blind. I use my wordsmithing
+            skills to call it “minimalist”. No matter what the situation is or
+            how dire, I’ll always manage to get me and my teammates out looking
+            like pros.
             <br />
           </Typography>
         </Paper>
