@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import {
   ThemeProvider as MuiThemeProvider,
   createMuiTheme,
@@ -28,7 +28,6 @@ export class Confirm extends Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-        <React.Fragment>
           <AppBar title='Confirm' />
           <List>
             <ListItem primaryText='First Name' secondaryText={firstName} />
@@ -49,7 +48,6 @@ export class Confirm extends Component {
             style={styles.button}
             onClick={this.back}
           />
-        </React.Fragment>
       </MuiThemeProvider>
     );
   }

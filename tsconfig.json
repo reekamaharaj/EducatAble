@@ -5,14 +5,19 @@
         "strict": true,
         "noImplicitReturns": false,
         "noImplicitAny": false,
-        "module": "es6",
+        "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
         "jsx": "react",
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": false
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "controllers/**/*",
+        "models/**/*",
+        "routes/**/*",
+        "server.ts",
+        "modules.d.ts"
     ]
 }
