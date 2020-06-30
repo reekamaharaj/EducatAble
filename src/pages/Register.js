@@ -31,6 +31,19 @@ const styles = {
 };
 
 function Register() {
+    const [token, setToken] = React.useState(localStorage.getItem("token"));
+
+    React.useEffect(
+        function () {
+            if (!!token) {
+                localStorage.setItem("token", token);
+            } else {
+                localStorage.removeItem("token");
+            }
+        },
+        [token]
+    );
+
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
@@ -41,17 +54,18 @@ function Register() {
                 password,
             })
             .then((result) => {
-                const data = result.data;
+                const token = result.data;
                 if (result.status === 200) {
-                    return console.log(data);
+                    setToken(token);
+                    return console.log(token);
                 } else {
                     return console.log("nothing happened");
                 }
             });
     }
 
-    const guest = "something"; //Guest User!
-    // const guest=""; //Registered User!
+    const guest = !token;
+    const logout = () => setToken("");
 
     return (
         <>
@@ -108,6 +122,12 @@ function Register() {
                 //Registered User!
                 <Card style={styles.card}>
                     <p>You are logged in </p>
+                    <Button
+                        variant="contained"
+                        onClick={logout}
+                        style={styles.button}>
+                        Logout
+                    </Button>
                 </Card>
             )}
         </>

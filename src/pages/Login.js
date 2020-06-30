@@ -31,6 +31,17 @@ const styles = {
 };
 
 function Login() {
+
+    const [token, setToken] = React.useState(localStorage.getItem("token"));
+
+    React.useEffect(function(){
+        if(!!token){
+            localStorage.setItem("token", token);
+        } else {
+            localStorage.removeItem("token");
+        }
+    }, [token]);
+
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
@@ -43,7 +54,7 @@ function Login() {
             .then((result) => {
                 const token = result.data;
                 if (result.status === 200) {
-                    localStorage.setItem("token", token);
+                    setToken(token);
                     return console.log(token);
                 } else {
                     return console.log("nothing happened");
@@ -51,8 +62,8 @@ function Login() {
             });
     }
 
-    const guest = !localStorage.getItem("token");
-    const logout = () => localStorage.removeItem("token");
+    const guest = !token;
+    const logout = () => setToken("");
 
     return (
         <>

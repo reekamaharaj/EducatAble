@@ -19,20 +19,18 @@ export default {
                         res.send(token);
                         console.log("Logged in with email: " + email);
                     } else {
-                        res.send("Password was wrong");
+                        res.status(401).send("Password was wrong");
                         console.log("invalid password");
                     }
                 } else {
-                    res.send("Account does not exist for this email, register or try another email");
+                    res.status(401).send("Account does not exist for this email, register or try another email");
                     console.log("Account does not exist for this email, register or try another email");
                 }
             } catch(err) {
-                res.status(500).send(err)
+                res.status(500).send(err);
                 console.log(err);
             }
-        }).then(function(){
-            res.status(200);
-        });
+        })
     },
 
     //for creating a new user; post controller for register
@@ -44,7 +42,7 @@ export default {
     
             if (user) {
                 console.log("Email associated with an account already.");
-                res.send("Email has account");
+                res.status(418).send("Email has account");
             } else {
                 try {
                     await db.User.create(req.body);
@@ -54,10 +52,11 @@ export default {
                     
                 } catch (createFailed) {
                     console.log("Something didn't work");
-                    res.send("something broke");
+                    res.status(500).send("something broke");
                 }
             }
         } catch (err) {
+            res.status(500).send(err)
             console.log("Something really didn't work");
         }
     }

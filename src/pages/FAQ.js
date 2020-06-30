@@ -95,39 +95,49 @@ const useStyle = makeStyles({
     },
 });
 
-function deleteQs(){
+function deleteQs() {
     alert("will delete questions");
 }
 
-function popQs(){
+function popQs() {
     alert("will populate questions");
 }
 
-
-const guest = "something"; //Guest User!
-// const guest=""; //Registered User!
-
 function FAQ(props) {
     const classes = useStyle();
+    const [token, setToken] = React.useState(localStorage.getItem("token"));
+    const guest = !token;
+    const logout = () => setToken("");
+
+    React.useEffect(function(){
+        if(!!token){
+            localStorage.setItem("token", token);
+        } else {
+            localStorage.removeItem("token");
+        }
+    }, [token]);
 
     return (
         <>
             {guest ? (
                 //Guest User!
                 <>
-                <Box className={classes.boxStyle}>
-                    <Typography variant="h2">
-                        Frequently Asked Questions
-                    </Typography>
-                    <Typography variant="h6">
-                        All Questions have been answered by a member of the Deaf
-                        community.
-                    </Typography>
-                </Box>
+                    <Box className={classes.boxStyle}>
+                        <Typography variant="h2">
+                            Frequently Asked Questions
+                        </Typography>
+                        <Typography variant="h6">
+                            All Questions have been answered by a member of the
+                            Deaf community.
+                        </Typography>
+                    </Box>
                 </>
             ) : (
                 //Registered User!
                 <>
+                    <Button variant="contained" onClick={logout}>
+                        Logout
+                    </Button>
                     <Box className={classes.boxStyle}>
                         <Typography variant="h2">
                             Frequently Asked Questions
@@ -158,20 +168,25 @@ function FAQ(props) {
                 {savedQA.length > 0 ? (
                     /* Questions Section */
                     <>
-                    <Box className={classes.boxStyle}>
-                        {savedQA.map((qa) => (
-                            <Question
-                                key={qa._id}
-                                question={qa.question}
-                                answer={qa.answer}
-                            />
-                        ))}
-                    </Box>
-                    <Button onClick={deleteQs} className={classes.mainBtn}>Delete Q</Button>
+                        <Box className={classes.boxStyle}>
+                            {savedQA.map((qa) => (
+                                <Question
+                                    key={qa._id}
+                                    question={qa.question}
+                                    answer={qa.answer}
+                                />
+                            ))}
+                        </Box>
+                        <Button onClick={deleteQs} className={classes.mainBtn}>
+                            Delete Q
+                        </Button>
                     </>
-                ) : (<>
-                    <p>No questions</p>
-                    <Button onClick={popQs} className={classes.mainBtn}>Populate Q</Button>
+                ) : (
+                    <>
+                        <p>No questions</p>
+                        <Button onClick={popQs} className={classes.mainBtn}>
+                            Populate Q
+                        </Button>
                     </>
                 )}
                 <Footer />
