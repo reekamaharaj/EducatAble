@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     transitionDuration: '0.4s',
     transitionTimingFunction: 'linear',
     textDecoration: 'none',
-    'link:hover': {
+    '&:hover': {
       color: '#72A0C1',
       backgroundColor: '#fff',
     },
@@ -38,9 +38,7 @@ export default function LearnMore() {
     <div style={{ width: '100%' }}>
       <Box display='flex' className={classes.contentPlacing}>
         <Button component='a' href='/learnmore' className={classes.learnMoreButton}>
-          {/* <Link to='/learnmore' className={classes.link}> */}
             Learn More
-          {/* </Link> */}
         </Button>
       </Box>
     </div>
