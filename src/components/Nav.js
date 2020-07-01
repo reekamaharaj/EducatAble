@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
+import Test from './Test';
 
 
 const useStyles = makeStyles({
@@ -42,6 +43,7 @@ function Nav() {
                     <Typography className={classes.space}>{' '}</Typography>
                     <a href="/login" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>account_circle</Icon>Log-In</Button></a> |
                     <a href="/register" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>how_to_reg</Icon>Register</Button></a>
+                    <Test>test</Test>
                 </Toolbar>
             </AppBar>
         </div>
