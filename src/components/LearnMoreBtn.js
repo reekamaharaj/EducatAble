@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/styles';
 import Box from '@material-ui/core/Box';
@@ -37,10 +37,10 @@ export default function LearnMore() {
   return (
     <div style={{ width: '100%' }}>
       <Box display='flex' className={classes.contentPlacing}>
-        <Button className={classes.learnMoreButton}>
-          <Link to='/learnmore' className={classes.link}>
+        <Button component='a' href='/learnmore' className={classes.learnMoreButton}>
+          {/* <Link to='/learnmore' className={classes.link}> */}
             Learn More
-          </Link>
+          {/* </Link> */}
         </Button>
       </Box>
     </div>
