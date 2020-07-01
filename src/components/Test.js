@@ -30,7 +30,7 @@ const Test = function Test() {
     return (
         <div style={{width: '100%'}}>
             <Box display='flex' className={classes.contentPlacing}>
-                <Button className={classes.testButton}> TEST </Button>
+                <Button className={classes.testButton}> AHH </Button>
             </Box>
         </div>
     )

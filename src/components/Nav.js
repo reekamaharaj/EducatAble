@@ -44,6 +44,7 @@ function Nav() {
                     <Typography className={classes.space}>{' '}</Typography>
                     <Button component='a' href='/login' className={classes.mainBtn}><Icon className={classes.iconSpacing}>account_circle</Icon>Log-In</Button> |
                     <Button component='a' href='/register' className={classes.mainBtn}><Icon className={classes.iconSpacing}>how_to_reg</Icon>Register</Button>
+                    <Test>Test</Test>
                 </Toolbar>
             </AppBar>
         </div>
