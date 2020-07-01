@@ -33,10 +33,10 @@ export default function Resources() {
             <Box display='flex' className={classes.boxStyle}>
                 <Typography variant='p'>
                     <ul>
-                        <a href='https://theaslapp.com/' className={classes.ulStyle} target='_blank'><li>The ASL App</li></a>
-                        <a href='https://www.nad.org/resources/' className={classes.ulStyle} target='_blank'><li>National Assocation of the Death</li></a>
-                        <a href='https://www.nad.org/resources/' className={classes.ulStyle} target='_blank'><li>National Assocation of the Death</li></a>
-                        <a href='https://www.nad.org/resources/' className={classes.ulStyle} target='_blank'><li>National Assocation of the Death</li></a>
+                        <a href='https://gallaudet.edu' className={classes.ulStyle} target='_blank'><li>Gallaudet University</li></a>
+                        <a href='https://www.csd.org/' className={classes.ulStyle} target='_blank'><li>Communication Services for the Deaf</li></a>
+                        <a href='https://wfdeaf.org/' className={classes.ulStyle} target='_blank'><li>World Federation of the Deaf</li></a>
+                        <a href='https://www.nationaldeafcenter.org' className={classes.ulStyle} target='_blank'><li>National Deaf Center</li></a>
                     </ul>
                 </Typography>
             </Box>
