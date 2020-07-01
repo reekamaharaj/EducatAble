@@ -8,9 +8,7 @@ import Nav from './components/Nav';
 import LearnMore from './pages/LearnMore';
 
 function App() {
-  
   return (
-
     <Router>
       <div>
         <Nav />
