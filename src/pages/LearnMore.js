@@ -42,7 +42,7 @@ function LearnMore() {
         <br />
         <Paper elevation={3} className={classes.paperStyle}>
           <Avatar
-            alt='Reeka Mararaj'
+            alt='Reeka Maharaj'
             img
             src='images/reeka.jpeg'
             className={classes.large}
