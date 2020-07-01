@@ -1,135 +1,3 @@
-### Front-end
-- [x] FAQ page
-    - [x] Display Questions
-- [x] Login Button
-- [x] Form for submitting questions
-    - [ ] Send question to db
-- [ ] Logout
-- [ ] Something to indicate login status (current page states are enough?)
-- User logged in
-    - [ ] Option to save a question
-
-
-### Back-end
-- [x] ~~Sessions for pages~~
-- [x] Basic Login/Register functionality
-- [x] Password hashing/checking
-- [x] Use TypeScript
-- [ ] Email verification for Register
-- [ ] Password verification for Register
-    - [ ] Entry password twice to Register
-- Admin stuff
-    - [ ] View questions submitted
-    - [ ] Ability to delete/edit existing questions
-    - [ ] Ability to add questions
-- [ ] Random "did you know" generation. New thing everyday?
-
-### Other
-- [ ] ReadMe
-- [ ] Deploy working
-- [ ] Seed db through user/admin functionalities to test as well as seed
-- [ ] Create user account for demoing
-
-### Files
-- [ ] webpack.config.js
-- [ ] tsconfig.json
-- [ ] server.js
-- [ ] README.md
-- [ ] package-lock.json
-- [ ] package.json
-- [ ] notes.md
-- [ ] modules.d.ts
-- [ ] .gitignore
-- [ ] .env
-- [ ] src folder
-    - [ ] components folder
-        - [ ] Confirm.js
-        - [ ] DYKSection.js
-        - [ ] Footer.js
-        - [ ] LearnMore.js
-        - [ ] Logo.js
-        - [ ] Nav.js
-        - [ ] Question.js
-        - [ ] Resources.js
-        - [ ] ResourceSection.js
-    - [ ] pages folder
-        - [ ] FAQ.js
-        - [ ] Homepage.js
-        - [ ] Login.js
-        - [ ] Register.js
-    - [ ] utils folder
-        - [ ] API.js
-    - [ ] App.tsx
-    - [ ] index.tsx
-    - [ ] styles.css
-- [ ] routes folder
-    - [ ] api folder
-        - [ ] question.ts
-    - [ ] auth folder
-        - [ ] user.ts
-    - [ ] index.ts
-- [ ] public folder
-    - [ ] images folder
-        - [ ] logo.png
-        - [ ] open-figures.png
-    - [ ] index.html
-- [ ] node_modules
-- [ ] models
-    - [ ] index.ts
-    - [ ] newquestion.ts
-    - [ ] question.ts
-    - [ ] user.ts
-- [ ] controllers
-    - [ ] auth.ts
-    - [ ] controllers.ts
-    - [ ] userControllers.ts
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-```sh
-"scripts": {
-    "clean": "rm dist/bundle.js",
-    "build-dev": "webpack -d --mode development",
-    "build-prod": "webpack -p --mode production",
-    "start": "webpack-dev-server --hot --mode development"
-  }
-  ```
-
-  ```sh
-"scripts": {
-    "clean": "rm dist/bundle.js",
-    "build-dev": "webpack -d --mode development",
-    "build-prod": "webpack -p --mode production",
-    "start-client": "webpack-dev-server --hot --mode development",
-    "start-server": "nodemon server.js",
-    "start": "concurrently \"npm:start-client\" \"npm:start-server\""
-  }
-  ```
-
-  ```sh
-    "scripts": {
-    "clean": "rm dist/bundle.js",
-    "build-dev": "webpack -d --mode development",
-    "build-prod": "webpack -p --mode production",
-    "start": "webpack-dev-server --hot --mode development",
-    "start-server": "ts-node-dev server.ts"
-  },
-  ```
----
 Typescript is infering the "something" types
 
 ```sh
@@ -200,3 +68,36 @@ try{
 
 - try/catch can be used to catch errors in everything. not just async functions
 
+---
+## package.json script options
+
+```sh
+"scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production",
+    "start": "webpack-dev-server --hot --mode development"
+  }
+  ```
+
+  ```sh
+"scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production",
+    "start-client": "webpack-dev-server --hot --mode development",
+    "start-server": "nodemon server.js",
+    "start": "concurrently \"npm:start-client\" \"npm:start-server\""
+  }
+  ```
+
+  ```sh
+    "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production",
+    "start": "webpack-dev-server --hot --mode development",
+    "start-server": "ts-node-dev server.ts"
+  },
+  ```
+---
