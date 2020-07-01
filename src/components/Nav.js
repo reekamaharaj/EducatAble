@@ -21,7 +21,8 @@ const useStyles = makeStyles({
         fontSize: '16px',
     },
     linkStyling: {
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: 'white'
     },
     space: {
         flexGrow: 1
@@ -38,12 +39,11 @@ function Nav() {
             <AppBar position='static'>
                 <Toolbar className={classes.root}>
                     <Typography variant='h5'>EducatAble</Typography>
-                    <a href="/" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>home</Icon> Home</Button></a>
-                    <a href="/FAQ" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>FAQ</Button></a>
+                    <Button component='a' href='/' className={classes.mainBtn}><Icon className={classes.iconSpacing}>home</Icon>HOME</Button>
+                    <Button component='a' href='/FAQ' className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>FAQ</Button>
                     <Typography className={classes.space}>{' '}</Typography>
-                    <a href="/login" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>account_circle</Icon>Log-In</Button></a> |
-                    <a href="/register" className={classes.linkStyling}><Button className={classes.mainBtn}><Icon className={classes.iconSpacing}>how_to_reg</Icon>Register</Button></a>
-                    <Test>test</Test>
+                    <Button component='a' href='/login' className={classes.mainBtn}><Icon className={classes.iconSpacing}>account_circle</Icon>Log-In</Button> |
+                    <Button component='a' href='/register' className={classes.mainBtn}><Icon className={classes.iconSpacing}>how_to_reg</Icon>Register</Button>
                 </Toolbar>
             </AppBar>
         </div>

@@ -4,30 +4,30 @@ import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
 
 const styles = {
-    button: {
-        margin: 10,
-        background: "linear-gradient(45deg, #254E58 30%, #88BDBC 90%)",
-        border: 0,
-        borderRadius: 3,
-        color: "white",
-        height: 48,
-        padding: "0 30px",
-    },
+  button: {
+    margin: 10,
+    background: '#72A0C1',
+    border: 0,
+    borderRadius: 3,
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+  },
 
-    card: {
-        boxSizing: "border-box",
-        maxWidth: "300px",
-        margin: "auto",
-        textAlign: "center",
-    },
+  card: {
+    boxSizing: 'border-box',
+    maxWidth: '300px',
+    margin: 'auto',
+    textAlign: 'center',
+  },
 
-    text: {
-        margin: 15,
-    },
-    link: {
-        textDecoration: "none",
-        color: "white",
-    },
+  text: {
+    margin: 15,
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 };
 
 function Login() {
@@ -41,7 +41,6 @@ function Login() {
             localStorage.removeItem("token");
         }
     }, [token]);
-
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
