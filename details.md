@@ -25,7 +25,10 @@
 - [ ] Logout
 - [ ] Something to indicate login status (current page states are enough?)
 - User logged in
-    - [ ] Option to save a question
+    - [ ] Option to save a question (like favorite)
+- [ ] User page to view saved things
+- [ ] (Admin thing) Page for an admin to view new questions that have been submitted and respond to them.
+- [ ] (Admin) ON FAQ page, option for Admin to edit current questions/answers
 
 ### Back-end
 - [x] ~~Sessions for pages~~
@@ -49,3 +52,4 @@
 - [ ] Deploy working
 - [ ] Seed db through user/admin functionalities to test as well as seed
 - [ ] Create user account for demoing
+- [ ] Powerpoint presentation
