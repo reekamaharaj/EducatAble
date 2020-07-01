@@ -5,7 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
-import Test from './Test';
+import LoggedOutView from './LogInRegisterBtns';
+import LoggedInView from './LogOutBtn';
 
 
 const useStyles = makeStyles({
@@ -33,6 +34,17 @@ const useStyles = makeStyles({
 })
 function Nav() {
     const classes = useStyles();
+    const [token, setToken] = React.useState(localStorage.getItem("token"));
+    const guest = !token;
+    const logout = () => setToken("");
+
+    React.useEffect(function(){
+        if(!!token){
+            localStorage.setItem("token", token);
+        } else {
+            localStorage.removeItem("token");
+        }
+    }, [token]);
 
     return (
         <div className={classes.root}>
@@ -42,9 +54,13 @@ function Nav() {
                     <Button component='a' href='/' className={classes.mainBtn}><Icon className={classes.iconSpacing}>home</Icon>HOME</Button>
                     <Button component='a' href='/FAQ' className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>FAQ</Button>
                     <Typography className={classes.space}>{' '}</Typography>
-                    <Button component='a' href='/login' className={classes.mainBtn}><Icon className={classes.iconSpacing}>account_circle</Icon>Log-In</Button> |
-                    <Button component='a' href='/register' className={classes.mainBtn}><Icon className={classes.iconSpacing}>how_to_reg</Icon>Register</Button>
-                    <Test>Test</Test>
+                    <>
+                    {guest ? (
+                        <LoggedOutView />
+                    ) : (
+                        <Button onClick={logout} className={classes.mainBtn}><Icon className={classes.iconSpacing}>clear</Icon>Log Out</Button>
+                    )}
+                    </>
                 </Toolbar>
             </AppBar>
         </div>
