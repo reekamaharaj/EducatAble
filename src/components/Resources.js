@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react'
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     root: {
         height: '400px',
-        borderRight: '2px solid #fff',
         backgroundColor: '#72A0C1',
     },
     boxStyle: {
@@ -18,14 +17,13 @@ const useStyles = makeStyles({
     }
 })
 
-export default function DYKSection() {
+export default function Resources() {
     const classes = useStyles();
-   
+
     return (
         <div style={{width: '50%'}} className={classes.root}>
             <Box display='flex' className={classes.boxStyle}>
-                <Typography variant='h2'>Did you know?</Typography>
-
+                <Typography variant='h2'>Resources:</Typography>
             </Box>
             <Box display='flex' className={classes.boxStyle}>
                 <Typography variant='p'>Cat ipsum dolor sit amet, cheetah tomcat munchkin. Burmese havana brown, grimalkin singapura so american bobtail but tiger, yet american shorthair. </Typography>

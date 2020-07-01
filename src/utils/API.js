@@ -16,41 +16,5 @@ export default {
     // Saves a question to the database
     saveQuestion: function (questionData) {
         return axios.post("/api/questions", questionData);
-    },
-    // After a login...
-    // postLogin: function (setIsError, setResText) {
-    //     return axios
-    //     .post("/auth/login", {
-    //         email,
-    //         password
-    //     })
-    //     .then((result) => { 
-    //         if (result.status === 200) {
-    //             alert("Logined with email: " + email),
-    //                 setIsError(false);
-    //                 setResText("Logined yay");
-    //         } else {
-    //             setIsError(true);
-    //             setResText("Username or password was incorrect");
-    //         }
-    //     });
-    // },
-    // After Register ...
-    // postRegister: function(setIsError, setResText){
-    //     return axios
-    //         .post("/auth/register", {
-    //             email,
-    //             password,
-    //         })
-    //         .then((result) => {
-    //             if (result.status === 200) {
-    //                 alert("Registered with email: " + email),
-    //                     setIsError(false);
-    //                     setResText("Registered yay");
-    //             } else {
-    //                 setIsError(true);
-    //                 setResText("Error")
-    //             }
-    //         });
-    // }
+    }
 };

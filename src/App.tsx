@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
@@ -7,8 +7,10 @@ import FAQ from './pages/FAQ';
 import Nav from './components/Nav';
 import LearnMore from './pages/LearnMore';
 
-function App(props) {
+function App() {
+  
   return (
+
     <Router>
       <div>
         <Nav />

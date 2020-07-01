@@ -1,78 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { TextField, Button, Card } from '@material-ui/core';
-
-function Login() {
-  const [isError, setIsError] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [resText, setResText] = useState('');
-
-  function postLogin() {
-    axios
-      .post('/auth/login', {
-        email,
-        password,
-      })
-      .then((result) => {
-        const data = result.data;
-        if (result.status === 200) {
-          setIsError(false);
-          console.log(data);
-          return setResText(data);
-        } else {
-          setIsError(true);
-          return setResText('Username or password was incorrect');
-        }
-      });
-  }
-
-  return (
-    <React.Fragment>
-      <br />
-      <Card style={styles.card}>
-        <Button style={styles.button}>{resText}</Button>
-        <br />
-        <TextField
-          style={styles.text}
-          id='standard-basic'
-          label='Enter Your Email'
-          variant='outlined'
-          type='username'
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          placeholder='email'
-        />
-        <br />
-        <TextField
-          style={styles.text}
-          id='filled-password-input'
-          variant='outlined'
-          label='Enter Your Password'
-          type='password'
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          placeholder='password'
-        />
-        <br />
-        <Button variant='contained' onClick={postLogin} style={styles.button}>
-          Log-in
-        </Button>
-        <br />
-        <Button style={styles.button}>
-          <Link to='/register' style={styles.link}>
-            Don't have an account?
-          </Link>
-        </Button>
-      </Card>
-    </React.Fragment>
-  );
-}
+import * as React from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { TextField, Button, Card } from "@material-ui/core";
 
 const styles = {
   button: {
@@ -101,53 +30,99 @@ const styles = {
   },
 };
 
-export default Login;
+function Login() {
 
-// {setIsError === true ? (
-//     <Card style={styles.card}>
-//         <p>You are logged in as: {email} </p>
-//     </Card>
-// ) : (
-//     <Card style={styles.card}>
-//         <br />
-//         <TextField
-//             style={styles.text}
-//             id="standard-basic"
-//             label="Enter Your Email"
-//             variant="outlined"
-//             type="username"
-//             value={email}
-//             onChange={(e) => {
-//                 setEmail(e.target.value);
-//             }}
-//             placeholder="email"
-//         />
-//         <br />
-//         <TextField
-//             style={styles.text}
-//             id="filled-password-input"
-//             variant="outlined"
-//             label="Enter Your Password"
-//             type="password"
-//             value={password}
-//             onChange={(e) => {
-//                 setPassword(e.target.value);
-//             }}
-//             placeholder="password"
-//         />
-//         <br />
-//         <Button
-//             variant="contained"
-//             onClick={postLogin}
-//             style={styles.button}>
-//             Log-in
-//         </Button>
-//         <br />
-//         <Button style={styles.button}>
-//             <Link to="/register" style={styles.link}>
-//                 Don't have an account?
-//             </Link>
-//             { isError &&<p>The username or password provided were incorrect!</p> }
-//         </Button>
-//     </Card>
-// )}
+    const [token, setToken] = React.useState(localStorage.getItem("token"));
+
+    React.useEffect(function(){
+        if(!!token){
+            localStorage.setItem("token", token);
+        } else {
+            localStorage.removeItem("token");
+        }
+    }, [token]);
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+
+    function postLogin() {
+        axios
+            .post("/auth/login", {
+                email,
+                password
+            })
+            .then((result) => {
+                const token = result.data;
+                if (result.status === 200) {
+                    setToken(token);
+                    return console.log(token);
+                } else {
+                    return console.log("nothing happened");
+                }
+            });
+    }
+
+    const guest = !token;
+    const logout = () => setToken("");
+
+    return (
+        <>
+            {guest ? (
+                //Guest User!
+                <>
+                    <br />
+                    <Card style={styles.card}>
+                        <br />
+                        <TextField
+                            style={styles.text}
+                            id="standard-basic"
+                            label="Enter Your Email"
+                            variant="outlined"
+                            type="username"
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                            placeholder="email"
+                        />
+                        <br />
+                        <TextField
+                            style={styles.text}
+                            id="filled-password-input"
+                            variant="outlined"
+                            label="Enter Your Password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                            placeholder="password"
+                        />
+                        <br />
+                        <Button
+                            variant="contained"
+                            onClick={postLogin}
+                            style={styles.button}>
+                            Log-in
+                        </Button>
+                        <br />
+                        <Button style={styles.button}>
+                            <Link to="/register" style={styles.link}>
+                                Don't have an account?
+                            </Link>
+                        </Button>
+                    </Card>
+                </>
+            ) : (
+                //Registered User!
+                <Card style={styles.card}>
+                    <p>You are logged in</p>
+                    <Button variant="contained"
+                            onClick={logout}
+                            style={styles.button}>Logout</Button>
+                </Card>
+            )}
+        </>
+    );
+}
+
+export default Login;
