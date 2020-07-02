@@ -11,7 +11,8 @@
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
     "start": "webpack-dev-server --hot --mode development",
-    "start-server": "ts-node-dev server.ts"
+    "start-server": "ts-node-dev server.ts",
+    "seed": "ts-node-dev seedDB.ts"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
