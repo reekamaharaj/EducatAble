@@ -20,7 +20,7 @@ export default {
   //to create a new questions -> user and admin
   create: async (req: Request, res: Response) => {
     try {
-      await db.Question.create(req.body)
+      await db.NewQuestion.create(req.body);
       res.send('Question submitted!')
     } catch (err) {
       console.log(err)

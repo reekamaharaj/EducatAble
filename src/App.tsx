@@ -18,6 +18,7 @@ function App() {
           <Route exact path='/register' component={Register} />
           <Route path='/FAQ' component={FAQ} />
           <Route path='/learnmore' component={LearnMore} />
+          <Route path='/questions'/>
         </Switch>
       </div>
     </Router>
