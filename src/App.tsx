@@ -8,9 +8,7 @@ import Nav from './components/Nav';
 import LearnMore from './pages/LearnMore';
 
 function App() {
-  
   return (
-
     <Router>
       <div>
         <Nav />
@@ -20,6 +18,7 @@ function App() {
           <Route exact path='/register' component={Register} />
           <Route path='/FAQ' component={FAQ} />
           <Route path='/learnmore' component={LearnMore} />
+          <Route path='/questions'/>
         </Switch>
       </div>
     </Router>
