@@ -36,6 +36,5 @@ const Test = function Test() {
     )
 }
 
-// this is just a test comment 
 
 export default Test;
