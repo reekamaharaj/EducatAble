@@ -1,35 +1,32 @@
-import db from '../models';
-import { Response, Request } from 'express';
+import db from '../models'
+import { Response, Request } from 'express'
 
 // Defining methods for the questions
 export default {
   //to find all saved questions
-  findAll: async function (req: Request, res: Response) {
+  findAll: async (req: Request, res: Response) => {
     try {
-      const dbModel = await db.Question.find(req.body);
+      const dbModel = await db.Question.find(req.body)
       if (dbModel) {
-        res.json(dbModel);
+        res.json(dbModel)
       } else {
-        console.log("Couldn't find that");
+        console.log("Couldn't find that")
       }
     } catch (err) {
-      console.log('Something went wrong');
+      console.log('Something went wrong')
     }
   },
 
   //to create a new questions -> user and admin
-  create: async function (req: Request, res: Response) {
+  create: async (req: Request, res: Response) => {
     try {
-      const dbModel = await db.Question.create(req.body);
-      if (dbModel) {
-        res.json(dbModel);
-      } else {
-        console.log("Couldn't create that");
-      }
+      await db.Question.create(req.body)
+      res.send('Question submitted!')
     } catch (err) {
-      console.log('Something went wrong');
+      console.log(err)
+      res.status(500).send("This didn't work")
     }
-  },
+  }
 
   //for saving a specific question, favorites, or admin to look at later?
   // findById: async function (req: Request, res: Response) {
@@ -73,4 +70,4 @@ export default {
   //         console.log("Something went wrong");
   //     }
   // }
-};
+}
