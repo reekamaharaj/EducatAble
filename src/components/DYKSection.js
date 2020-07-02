@@ -3,6 +3,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 const useStyles = makeStyles({
     root: {
         height: '400px',
@@ -27,7 +28,9 @@ export default function DYKSection() {
                 <Typography variant='h2'>Did you know?</Typography>
             </Box>
             <Box display='flex' className={classes.boxStyle}>
-                <Typography variant='p'>Cat ipsum dolor sit amet, cheetah tomcat munchkin. Burmese havana brown, grimalkin singapura so american bobtail but tiger, yet american shorthair. </Typography>
+                <Typography variant='p'> 
+                    Sign language isn’t universal and there are actually many different versions of it. 
+                </Typography>
             </Box>
         </div>
     )

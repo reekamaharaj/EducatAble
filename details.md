@@ -22,7 +22,7 @@
 - [x] Login Button
 - [x] Form for submitting questions
     - [ ] Send question to db
-- [ ] Logout
+- [x] Logout
 - [ ] Something to indicate login status (current page states are enough?)
 - User logged in
     - [ ] Option to save a question (like favorite)
