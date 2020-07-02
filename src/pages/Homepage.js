@@ -9,6 +9,7 @@ import Resources from "../components/Resources";
 import Footer from "../components/Footer";
 import { Button } from "@material-ui/core";
 
+
 const useStyles = makeStyles({
     root: {
         backgroundColor: "#72A0C1",
@@ -17,21 +18,21 @@ const useStyles = makeStyles({
 
 function Homepage() {
     const classes = useStyles();
-    const [token, setToken] = React.useState(localStorage.getItem("token"));
-    const guest = !token;
-    const logout = () => setToken("");
+    // const [token, setToken] = React.useState(localStorage.getItem("token"));
+    // const guest = !token;
+    // const logout = () => setToken("");
 
-    React.useEffect(function(){
-        if(!!token){
-            localStorage.setItem("token", token);
-        } else {
-            localStorage.removeItem("token");
-        }
-    }, [token]);
+    // React.useEffect(function(){
+    //     if(!!token){
+    //         localStorage.setItem("token", token);
+    //     } else {
+    //         localStorage.removeItem("token");
+    //     }
+    // }, [token]);
 
     return (
         <>
-            {guest ? (
+            {/* {guest ? (
                 //Guest User!
                 <p>
                     If you would like to save anything or submit a question
@@ -42,7 +43,7 @@ function Homepage() {
                 <>
                     <p>You are logged in </p>
                 </>
-            )}
+            )} */}
 
             <div style={{ width: "100%" }} className={classes.root}>
                 <Container className={classes.root}>
