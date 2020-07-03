@@ -46,8 +46,16 @@ function Register() {
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-
+    const passCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     function postRegister() {
+        if(!password.match(passCheck)){
+            alert("password password between 7 to 15 characters which contain at least one numeric digit and a special character");
+        }
+        if(!email.match(emailCheck)){
+            alert("This isn't a valid email");
+        }
+        else{
         axios
             .post("/auth/register", {
                 email,
@@ -62,6 +70,7 @@ function Register() {
                     return console.log("nothing happened");
                 }
             });
+        }
     }
 
     const guest = !token;
@@ -97,6 +106,7 @@ function Register() {
                                 type="password"
                                 value={password}
                                 onChange={(e) => {
+                                 
                                     setPassword(e.target.value);
                                 }}
                                 placeholder="password"
@@ -122,12 +132,7 @@ function Register() {
                 //Registered User!
                 <Card style={styles.card}>
                     <p>You are logged in </p>
-                    <Button
-                        variant="contained"
-                        onClick={logout}
-                        style={styles.button}>
-                        Logout
-                    </Button>
+                 
                 </Card>
             )}
         </>
