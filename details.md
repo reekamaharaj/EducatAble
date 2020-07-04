@@ -22,8 +22,8 @@
 - [x] Login Button
 - [x] Form for submitting questions
     - [ ] Send question to db
-- [ ] Logout
-- [ ] Something to indicate login status (current page states are enough?)
+- [x] Logout
+- [x] Something to indicate login status (current page states are enough?)
 - User logged in
     - [ ] Option to save a question (like favorite)
 - [ ] User page to view saved things
