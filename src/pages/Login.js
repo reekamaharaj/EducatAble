@@ -2,7 +2,6 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button, Card } from "@material-ui/core";
-import Loginmessage from '../components/Loginmessage'
 
 
 const styles = {

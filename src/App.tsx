@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import FAQ from './pages/FAQ';
 import Nav from './components/Nav';
 import LearnMore from './pages/LearnMore';
-
+import SavedQs from './pages/SavedQs';
 function App() {
   return (
     <Router>
@@ -18,11 +18,11 @@ function App() {
           <Route exact path='/register' component={Register} />
           <Route path='/FAQ' component={FAQ} />
           <Route path='/learnmore' component={LearnMore} />
+          <Route path='/SavedQs' component={SavedQs} />
           <Route path='/questions'/>
         </Switch>
       </div>
     </Router>
   );
 }
-
 export default App;
