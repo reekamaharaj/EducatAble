@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import LoggedOutView from './LogInRegisterBtns';
 import LoggedInView from './LogOutBtn';
-
+import Loginmessage from './Loginmessage'
 
 const useStyles = makeStyles({
     root: {
@@ -33,18 +33,22 @@ const useStyles = makeStyles({
     }
 })
 function Nav() {
-    const classes = useStyles();
-    const [token, setToken] = React.useState(localStorage.getItem("token"));
-    const guest = !token;
-    const logout = () => setToken("");
 
-    React.useEffect(function(){
-        if(!!token){
-            localStorage.setItem("token", token);
-        } else {
-            localStorage.removeItem("token");
-        }
-    }, [token]);
+    const classes = useStyles();
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
+    const guest = !token;
+    const logout = () => setToken('');
+
+    React.useEffect(
+        function () {
+          if (!!token) {
+            localStorage.setItem('token', token);
+          } else {
+            localStorage.removeItem('token');
+          }
+        },
+        [token]
+      );
 
     return (
         <div className={classes.root}>
@@ -58,7 +62,10 @@ function Nav() {
                     {guest ? (
                         <LoggedOutView />
                     ) : (
+                        <>
+                        <Loginmessage />
                         <Button onClick={logout} className={classes.mainBtn}><Icon className={classes.iconSpacing}>clear</Icon>Log Out</Button>
+                        </>
                     )}
                     </>
                 </Toolbar>
