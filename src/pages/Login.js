@@ -22,6 +22,14 @@ const styles = {
     margin: 'auto',
     textAlign: 'center',
   },
+  logincard:{
+    fontFamily: 'Roboto, sans-serif',
+    boxSizing: 'border-box',
+    maxWidth: '300px',
+    height: '15vh',
+    margin: '15vh auto',
+    textAlign: 'center',
+  },
 
   text: {
     margin: 15,
@@ -116,7 +124,6 @@ function Login() {
                 </>
             ) : (
                 //Registered User!
-
                 <Card style={styles.card}>
                     <p>You are logged in</p>
                     <Button variant="contained"
