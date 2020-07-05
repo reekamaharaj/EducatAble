@@ -14,16 +14,16 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Avoid using default session cookie name, 
+//Avoid using default session cookie name
 app.set("trust proxy", 1);
-
-//Routes
-app.use(routes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("public"));
 }
+
+//Routes
+app.use(routes);
 
 // Connect to the Mongo DB
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/educateAble";

@@ -1,90 +1,39 @@
-# educatable
+# EducatAble
+EducatAble is a safe space to ask questions and learn information from people who live their different abilities everyday.
 
-### Files
-- [ ] webpack.config.js
-- [ ] tsconfig.json
-- [ ] server.js
-- [ ] README.md
-- [ ] package-lock.json
-- [ ] package.json
-- [ ] notes.md
-- [ ] modules.d.ts
-- [ ] .gitignore
-- [ ] .env
-- [ ] src folder
-    - [ ] components folder
-        - [ ] Confirm.js
-        - [ ] DYKSection.js
-        - [ ] Footer.js
-        - [ ] LearnMore.js
-        - [ ] Logo.js
-        - [ ] Nav.js
-        - [ ] Question.js
-        - [ ] Resources.js
-        - [ ] ResourceSection.js
-    - [ ] pages folder
-        - [ ] FAQ.js
-        - [ ] Homepage.js
-        - [ ] Login.js
-        - [ ] Register.js
-    - [ ] utils folder
-        - [ ] API.js
-    - [ ] App.tsx
-    - [ ] index.tsx
-    - [ ] styles.css
-- [ ] routes folder
-    - [ ] api folder
-        - [ ] question.ts
-    - [ ] auth folder
-        - [ ] user.ts
-    - [ ] index.ts
-- [ ] public folder
-    - [ ] images folder
-        - [ ] logo.png
-        - [ ] open-figures.png
-    - [ ] index.html
-- [ ] node_modules
-- [ ] models
-    - [ ] index.ts
-    - [ ] newquestion.ts
-    - [ ] question.ts
-    - [ ] user.ts
-- [ ] controllers
-    - [ ] auth.ts
-    - [ ] controllers.ts
-    - [ ] userControllers.ts
+[Link to Page](https://educatable.herokuapp.com/)
 
+## Description
+EducatAble is an application that allows opportunities for individuals who are differently abled or fully-abled to understand more about a community that they may not know about. It can be hard to start the conversation and feel comfortable asking certain questions. This app will allow you to understand a perspective different to your normal. EducatAble's goal is to educate those who are willing to learn in a bite-sized approach with a platform for users to register and ask a question about a disability, get random tips, and eventually sign up for a tips-a-day through email.
 
-## Building and running on localhost
+## How to use
+Browse the FAQs and learn things! If you have a question that isn't answered, create and account and you can submit a new question to be answered by someone in the community.
 
-First install dependencies:
+![](./public/images/homepage.png)
 
-```sh
-npm install
-```
+## Tech used
+- Visual Studios
+- JavaScript
+- TypeScript
+- Node.js
+- Express
+- React
+- Material UI
+- MongoDB
+- Heroku
+- axios
+- bcrypt
+- JSON web token
+- Mongoose
+- Webpack
 
-To run in hot module reloading mode:
+## Development Team
+Viviana - Front-end
+Claire - Front-end and Backend
+Travis - Back-end
+Reeka - Back-end and Project Manager
 
-```sh
-npm start
-```
+## App Future
+EducatAble's goal is to eventually sign up for a tips-a-day through email and expand to include additional communties (differently abled as well as others).
 
-To create a production build:
-
-```sh
-npm run build-prod
-```
-
-To create a development build:
-
-```sh
-npm run build-dev
-```
-
-## Running
-
-Open the file `dist/index.html` in your browser
-
-## Credits
-
-Made with [createapp.dev](https://createapp.dev/)
+https://educatable.herokuapp.com/
