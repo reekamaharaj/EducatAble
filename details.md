@@ -21,7 +21,7 @@
     - [x] Display Questions
 - [x] Login Button
 - [x] Form for submitting questions
-    - [ ] Send question to db
+    - [x] Send question to db
 - [x] Logout
 - [x] Something to indicate login status (current page states are enough?)
 - User logged in
@@ -35,21 +35,21 @@
 - [x] Basic Login/Register functionality
 - [x] Password hashing/checking
 - [x] Use TypeScript
-- [ ] Email verification for Register
+- [x] Email verification for Register
 
 **
-- [ ] Password verification for Register
+- [x] Password verification for Register
     - [ ] Entry password twice to Register
 
 - Admin stuff
     - [ ] View questions submitted
     - [ ] Ability to delete/edit existing questions
     - [ ] Ability to add questions
-- [ ] Random "did you know" generation. New thing everyday?
+- [x] Random "did you know" generation. New thing everyday?
 
 ### Other
-- [ ] ReadMe
-- [ ] Deploy working
+- [x] ReadMe
+- [x] Deploy working
 - [ ] Seed db through user/admin functionalities to test as well as seed
 - [ ] Create user account for demoing
 - [ ] Powerpoint presentation
