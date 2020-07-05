@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Footer from '../components/Footer';
+import API from '../utils/API'
+import SavedQuestions from '../components/SavedQuestions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,6 +41,15 @@ const useStyles = makeStyles((theme) => ({
 
 function SavedQs() {
   const classes = useStyles();
+  state ={
+    savedQuestion: []
+  };
+
+  componentDidMount(){
+    API.savedQuestion()
+    .then(savedQuestion => this.setState({ savedQuestion: savedQuestion}))
+    .catch(err => console.error(err))
+}
 
   return (
     <div style={{ width: '100%' }} className={classes.root}>
@@ -53,7 +64,6 @@ function SavedQs() {
       </div>
       <Footer />
     </div>
-  );
+    );
 }
-
 export default SavedQs;

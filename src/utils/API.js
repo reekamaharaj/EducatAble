@@ -13,4 +13,7 @@ export default {
   saveQuestion: function (questionData) {
     return axios.post('/api/question', questionData);
   },
+  savedQuestion: function() {
+    return axios.get('/api/question').then(result => result.data)
+  }
 };
