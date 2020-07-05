@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Avoid using default session cookie name, 
+//Avoid using default session cookie name
 app.set("trust proxy", 1);
 
 //Routes
