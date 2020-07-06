@@ -19,19 +19,23 @@ const useStyle = makeStyles({
 function FavoriteBtn() {
   const classes = useStyle()
 
-  const [save, setSave] = React.useState(false);
+  const [save, setSave] = React.useState(true);
+
   const handleSave = () => {
+    if(save === false){
+     alert('Your question has been unsaved!')
+    } else {alert('Your question has been saved!')}
       setSave(!save)
   }
 
   return (
     <>
       {save ? (
-        <Button className={classes.save} onClick={handleSave}>
+        <Button className={classes.unsave} onClick={handleSave}>
           <Icon>favorite</Icon>
         </Button>
       ) : (
-        <Button className={classes.unsave} onClick={handleSave}>
+        <Button className={classes.save} onClick={handleSave}>
           <Icon>favorite</Icon>
         </Button>
       )}
