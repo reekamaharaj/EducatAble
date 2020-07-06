@@ -40,6 +40,7 @@ function FAQ() {
   // Declare and initalize state with an empty map
   const [popQs, setPopQs] = React.useState('');
   const [newQ, setNewQ] = React.useState('');
+  const [savedQuestion, setSavedQuestion] = React.useState('');
 
   const populateQs = () => {
     axios
@@ -59,6 +60,10 @@ function FAQ() {
         }
       })
       .catch((err) => console.log(err));
+  }
+
+  function handleSave(){
+    
   }
 
   const classes = useStyle();

@@ -1,35 +1,11 @@
 import * as React from 'react'
-import API from '../../utils/API'
 import {Button, Card, Typography } from "@material-ui/core";
-import { render } from 'react-dom'
-
-class SavedQuestions extends Component {
-
-state = {
-    savedQuestion: [],
-}
-
-componentDidMount() {
-    API.savedQuestion()
-    .then(savedQuestion => this.setState({ savedQuestion: savedQuestion}))
-    .catch(err => console.error(err))
-}
-
-handleSave = question => {
-    if(this.state.savedQuestion.map(question => question._id).includes(question._id)) {
-        deleteQuestion(question._id)
-        .then(deleteQuestion => this.setState({savedQuestion: this.state.savedQuestion
-        .filter(question => question._id !== deleteQuestion._id)}))
-    } else {
-        API.saveQuestion(question)
-        .then(savedQuestion => this.setState({savedQuestion: this.state.savedQuestion
-        .concat([savedQuestion])}))
-        .catch(err => console.error(err))
-    }
-}
 
 
-render() {
+
+function SavedQuestions() {
+
+
     return (
         <div> 
            {!this.props.question.length ? (
@@ -47,6 +23,6 @@ render() {
         </div>
       )
 }
-}
+
 
 export default SavedQuestions
