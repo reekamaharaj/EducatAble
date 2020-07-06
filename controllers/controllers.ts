@@ -32,7 +32,8 @@ export default {
   //Need to look in the User db for the logged in user's saved Q ids and get those and post to page
   findAllSaved: async (req: Request, res: Response) => {
     try {
-      const dbModel = await db.User.find(req.body)
+      const dbModel = await db.User.findOne({ _id: req.body.id })
+      .populate("Question")
       if (dbModel) {
         res.json(dbModel)
       } else {
@@ -46,7 +47,7 @@ export default {
   //add q id to user saved questions
   saveQ: async function (req: Request, res: Response) {
         try {
-            const dbModel = await db.User.findOneAndUpdate({ _id: req.params.id }, req.body);
+            const dbModel = await db.User.findOneAndUpdate({ _id: req.body.id }, req.body);
             if (dbModel) {
                 res.json(dbModel);
             } else {
@@ -60,7 +61,7 @@ export default {
     //remove q id from user saved questions
     unsaveQ: async function (req: Request, res: Response) {
           try {
-              const dbModel = await db.User.findById({ _id: req.params.id });
+              const dbModel = await db.User.findById({ _id: req.body.id });
     
               if(dbModel) {
                   dbModel.remove();

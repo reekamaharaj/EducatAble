@@ -9,5 +9,5 @@ router.route('/newQuestion').post(controllers.create);
 
 // Matches with "/api/savedquestion/:id"
 router.route("/SavedQ").get(controllers.findAllSaved);
-router.route('/SavedQ').post(controllers.saveQ);
-router.route('/SavedQ').post(controllers.unsaveQ);
+router.route('/saveQ/:id').post(controllers.saveQ);
+router.route('/unsaveQ').post(controllers.unsaveQ);

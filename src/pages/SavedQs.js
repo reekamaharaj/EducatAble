@@ -6,6 +6,7 @@ import Question from '../components/Question';
 import Footer from '../components/Footer';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
+import SaveBtn from '../components/Savebtn';
 
 const useStyle = makeStyles({
     boxStyle: {
@@ -54,7 +55,7 @@ function SavedQs() {
 
     const populateSavedQs = () => {
         axios
-            .get('/api/savedQuestion')
+            .get('/api/SavedQ')
             .then((res) => setPopSavedQs(res.data))
             .catch((err) => console.log(err));
     };
@@ -91,11 +92,14 @@ function SavedQs() {
                             <>
                                 <Box className={classes.boxStyle}>
                                     {savedQA.map((qa) => (
+                                        <>
                                         <Question
                                             key={qa._id}
                                             question={qa.question}
                                             answer={qa.answer}
                                         />
+                                        <SaveBtn key={qa._id}/>
+                                        </>
                                     ))}
                                 </Box>
                             </>

@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import SaveBtn from '../components/Savebtn';
 
 const useStyle = makeStyles({
     boxStyle: {
@@ -44,20 +45,6 @@ function FAQ() {
     const populateQs = () => {
         axios
             .get('/api/question')
-            .then((res) => setPopQs(res.data))
-            .catch((err) => console.log(err));
-    };
-
-    const saveQs = () => {
-        axios
-            .post('/api/saveQ')
-            .then((res) => setPopQs(res.data))
-            .catch((err) => console.log(err));
-    };
-
-    const unsaveQs = () => {
-        axios
-            .post('/api/unsaveQ')
             .then((res) => setPopQs(res.data))
             .catch((err) => console.log(err));
     };
@@ -150,11 +137,14 @@ function FAQ() {
                     <>
                         <Box className={classes.boxStyle}>
                             {popQs.map((qa) => (
+                                <>
                                 <Question
                                     key={qa._id}
                                     question={qa.question}
                                     answer={qa.answer}
                                 />
+                                <SaveBtn key={qa._id}/>
+                                </>
                             ))}
                         </Box>
                     </>
