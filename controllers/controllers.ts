@@ -32,7 +32,7 @@ export default {
 
   save: async (req: Request, res: Response) => {
     try{
-      const userModel = await db.User.findOneAndUpdate({email: req.body.email}, {$push:{saved:req.body.qid}})
+      const userModel = await db.User.findOneAndUpdate({email: req.body.email}, {$push:{saved:req.body.id}})
       if (userModel) {
         res.json(userModel)
       } else {
