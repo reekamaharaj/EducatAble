@@ -30,7 +30,34 @@ export default {
 
   // saves the user's question
 
-  save:
+  save: async (req: Request, res: Response) => {
+    try{
+      const userModel = await db.User.findOneAndUpdate({email: req.body.email}, {$push:{saved:req.body.qid}})
+      if (userModel) {
+        res.json(userModel)
+      } else {
+        console.log("Couldn't find that")
+      }
+    } catch(err){
+      console.log(err);
+      res.status(500).send('That didn\'t work!')
+    }
+  },
+
+  unsave: async (req: Request, res: Response) => {
+    try {
+      const userModel = await db.User.findOne({email: req.body.email})
+      if(userModel){
+        userModel.remove()
+        res.json(userModel)
+      } else{
+        console.log('Couldn\'t find that');
+      } 
+      } catch (err){
+        console.log('Something went wrong');
+      }
+    }
+  }
 
   //for saving a specific question, favorites, or admin to look at later?
   // findById: async function (req: Request, res: Response) {

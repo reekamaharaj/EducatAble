@@ -41,7 +41,7 @@ function FAQ() {
   // Declare and initalize state with an empty map
   const [popQs, setPopQs] = React.useState('');
   const [newQ, setNewQ] = React.useState('');
-  const [savedQuestion, setSavedQuestion] = React.useState('');
+  const [email, setEmail] = React.useState(localStorage.getItem('email'));
 
   const populateQs = () => {
     axios
@@ -142,6 +142,8 @@ function FAQ() {
                   key={qa._id}
                   question={qa.question}
                   answer={qa.answer}
+                  email={email}
+                  id={qa._id}
                 />
               ))}
             </Box>

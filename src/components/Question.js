@@ -48,7 +48,7 @@ function Question(props) {
                         <ListItemIcon>{/* <StarBorder /> */}</ListItemIcon>
                         <Typography>{props.answer}</Typography>
                         <br />
-                        <FavoriteBtn />
+                        <FavoriteBtn email={props.email} id={props.id} />
                     </ListItem>
                 </List>
             </Collapse>

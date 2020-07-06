@@ -24,19 +24,19 @@ function FavoriteBtn() {
 
   const handleSave = () => {
     if (save === false) {
-      unsavedQs()
+      unsavedQs(props.email, props.id)
       alert('Your question has been unsaved!')
     } else {
-      savedQs()
+      savedQs(props.email, props.id)
       alert('Your question has been saved!')
     }
 
     setSave(!save)
   }
 
-  const savedQs = () => {
+  const savedQs = (email,id) => {
     axios
-      .post('/api/SavedQuestions')
+      .post('/api/SavedQuestions/' + email + '/' + id)
       .then((result) => {
         if (result.status === 200) {
           return alert('Question saved!')
@@ -46,8 +46,8 @@ function FavoriteBtn() {
       })
       .catch((err) => console.log(err))
   }
-  const unsavedQs = () => {
-    axios.post('/api/UnsavedQuestions').then((result) => {
+  const unsavedQs = (email,id) => {
+    axios.post('/api/UnsavedQuestions/' + email + '/' + id).then((result) => {
       if (result.status === 200) {
         return alert('Your question was unsaved!')
       } else {

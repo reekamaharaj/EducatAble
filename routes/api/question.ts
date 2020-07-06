@@ -6,8 +6,8 @@ export const router = Router();
 // Matches with "/api/question"
 router.route('/question').get(controllers.findAll);
 router.route('/newQuestion').post(controllers.create);
-router.route('/SavedQuestions').post(controllers.saved);
-router.route('/UnsavedQuestions').post(controllers.unsaved);
+router.route('/SavedQuestions/:email/:qid').post(controllers.save);
+router.route('/UnsavedQuestions/:email/:qid').post(controllers.unsave);
 
 
 // Matches with "/api/question/:id"
