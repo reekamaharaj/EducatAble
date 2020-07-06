@@ -26,7 +26,11 @@ export default {
       console.log(err)
       res.status(500).send("This didn't work")
     }
-  }
+  },
+
+  // saves the user's question
+
+  save:
 
   //for saving a specific question, favorites, or admin to look at later?
   // findById: async function (req: Request, res: Response) {

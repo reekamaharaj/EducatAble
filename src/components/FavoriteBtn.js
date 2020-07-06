@@ -2,6 +2,7 @@ import * as React from 'react'
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
+import axios from 'axios'
 
 const useStyle = makeStyles({
   save: {
@@ -19,13 +20,40 @@ const useStyle = makeStyles({
 function FavoriteBtn() {
   const classes = useStyle()
 
-  const [save, setSave] = React.useState(true);
+  const [save, setSave] = React.useState(true)
 
   const handleSave = () => {
-    if(save === false){
-     alert('Your question has been unsaved!')
-    } else {alert('Your question has been saved!')}
-      setSave(!save)
+    if (save === false) {
+      unsavedQs()
+      alert('Your question has been unsaved!')
+    } else {
+      savedQs()
+      alert('Your question has been saved!')
+    }
+
+    setSave(!save)
+  }
+
+  const savedQs = () => {
+    axios
+      .post('/api/SavedQuestions')
+      .then((result) => {
+        if (result.status === 200) {
+          return alert('Question saved!')
+        } else {
+          return alert('Something happened!')
+        }
+      })
+      .catch((err) => console.log(err))
+  }
+  const unsavedQs = () => {
+    axios.post('/api/UnsavedQuestions').then((result) => {
+      if (result.status === 200) {
+        return alert('Your question was unsaved!')
+      } else {
+        return alert('Something happened')
+      }
+    })
   }
 
   return (

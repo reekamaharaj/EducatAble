@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import FavoriteBtn from '../components/FavoriteBtn'
 
 const useStyle = makeStyles({
   boxStyle: {
@@ -62,9 +63,7 @@ function FAQ() {
       .catch((err) => console.log(err));
   }
 
-  function handleSave(){
-    
-  }
+
 
   const classes = useStyle();
   const [token, setToken] = React.useState(localStorage.getItem('token'));
