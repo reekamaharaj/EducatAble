@@ -43,6 +43,9 @@ const styles = {
 function Login() {
 
     const [token, setToken] = React.useState(localStorage.getItem("token"));
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [admin, setAdmin] = React.useState("");
 
     React.useEffect(function(){
         if(!!token){
@@ -51,9 +54,27 @@ function Login() {
             localStorage.removeItem("token");
         }
     }, [token]);
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
 
+    
+    React.useEffect(function(){
+        if(!!email){
+            localStorage.setItem("email", email);
+        } else {
+            localStorage.removeItem("email");
+        }
+    }, [email]);
+
+    React.useEffect(function(){
+        if(!!admin){
+            localStorage.setItem("admin", admin.toString());
+        } else {
+            localStorage.removeItem("admin");
+        }
+    }, [admin]);
+
+
+  
+    
     function postLogin() {
         axios
             .post("/auth/login", {
@@ -61,16 +82,22 @@ function Login() {
                 password
             })
             .then((result) => {
-                const token = result.data;
+                const token = result.data.token;
+                const email = result.data.email;
+                const admin = result.data.admin;
                 if (result.status === 200) {
                     setToken(token);
-                    return console.log(token);
+                    setAdmin(admin);
+                    setEmail(email);
+                   
                 } else {
                     return console.log("nothing happened");
                 }
             });
     }
-
+    function getAdmin() {
+        axios("/auth")
+    }
     const guest = !token;
     const logout = () => setToken("");
 

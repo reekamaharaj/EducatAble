@@ -6,6 +6,10 @@ import Register from './pages/Register';
 import FAQ from './pages/FAQ';
 import Nav from './components/Nav';
 import LearnMore from './pages/LearnMore';
+import Admin from './pages/Admin';
+
+
+
 
 function App() {
   return (
@@ -19,6 +23,7 @@ function App() {
           <Route path='/FAQ' component={FAQ} />
           <Route path='/learnmore' component={LearnMore} />
           <Route path='/questions'/>
+          <Route path='/admin' component={Admin} when={localStorage.getItem("admin")} />
         </Switch>
       </div>
     </Router>
