@@ -26,6 +26,19 @@ export default {
       console.log(err)
       res.status(500).send("This didn't work")
     }
+  },
+
+  findNew: async (req: Request, res: Response) => {
+    try {
+      const dbModel = await db.NewQuestion.find(req.body)
+      if (dbModel) {
+        res.json(dbModel)
+      } else {
+        console.log("Couldn't find that")
+      }
+    } catch (err) {
+      console.log('Something went wrong')
+    }
   }
 
   //for saving a specific question, favorites, or admin to look at later?
