@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import LoggedOutView from './LogInRegisterBtns';
-import LoggedInView from './LogOutBtn';
 import Loginmessage from './Loginmessage';
 
 const useStyles = makeStyles({
@@ -70,6 +69,7 @@ function Nav() {
                         ) : (
                             <>
                                 <Loginmessage />
+                                <Button component='a' href='/SavedQs' className={classes.mainBtn}><Icon className={classes.iconSpacing}>favorite</Icon>Favorites</Button>
                                 <Button
                                     onClick={logout}
                                     className={classes.mainBtn}>

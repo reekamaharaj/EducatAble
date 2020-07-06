@@ -12,11 +12,7 @@
 -   package-lock.json - never delete D:
 -   modules.d.ts - where the interface for processEnv is defined
 -   .gitignore - files that will not be pushed to github
--   .env - had the secret for the token
-
-### b
-
-**later... publicPath, Compress, historyApiFallback, cssloader**
+-   .env - has the secret for the token
 
 ### Front-end
 
@@ -29,9 +25,8 @@
 -   [x] Something to indicate login status (current page states are enough?)
 -   User logged in
     -   [x] Option to save a question (like favorite)
--   [ ] User page to view saved things
--   [ ] (Admin thing) Page for an admin to view new questions that have been submitted and respond to them.
--   [ ] (Admin) ON FAQ page, option for Admin to edit current questions/answers
+-   [x] User page to view saved things
+-   [x] Random "did you know" generation.
 
 ### Back-end
 
@@ -40,23 +35,22 @@
 -   [x] Password hashing/checking
 -   [x] Use TypeScript
 -   [x] Email verification for Register
-
-\*\*
-
 -   [x] Password verification for Register
 
-    -   [ ] Entry password twice to Register
+-   [x] ReadMe
+-   [x] Deploy working
+
+
+### Things left
+
+-   [ ] Entry password twice to Register
+-   [ ] Seed db through user/admin functionalities to test as well as seed
+-   [ ] Create user account for demoing
+-   [ ] Powerpoint presentation
 
 -   Admin stuff
     -   [ ] View questions submitted
     -   [ ] Ability to delete/edit existing questions
     -   [ ] Ability to add questions
--   [x] Random "did you know" generation. New thing everyday?
-
-### Other
-
--   [x] ReadMe
--   [x] Deploy working
--   [ ] Seed db through user/admin functionalities to test as well as seed
--   [ ] Create user account for demoing
--   [ ] Powerpoint presentation
+    -   [ ] Ability to answer questions
+    -   [ ] ON FAQ page, option for Admin to edit current questions/answers

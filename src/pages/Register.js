@@ -53,6 +53,8 @@ function Register() {
             alert(
                 'password password between 7 to 15 characters which contain at least one numeric digit and a special character'
             );
+        } else {
+            alert('Registered!');
         }
         if (!email.match(emailCheck)) {
             alert("This isn't a valid email");
@@ -75,7 +77,6 @@ function Register() {
     }
 
     const guest = !token;
-    const logout = () => setToken('');
 
     return (
         <>

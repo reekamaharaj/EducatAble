@@ -9,12 +9,19 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
 
 const useStyle = makeStyles({
     nested: {
         backgroundColor: '#fdfaf6',
         color: '#4f88b1'
-    }
+    },  
+    favBtn: {
+        backgroundColor: '#4f88b1',
+        margin: '5px',
+        color: 'pink'
+    },
 });
 
 function Question(props) {
@@ -38,6 +45,8 @@ function Question(props) {
                     <ListItem className={classes.nested}>
                         <ListItemIcon>{/* <StarBorder /> */}</ListItemIcon>
                         <Typography>{props.answer}</Typography>
+                        <br />
+                        <Button className={classes.favBtn}><Icon>favorite</Icon></Button>
                     </ListItem>
                 </List>
             </Collapse>

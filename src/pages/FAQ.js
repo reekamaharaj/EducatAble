@@ -64,7 +64,6 @@ function FAQ() {
     const classes = useStyle();
     const [token, setToken] = React.useState(localStorage.getItem('token'));
     const guest = !token;
-    const logout = () => setToken('');
 
     React.useEffect(
         function () {
@@ -96,9 +95,6 @@ function FAQ() {
             ) : (
                 //Registered User!
                 <>
-                    <Button variant='contained' onClick={logout}>
-                        Logout
-                    </Button>
                     <Box className={classes.boxStyle}>
                         <Typography variant='h2'>
                             Frequently Asked Questions

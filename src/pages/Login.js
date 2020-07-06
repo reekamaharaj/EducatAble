@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { TextField, Button, Card } from '@material-ui/core';
-import Loginmessage from '../components/Loginmessage';
 
 const styles = {
     button: {
@@ -73,7 +72,6 @@ function Login() {
     }
 
     const guest = !token;
-    const logout = () => setToken('');
 
     return (
         <>
@@ -127,12 +125,6 @@ function Login() {
                 //Registered User!
                 <Card style={styles.card}>
                     <p>You are logged in</p>
-                    <Button
-                        variant='contained'
-                        onClick={logout}
-                        style={styles.button}>
-                        Logout
-                    </Button>
                 </Card>
             )}
         </>
