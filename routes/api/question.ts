@@ -7,7 +7,7 @@ export const router = Router();
 router.route('/question').get(controllers.findAll);
 router.route('/newQuestion').post(controllers.create);
 
-// Matches with "/api/question/:id"
-// router.route("/FAQ/:id").get(controllers.findById);
-// router.route("/FAQ/:id").put(controllers.update);
-// router.route("/FAQ/:id").delete(controllers.remove);
+// Matches with "/api/savedquestion/:id"
+router.route("/SavedQ").get(controllers.findAllSaved);
+router.route('/SavedQ').post(controllers.saveQ);
+router.route('/SavedQ').post(controllers.unsaveQ);

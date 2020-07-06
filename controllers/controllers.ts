@@ -26,48 +26,51 @@ export default {
       console.log(err)
       res.status(500).send("This didn't work")
     }
-  }
+  },
 
-  //for saving a specific question, favorites, or admin to look at later?
-  // findById: async function (req: Request, res: Response) {
-  //     try {
-  //         const dbModel = await db.Question.findById(req.params.id);
-  //         if (dbModel) {
-  //             res.json(dbModel);
-  //         } else {
-  //             console.log("Couldn't find that");
-  //         }
-  //     } catch (err) {
-  //         console.log("Something went wrong");
-  //     }
-  // },
-  //to update an existing question -> Admin only
-  // update: async function (req: Request, res: Response) {
-  //     try {
-  //         const dbModel = await db.Question.findOneAndUpdate({ _id: req.params.id }, req.body);
-  //         if (dbModel) {
-  //             res.json(dbModel);
-  //         } else {
-  //             console.log("Couldn't update that");
-  //         }
-  //     } catch (err) {
-  //         console.log("Something went wrong");
-  //     }
-  // },
-  //to remove an existing question -> Admin only
-  // remove: async function (req: Request, res: Response) {
-  //     try {
-  //         const dbModel = await db.Question.findById({ _id: req.params.id });
+  //to find all user saved questions
+  //Need to look in the User db for the logged in user's saved Q ids and get those and post to page
+  findAllSaved: async (req: Request, res: Response) => {
+    try {
+      const dbModel = await db.User.find(req.body)
+      if (dbModel) {
+        res.json(dbModel)
+      } else {
+        console.log("Couldn't find that")
+      }
+    } catch (err) {
+      console.log('Something went wrong')
+    }
+  },
 
-  //         if(dbModel) {
-  //             dbModel.remove();
-  //             res.json(dbModel);
-  //         }
-  //         else {
-  //             console.log("Couldn't remove that");
-  //         }
-  //     } catch(err){
-  //         console.log("Something went wrong");
-  //     }
-  // }
+  //add q id to user saved questions
+  saveQ: async function (req: Request, res: Response) {
+        try {
+            const dbModel = await db.User.findOneAndUpdate({ _id: req.params.id }, req.body);
+            if (dbModel) {
+                res.json(dbModel);
+            } else {
+                console.log("Couldn't update that");
+            }
+        } catch (err) {
+            console.log("Something went wrong");
+        }
+    },
+
+    //remove q id from user saved questions
+    unsaveQ: async function (req: Request, res: Response) {
+          try {
+              const dbModel = await db.User.findById({ _id: req.params.id });
+    
+              if(dbModel) {
+                  dbModel.remove();
+                  res.json(dbModel);
+              }
+              else {
+                  console.log("Couldn't remove that");
+              }
+          } catch(err){
+              console.log("Something went wrong");
+          }
+      }
 }

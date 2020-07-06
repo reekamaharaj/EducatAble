@@ -48,6 +48,20 @@ function FAQ() {
             .catch((err) => console.log(err));
     };
 
+    const saveQs = () => {
+        axios
+            .post('/api/saveQ')
+            .then((res) => setPopQs(res.data))
+            .catch((err) => console.log(err));
+    };
+
+    const unsaveQs = () => {
+        axios
+            .post('/api/unsaveQ')
+            .then((res) => setPopQs(res.data))
+            .catch((err) => console.log(err));
+    };
+
     function qSubmit() {
         axios
             .post('/api/newQuestion', { newQ })
