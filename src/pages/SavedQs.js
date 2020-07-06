@@ -45,12 +45,6 @@ function SavedQs() {
     savedQuestion: []
   };
 
-  componentDidMount(){
-    API.savedQuestion()
-    .then(savedQuestion => this.setState({ savedQuestion: savedQuestion}))
-    .catch(err => console.error(err))
-}
-
   return (
     <div style={{ width: '100%' }} className={classes.root}>
       <div className={classes.root}>
