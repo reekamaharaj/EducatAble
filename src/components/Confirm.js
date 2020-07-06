@@ -1,62 +1,68 @@
 import { Component } from 'react';
 import {
-  ThemeProvider as MuiThemeProvider,
-  createMuiTheme,
+    ThemeProvider as MuiThemeProvider,
+    createMuiTheme
 } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import { List, ListItem } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 export class Confirm extends Component {
-  continue = (e) => {
-    e.preventDefault();
-    // PROCESS FORM //
-    this.props.nextStep();
-  };
+    continue = (e) => {
+        e.preventDefault();
+        // PROCESS FORM //
+        this.props.nextStep();
+    };
 
-  back = (e) => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
+    back = (e) => {
+        e.preventDefault();
+        this.props.prevStep();
+    };
 
-  render() {
-    const {
-      values: { firstName, lastName, email },
-    } = this.props;
+    render() {
+        const {
+            values: { firstName, lastName, email }
+        } = this.props;
 
-    const theme = createMuiTheme();
+        const theme = createMuiTheme();
 
-    return (
-      <MuiThemeProvider theme={theme}>
-          <AppBar title='Confirm' />
-          <List>
-            <ListItem primaryText='First Name' secondaryText={firstName} />
-            <ListItem primaryText='Last name' secondaryText={lastName} />
-            <ListItem primaryText='Email' secondaryText={email} />
-          </List>
-          <br />
-          <Button
-            label='Confirm & Continue'
-            primary={true}
-            style={styles.button}
-            onClick={this.continue}
-          />
-          <br />
-          <Button
-            label='Back'
-            primary={false}
-            style={styles.button}
-            onClick={this.back}
-          />
-      </MuiThemeProvider>
-    );
-  }
+        return (
+            <MuiThemeProvider theme={theme}>
+                <AppBar title='Confirm' />
+                <List>
+                    <ListItem
+                        primaryText='First Name'
+                        secondaryText={firstName}
+                    />
+                    <ListItem
+                        primaryText='Last name'
+                        secondaryText={lastName}
+                    />
+                    <ListItem primaryText='Email' secondaryText={email} />
+                </List>
+                <br />
+                <Button
+                    label='Confirm & Continue'
+                    primary={true}
+                    style={styles.button}
+                    onClick={this.continue}
+                />
+                <br />
+                <Button
+                    label='Back'
+                    primary={false}
+                    style={styles.button}
+                    onClick={this.back}
+                />
+            </MuiThemeProvider>
+        );
+    }
 }
 
 const styles = {
-  button: {
-    margin: 15,
-  },
+    button: {
+        margin: 15
+    }
 };
 
 export default Confirm;

@@ -1,6 +1,6 @@
-import Question from "./question";
-import NewQuestion from "./newquestion";
-import User from "./user";
+import Question from './question';
+import NewQuestion from './newquestion';
+import User from './user';
 
 export default {
     Question,

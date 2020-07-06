@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import LoggedOutView from './LogInRegisterBtns';
 import LoggedInView from './LogOutBtn';
-import Loginmessage from './Loginmessage'
+import Loginmessage from './Loginmessage';
 
 const useStyles = makeStyles({
     root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         margin: '10px',
         padding: '10px 20px',
         color: 'white',
-        fontSize: '16px',
+        fontSize: '16px'
     },
     linkStyling: {
         textDecoration: 'none',
@@ -31,9 +31,8 @@ const useStyles = makeStyles({
     iconSpacing: {
         paddingRight: '5px'
     }
-})
+});
 function Nav() {
-
     const classes = useStyles();
     const [token, setToken] = React.useState(localStorage.getItem('token'));
     const guest = !token;
@@ -41,32 +40,46 @@ function Nav() {
 
     React.useEffect(
         function () {
-          if (!!token) {
-            localStorage.setItem('token', token);
-          } else {
-            localStorage.removeItem('token');
-          }
+            if (!!token) {
+                localStorage.setItem('token', token);
+            } else {
+                localStorage.removeItem('token');
+            }
         },
         [token]
-      );
+    );
 
     return (
         <div className={classes.root}>
             <AppBar position='static'>
                 <Toolbar className={classes.root}>
                     <Typography variant='h5'>EducatAble</Typography>
-                    <Button component='a' href='/' className={classes.mainBtn}><Icon className={classes.iconSpacing}>home</Icon>HOME</Button>
-                    <Button component='a' href='/FAQ' className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>FAQ</Button>
-                    <Typography className={classes.space}>{' '}</Typography>
+                    <Button component='a' href='/' className={classes.mainBtn}>
+                        <Icon className={classes.iconSpacing}>home</Icon>HOME
+                    </Button>
+                    <Button
+                        component='a'
+                        href='/FAQ'
+                        className={classes.mainBtn}>
+                        <Icon className={classes.iconSpacing}>help</Icon>FAQ
+                    </Button>
+                    <Typography className={classes.space}> </Typography>
                     <>
-                    {guest ? (
-                        <LoggedOutView />
-                    ) : (
-                        <>
-                        <Loginmessage />
-                        <Button onClick={logout} className={classes.mainBtn}><Icon className={classes.iconSpacing}>clear</Icon>Log Out</Button>
-                        </>
-                    )}
+                        {guest ? (
+                            <LoggedOutView />
+                        ) : (
+                            <>
+                                <Loginmessage />
+                                <Button
+                                    onClick={logout}
+                                    className={classes.mainBtn}>
+                                    <Icon className={classes.iconSpacing}>
+                                        clear
+                                    </Icon>
+                                    Log Out
+                                </Button>
+                            </>
+                        )}
                     </>
                 </Toolbar>
             </AppBar>

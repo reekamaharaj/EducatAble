@@ -1,24 +1,24 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "strict": true,
-    "noImplicitReturns": false,
-    "noImplicitAny": false,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "es5",
-    "allowJs": true,
-    "jsx": "react",
-    "allowSyntheticDefaultImports": false
-  },
-  "include": [
-    "src/**/*",
-    "controllers/**/*",
-    "models/**/*",
-    "routes/**/*",
-    "server.ts",
-    "modules.d.ts",
-    "seedDB.ts"
-  ]
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitReturns": false,
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "allowJs": true,
+        "jsx": "react",
+        "allowSyntheticDefaultImports": false
+    },
+    "include": [
+        "src/**/*",
+        "controllers/**/*",
+        "models/**/*",
+        "routes/**/*",
+        "server.ts",
+        "modules.d.ts",
+        "seedDB.ts"
+    ]
 }
