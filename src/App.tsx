@@ -6,25 +6,30 @@ import Register from './pages/Register';
 import FAQ from './pages/FAQ';
 import Nav from './components/Nav';
 import LearnMore from './pages/LearnMore';
+import Admin from './pages/Admin';
 import SavedQs from './pages/SavedQs';
 
+
+
+
 function App() {
-    return (
-        <Router>
-            <div>
-                <Nav />
-                <Switch>
-                    <Route exact path='/' component={Homepage} />
-                    <Route exact path='/login' component={Login} />
-                    <Route exact path='/register' component={Register} />
-                    <Route path='/FAQ' component={FAQ} />
-                    <Route path='/learnmore' component={LearnMore} />
-                    <Route path='/SavedQs' component={SavedQs} />
-                    <Route path='/questions' />
-                </Switch>
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      <div>
+        <Nav />
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          <Route path='/FAQ' component={FAQ} />
+          <Route path='/learnmore' component={LearnMore} />
+          <Route path='/questions'/>
+          <Route path='/SavedQs' component={SavedQs} />
+          <Route path='/admin' component={Admin} when={localStorage.getItem("admin")} />
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

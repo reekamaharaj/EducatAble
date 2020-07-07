@@ -32,10 +32,18 @@ const useStyles = makeStyles({
     }
 });
 function Nav() {
+
     const classes = useStyles();
     const [token, setToken] = React.useState(localStorage.getItem('token'));
+    const [email, setEmail] = React.useState(localStorage.getItem('email'));
+    const [admin, setAdmin] = React.useState(localStorage.getItem('admin'));
+
     const guest = !token;
-    const logout = () => setToken('');
+    const logout = () => {
+        setToken(''); 
+        setEmail('');
+        setAdmin('');
+    }
 
     React.useEffect(
         function () {
@@ -53,16 +61,10 @@ function Nav() {
             <AppBar position='static'>
                 <Toolbar className={classes.root}>
                     <Typography variant='h5'>EducatAble</Typography>
-                    <Button component='a' href='/' className={classes.mainBtn}>
-                        <Icon className={classes.iconSpacing}>home</Icon>HOME
-                    </Button>
-                    <Button
-                        component='a'
-                        href='/FAQ'
-                        className={classes.mainBtn}>
-                        <Icon className={classes.iconSpacing}>help</Icon>FAQ
-                    </Button>
-                    <Typography className={classes.space}> </Typography>
+                    <Button component='a' href='/' className={classes.mainBtn}><Icon className={classes.iconSpacing}>home</Icon>HOME</Button>
+                    <Button component='a' href='/FAQ' className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>FAQ</Button>
+
+                    <Typography className={classes.space}>{' '}</Typography>
                     <>
                         {guest ? (
                             <LoggedOutView />

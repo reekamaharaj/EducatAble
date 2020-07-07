@@ -9,6 +9,7 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
+import Savebtn from './Savebtn';
 
 
 const useStyle = makeStyles({
@@ -52,6 +53,7 @@ function Question(props) {
                         <ListItemIcon>{/* <StarBorder /> */}</ListItemIcon>
                         <Typography>{props.answer}</Typography>
                         <br />
+                        <Savebtn qid={props.id} email={props.email}/>
                     </ListItem>
                 </List>
             </Collapse>

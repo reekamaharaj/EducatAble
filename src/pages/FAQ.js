@@ -64,6 +64,7 @@ function FAQ() {
 
     const classes = useStyle();
     const [token, setToken] = React.useState(localStorage.getItem('token'));
+    const [email, setEmail] = React.useState(localStorage.getItem('email'));
     const guest = !token;
 
     React.useEffect(
@@ -142,8 +143,9 @@ function FAQ() {
                                     key={qa._id}
                                     question={qa.question}
                                     answer={qa.answer}
+                                    id={qa._id}
+                                    email={email}
                                 />
-                                <SaveBtn key={qa._id}/>
                                 </>
                             ))}
                         </Box>

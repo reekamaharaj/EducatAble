@@ -2,13 +2,10 @@ import * as React from 'react';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
 
 const useStyle = makeStyles({
-    nested: {
-        backgroundColor: '#fdfaf6',
-        color: '#4f88b1'
-    },
     truefavBtn: {
         backgroundColor: '#4f88b1',
         margin: '5px',
@@ -24,31 +21,31 @@ const useStyle = makeStyles({
 
 function SaveBtn(props) {
     const classes = useStyle();
-    const [save, setSave] = React.useState(false);
+    const [save, setSave] = React.useState(true);
     const saveClick = () => {
         if (save === false) {
-            // saveQs();
-            alert("Save");
-        } else {
-            // unsaveQs();
+            saveQs(props.email, props.qid);
             alert("unSave");
+        } else {
+            unsaveQs(props.email, props.qid);
+            alert("Save");
         }
         setSave(!save);
     };
 
-    // const saveQs = () => {
-    //     axios
-    //         .post('/api/saveQ')
-    //         .then((res) => setSave(res.data))
-    //         .catch((err) => console.log(err));
-    // };
+    const saveQs = (email, qid) => {
+        axios
+            .post('/api/SavedQ/' + email + '/' + qid)
+            .then((res) => setSave(res.data))
+            .catch((err) => console.log(err));
+    };
 
-    // const unsaveQs = () => {
-    //     axios
-    //         .post('/api/unsaveQ')
-    //         .then((res) => setSave(res.data))
-    //         .catch((err) => console.log(err));
-    // };
+    const unsaveQs = (email, qid) => {
+        axios
+            .post('/api/unsaveQ/' + email + '/' + qid)
+            .then((res) => setSave(res.data))
+            .catch((err) => console.log(err));
+    };
 
     return (
         <>

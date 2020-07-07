@@ -16,8 +16,9 @@ export default {
                 if(found){
                     if (await found.isValidPassword(password)){
                         const token = jwt.sign(email, "secretthing");
-                        res.send(token);
-                        console.log("Logged in with email: " + email);
+                        const admin = found.admin.toString();
+                        let user = ({token:token,email:email,admin:admin});
+                        res.send(user);
                     } else {
                         res.status(401).send("Password was wrong");
                         console.log("invalid password");
