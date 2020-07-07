@@ -37,7 +37,15 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(1)
-    }
+    },
+    boxStyle: {
+        justifyContent: 'center',
+        padding: '20px',
+        fontFamily: 'Roboto, sans-serif',
+        fontWeight: '700',
+        color: 'white',
+        backgroundColor: '#72A0C1'
+    },
 }));
 
 function SavedQs() {
