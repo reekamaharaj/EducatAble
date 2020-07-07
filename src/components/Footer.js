@@ -16,10 +16,10 @@ const useStyles = makeStyles({
 export default function Footer() {
     const classes = useStyles();
     return (
-        <div style={{ width: '100%'}} className={classes.root}>
-            <Box display='flex' className={classes.contentPlacing}>    
+        <div style={{ width: '100%' }} className={classes.root}>
+            <Box display='flex' className={classes.contentPlacing}>
                 <Box p={1}>&copy; 2020 EducatAble</Box>
             </Box>
         </div>
-    )
+    );
 }

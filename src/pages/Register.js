@@ -1,80 +1,82 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { TextField, Button, Card } from "@material-ui/core";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { TextField, Button, Card } from '@material-ui/core';
 
 const styles = {
-  button: {
-    margin: 10,
-    background: '#72A0C1',
-    border: 0,
-    borderRadius: 3,
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-  },
+    button: {
+        margin: 10,
+        background: '#72A0C1',
+        border: 0,
+        borderRadius: 3,
+        color: 'white',
+        height: 48,
+        padding: '0 30px'
+    },
 
-  card: {
-    boxSizing: 'border-box',
-    maxWidth: '300px',
-    margin: 'auto',
-    textAlign: 'center',
-  },
+    card: {
+        boxSizing: 'border-box',
+        maxWidth: '300px',
+        margin: 'auto',
+        textAlign: 'center'
+    },
 
-  text: {
-    margin: 15,
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'white',
-  },
+    text: {
+        margin: 15
+    },
+    link: {
+        textDecoration: 'none',
+        color: 'white'
+    }
 };
 
 function Register() {
-    const [token, setToken] = React.useState(localStorage.getItem("token"));
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
 
     React.useEffect(
         function () {
             if (!!token) {
-                localStorage.setItem("token", token);
+                localStorage.setItem('token', token);
             } else {
-                localStorage.removeItem("token");
+                localStorage.removeItem('token');
             }
         },
         [token]
     );
 
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
     const passCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     function postRegister() {
-        if(!password.match(passCheck)){
-            alert("password password between 7 to 15 characters which contain at least one numeric digit and a special character");
+        if (!password.match(passCheck)) {
+            alert(
+                'password password between 7 to 15 characters which contain at least one numeric digit and a special character'
+            );
+        } else {
+            alert('Registered!');
         }
-        if(!email.match(emailCheck)){
+        if (!email.match(emailCheck)) {
             alert("This isn't a valid email");
-        }
-        else{
-        axios
-            .post("/auth/register", {
-                email,
-                password,
-            })
-            .then((result) => {
-                const token = result.data;
-                if (result.status === 200) {
-                    setToken(token);
-                    return console.log(token);
-                } else {
-                    return console.log("nothing happened");
-                }
-            });
+        } else {
+            axios
+                .post('/auth/register', {
+                    email,
+                    password
+                })
+                .then((result) => {
+                    const token = result.data;
+                    if (result.status === 200) {
+                        setToken(token);
+                        return console.log(token);
+                    } else {
+                        return console.log('nothing happened');
+                    }
+                });
         }
     }
 
     const guest = !token;
-    const logout = () => setToken("");
 
     return (
         <>
@@ -87,41 +89,40 @@ function Register() {
                             <br />
                             <TextField
                                 style={styles.text}
-                                id="standard-basic"
-                                label="Enter Your Email"
-                                variant="outlined"
-                                type="username"
+                                id='standard-basic'
+                                label='Enter Your Email'
+                                variant='outlined'
+                                type='username'
                                 value={email}
                                 onChange={(e) => {
                                     setEmail(e.target.value);
                                 }}
-                                placeholder="email"
+                                placeholder='email'
                             />
                             <br />
                             <TextField
                                 style={styles.text}
-                                id="filled-password-input"
-                                label="Enter Your Password"
-                                variant="outlined"
-                                type="password"
+                                id='filled-password-input'
+                                label='Enter Your Password'
+                                variant='outlined'
+                                type='password'
                                 value={password}
                                 onChange={(e) => {
-                                 
                                     setPassword(e.target.value);
                                 }}
-                                placeholder="password"
+                                placeholder='password'
                             />
                             <br />
                             <Button
-                                variant="contained"
-                                primary={"true"}
+                                variant='contained'
+                                primary={'true'}
                                 style={styles.button}
                                 onClick={postRegister}>
                                 Register
                             </Button>
                             <br />
                             <Button style={styles.button}>
-                                <Link to="/login" style={styles.link}>
+                                <Link to='/login' style={styles.link}>
                                     Already have an account?
                                 </Link>
                             </Button>
@@ -132,7 +133,6 @@ function Register() {
                 //Registered User!
                 <Card style={styles.card}>
                     <p>You are logged in </p>
-                 
                 </Card>
             )}
         </>
