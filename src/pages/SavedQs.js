@@ -1,10 +1,11 @@
 import * as React from 'react';
+import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+import Question from '../components/Question';
 import Footer from '../components/Footer';
-import API from '../utils/API';
-import SavedQuestions from '../components/SavedQuestions';
+import Paper from '@material-ui/core/Paper';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,23 +41,87 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SavedQs() {
-    const classes = useStyles();
-    state = {
-        savedQuestion: []
+    // Declare and initalize state with an empty map
+    const [popSavedQs, setPopSavedQs] = React.useState('');
+    const [email, setEmail] = React.useState(localStorage.getItem('email'));
+
+    const populateSavedQs = () => {
+        axios
+            .get('/api/question')
+            .then((res) => setPopSavedQs(res.data))
+            .catch((err) => console.log(err));
     };
+
+    const classes = useStyles();
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
+    const guest = !token;
+
+    React.useEffect(
+        function () {
+            populateSavedQs();
+            if (!!token) {
+                localStorage.setItem('token', token);
+            } else {
+                localStorage.removeItem('token');
+            }
+        },
+        [token]
+    );
 
     return (
         <div style={{ width: '100%' }} className={classes.root}>
             <div className={classes.root}>
                 <br />
-                <Paper elevation={3} className={classes.paperStyle}>
-                    <Typography variant='subtitle' className={classes.bio}>
-                        <h2>Your Favorites Page</h2>
-                    </Typography>
-                </Paper>
-                <br />
+                {guest ? (
+                    <>
+                        <Paper elevation={3} className={classes.paperStyle}>
+                            <Typography
+                                variant='subtitle'
+                                className={classes.bio}>
+                                <h2>Favorites</h2>
+                            </Typography>
+                            <Typography variant='h6'>
+                                You don't have an account.
+                            </Typography>
+                        </Paper>
+                    </>
+                ) : (
+                    <>
+                        <Paper elevation={3} className={classes.paperStyle}>
+                            <Typography
+                                variant='subtitle'
+                                className={classes.bio}>
+                                <h2>Favorites</h2>
+                            </Typography>
+                        </Paper>
+                    </>
+                )}
+                <div>
+                    <br />
+                    {popSavedQs ? (
+                        <>
+                            <Box className={classes.boxStyle}>
+                                {popSavedQs.map((qa) => (
+                                    <>
+                                        <Question
+                                            key={qa._id}
+                                            question={qa.question}
+                                            answer={qa.answer}
+                                            email={email}
+                                            id={qa._id}
+                                        />
+                                    </>
+                                ))}
+                            </Box>
+                        </>
+                    ) : (
+                        <>
+                            <p>No questions</p>
+                        </>
+                    )}
+                </div>
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 }
