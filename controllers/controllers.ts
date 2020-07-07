@@ -6,9 +6,9 @@ export default {
     //to find all saved questions
     findAll: async (req: Request, res: Response) => {
         try {
-            const dbModel = await db.Question.find(req.body);
-            if (dbModel) {
-                res.json(dbModel);
+            const questionModel = await db.Question.find(req.body);
+            if (questionModel) {
+                res.json(questionModel);
             } else {
                 console.log("Couldn't find that");
             }
@@ -48,7 +48,10 @@ export default {
 
     unsave: async (req: Request, res: Response) => {
         try {
-            const userModel = await db.User.findOne({ email: req.body.email });
+            const userModel = await db.User.findOneAndUpdate(
+                { email: req.body.email },
+                { $pull: { savedQ: req.body.id } }
+            );
             if (userModel) {
                 userModel.remove();
                 res.json(userModel);
@@ -63,14 +66,16 @@ export default {
     //Need to look in the User db for the logged in user's saved Q ids and get those and post to page
     findAllSaved: async (req: Request, res: Response) => {
         try {
-            const dbModel = await db.User.find({
+            const userModel = await db.User.find({
                 email: req.body.email
-            }).populate('Question');
-            if (dbModel) {
-                res.json(dbModel);
-            } else {
-                console.log("Couldn't find that");
-            }
+            }).populate({path: 'savedQ', model: "User"}).exec((error, found) => {
+                if (found) {
+                    res.json(found);
+                } else {
+                    console.log("Couldn't find that");
+                }
+            });
+            
         } catch (err) {
             console.log('Something went wrong');
         }

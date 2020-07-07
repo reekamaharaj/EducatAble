@@ -1,74 +1,78 @@
-import * as React from 'react'
-import Button from '@material-ui/core/Button'
-import Icon from '@material-ui/core/Icon'
-import { makeStyles } from '@material-ui/core/styles'
-import axios from 'axios'
+import * as React from 'react';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 
 const useStyle = makeStyles({
-  save: {
-    backgroundColor: '#4f88b1',
-    margin: '5px',
-    color: 'pink'
-  },
-  unsave: {
-    backgroundColor: '#4f88b1',
-    margin: '5px',
-    color: 'white'
-  }
-})
-
-function FavoriteBtn() {
-  const classes = useStyle()
-
-  const [save, setSave] = React.useState(true)
-
-  const handleSave = () => {
-    if (save === false) {
-      unsavedQs(props.email, props.id)
-      alert('Your question has been unsaved!')
-    } else {
-      savedQs(props.email, props.id)
-      alert('Your question has been saved!')
+    save: {
+        backgroundColor: '#4f88b1',
+        margin: '5px',
+        color: 'pink'
+    },
+    unsave: {
+        backgroundColor: '#4f88b1',
+        margin: '5px',
+        color: 'white'
     }
+});
 
-    setSave(!save)
-  }
+function FavoriteBtn(props) {
+    const classes = useStyle();
+    const email = props.email;
+    const id = props.id;
 
-  const savedQs = (email,id) => {
-    axios
-      .post('/api/SavedQuestions/' + email + '/' + id)
-      .then((result) => {
-        if (result.status === 200) {
-          return alert('Question saved!')
+    const [save, setSave] = React.useState(true);
+
+    const handleSave = () => {
+        if (save === false) {
+            unsavedQs(email, id);
+            // alert('Your question has been unsaved!');
         } else {
-          return alert('Something happened!')
+            savedQs(email, id);
+            // alert('Your question has been saved!');
         }
-      })
-      .catch((err) => console.log(err))
-  }
-  const unsavedQs = (email,id) => {
-    axios.post('/api/UnsavedQuestions/' + email + '/' + id).then((result) => {
-      if (result.status === 200) {
-        return alert('Your question was unsaved!')
-      } else {
-        return alert('Something happened')
-      }
-    })
-  }
 
-  return (
-    <>
-      {save ? (
-        <Button className={classes.unsave} onClick={handleSave}>
-          <Icon>favorite</Icon>
-        </Button>
-      ) : (
-        <Button className={classes.save} onClick={handleSave}>
-          <Icon>favorite</Icon>
-        </Button>
-      )}
-    </>
-  )
+        setSave(!save);
+    };
+
+    const savedQs = (email, id) => {
+        axios
+            .post('/api/SavedQuestions/', { email, id })
+            .then((result) => {
+                if (result.status === 200) {
+                    return alert('Question saved!');
+                } else {
+                    return alert('Something happened!');
+                }
+            })
+            .catch((err) => console.log(err));
+    };
+    const unsavedQs = (email, id) => {
+        axios
+            .delete('/api/UnsavedQuestions/', { email, id })
+            .then((result) => {
+                if (result.status === 200) {
+                    return alert('Your question was unsaved!');
+                } else {
+                    return alert('Something happened');
+                }
+            });
+    };
+
+    return (
+        <>
+            {save ? (
+                <Button className={classes.unsave} onClick={handleSave}>
+                    <Icon>favorite</Icon>
+                </Button>
+            ) : (
+                <Button className={classes.save} onClick={handleSave}>
+                    <Icon>favorite</Icon>
+                </Button>
+            )}
+        </>
+    );
 }
 
-export default FavoriteBtn
+export default FavoriteBtn;

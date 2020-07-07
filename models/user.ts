@@ -1,4 +1,4 @@
-import { model, Schema, Document } from 'mongoose';
+import { model, Schema, Document, Types } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { Question } from './question';
 
@@ -6,7 +6,7 @@ export interface User extends Document {
     email: string;
     password: string;
     admin: boolean;
-    savedQ: Question;
+    savedQ: [{ type: Types.ObjectId, ref: Question }];
     isValidPassword: (password: string) => Promise<boolean>;
 }
 
@@ -18,7 +18,7 @@ const userSchema = new Schema({
     //this will be false unless changed on the backend to set an admin
     admin: { type: Boolean, default: false },
     // this will save user's questions
-    savedQ: { type: Schema.Types.ObjectId, ref: 'Question' }
+    savedQ: [{ type: Schema.Types.ObjectId, ref: 'Question' }]
 });
 
 //generate hash

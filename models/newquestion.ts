@@ -1,10 +1,10 @@
-import { model, Schema, Document } from 'mongoose';
+import { model, Schema, Document, Types } from 'mongoose';
 import { User } from './user';
 
 export interface NewQ extends Document {
     newQ: string;
-    user: User;
-    answerBy: User;
+    user: { type: Types.ObjectId };
+    answerBy: { type: Types.ObjectId, ref: User };
 }
 
 const newquestionSchema = new Schema({

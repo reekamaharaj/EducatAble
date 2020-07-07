@@ -47,7 +47,7 @@ function SavedQs() {
 
     const populateSavedQs = () => {
         axios
-            .get('/api/question')
+            .get('/api/SavedQ', {email})
             .then((res) => setPopSavedQs(res.data))
             .catch((err) => console.log(err));
     };

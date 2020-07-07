@@ -30,7 +30,8 @@ const MONGODB_URI =
     process.env.MONGODB_URI || 'mongodb://localhost/educateAble';
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 // Start the API server
