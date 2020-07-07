@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import LoggedOutView from './LogInRegisterBtns';
+import Link from '@material-ui/core/Link';
 import Loginmessage from './Loginmessage';
 
 const useStyles = makeStyles({
@@ -32,7 +33,6 @@ const useStyles = makeStyles({
     }
 });
 function Nav() {
-
     const classes = useStyles();
     const [token, setToken] = React.useState(localStorage.getItem('token'));
     const [email, setEmail] = React.useState(localStorage.getItem('email'));
@@ -40,10 +40,10 @@ function Nav() {
 
     const guest = !token;
     const logout = () => {
-        setToken(''); 
+        setToken('');
         setEmail('');
         setAdmin('');
-    }
+    };
 
     React.useEffect(
         function () {
@@ -61,17 +61,32 @@ function Nav() {
             <AppBar position='static'>
                 <Toolbar className={classes.root}>
                     <Typography variant='h5'>EducatAble</Typography>
-                    <Button component='a' href='/' className={classes.mainBtn}><Icon className={classes.iconSpacing}>home</Icon>HOME</Button>
-                    <Button component='a' href='/FAQ' className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>FAQ</Button>
+                    <Button component='a' href='/' className={classes.mainBtn}>
+                        <Icon className={classes.iconSpacing}>home</Icon>HOME
+                    </Button>
+                    <Button
+                        component='a'
+                        href='/FAQ'
+                        className={classes.mainBtn}>
+                        <Icon className={classes.iconSpacing}>help</Icon>FAQ
+                    </Button>
 
-                    <Typography className={classes.space}>{' '}</Typography>
+                    <Typography className={classes.space}> </Typography>
                     <>
                         {guest ? (
                             <LoggedOutView />
                         ) : (
                             <>
-                                <Loginmessage />
-                                <Button component='a' href='/SavedQs' className={classes.mainBtn}><Icon className={classes.iconSpacing}>favorite</Icon>Favorites</Button>
+                                <Button
+                                    component='a'
+                                    href='/SavedQs'
+                                    className={classes.mainBtn}>
+                                    <Icon className={classes.iconSpacing}>
+                                        favorite
+                                    </Icon>
+                                    Favorites
+                                </Button>
+
                                 <Button
                                     onClick={logout}
                                     className={classes.mainBtn}>

@@ -17,8 +17,8 @@ const userSchema = new Schema({
     password: { type: String, required: true },
     //this will be false unless changed on the backend to set an admin
     admin: { type: Boolean, default: false },
-    //saved articles
-    saved: { type: Schema.Types.ObjectId, ref: 'Question' }
+    // this will save user's questions
+    save: { type: Schema.Types.ObjectId, ref: 'Question' }
 });
 
 //generate hash

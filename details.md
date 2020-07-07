@@ -15,18 +15,18 @@
 -   .env - has the secret for the token
 
 ### Front-end
-
--   [x] FAQ page
-    -   [x] Display Questions
--   [x] Login Button
--   [x] Form for submitting questions
-    -   [x] Send question to db
--   [x] Logout
--   [x] Something to indicate login status (current page states are enough?)
--   User logged in
-    -   [x] Option to save a question (like favorite)
--   [x] User page to view saved things
--   [x] Random "did you know" generation.
+- [x] FAQ page
+    - [x] Display Questions
+- [x] Login Button
+- [x] Form for submitting questions
+    - [ ] Send question to db
+- [x] Logout
+- [x] Something to indicate login status (current page states are enough?)
+- User logged in
+    - [x] Option to save a question (like favorite)
+- [x] User page to view saved things
+- [ ] (Admin thing) Page for an admin to view new questions that have been submitted and respond to them.
+- [ ] (Admin) ON FAQ page, option for Admin to edit current questions/answers
 
 ### Back-end
 

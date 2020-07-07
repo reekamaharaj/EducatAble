@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import SaveBtn from '../components/Savebtn';
+import FavoriteBtn from '../components/FavoriteBtn';
 
 const useStyle = makeStyles({
     boxStyle: {
@@ -41,6 +41,7 @@ function FAQ() {
     // Declare and initalize state with an empty map
     const [popQs, setPopQs] = React.useState('');
     const [newQ, setNewQ] = React.useState('');
+    const [email, setEmail] = React.useState(localStorage.getItem('email'));
 
     const populateQs = () => {
         axios
@@ -64,8 +65,8 @@ function FAQ() {
 
     const classes = useStyle();
     const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const [email, setEmail] = React.useState(localStorage.getItem('email'));
     const guest = !token;
+    const logout = () => setToken('');
 
     React.useEffect(
         function () {
@@ -139,13 +140,13 @@ function FAQ() {
                         <Box className={classes.boxStyle}>
                             {popQs.map((qa) => (
                                 <>
-                                <Question
-                                    key={qa._id}
-                                    question={qa.question}
-                                    answer={qa.answer}
-                                    id={qa._id}
-                                    email={email}
-                                />
+                                    <Question
+                                        key={qa._id}
+                                        question={qa.question}
+                                        answer={qa.answer}
+                                        email={email}
+                                        id={qa._id}
+                                    />
                                 </>
                             ))}
                         </Box>

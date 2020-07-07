@@ -8,24 +8,20 @@ import Collapse from '@material-ui/core/Collapse';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Savebtn from './Savebtn';
-
+import FavoriteBtn from '../components/FavoriteBtn';
 
 const useStyle = makeStyles({
     nested: {
         backgroundColor: '#fdfaf6',
         color: '#4f88b1'
     },
-    truefavBtn: {
+    favBtn: {
         backgroundColor: '#4f88b1',
         margin: '5px',
         color: 'pink'
-    },
-    falsefavBtn: {
-        backgroundColor: '#4f88b1',
-        margin: '5px',
-        color: 'white'
     }
 });
 
@@ -53,7 +49,7 @@ function Question(props) {
                         <ListItemIcon>{/* <StarBorder /> */}</ListItemIcon>
                         <Typography>{props.answer}</Typography>
                         <br />
-                        <Savebtn qid={props.id} email={props.email}/>
+                        <FavoriteBtn email={props.email} id={props.id} />
                     </ListItem>
                 </List>
             </Collapse>
