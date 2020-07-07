@@ -29,12 +29,11 @@ export default {
     },
 
     // saves the user's question
-
     save: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
                 { email: req.body.email },
-                { $push: { saved: req.body.id } }
+                { $push: { savedQ: req.body.id } }
             );
             if (userModel) {
                 res.json(userModel);
