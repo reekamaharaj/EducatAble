@@ -10,7 +10,7 @@ router.route('/SavedQuestions').post(controllers.save);
 router.route('/UnsavedQuestions').delete(controllers.unsave);
 
 
-router.route("/SavedQ").get(controllers.findAllSaved);
+router.route("/SavedQ").post(controllers.findAllSaved);
 
 // router.route('/newQuestion').get(controllers.findNew);
 

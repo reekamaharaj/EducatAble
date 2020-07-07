@@ -47,9 +47,10 @@ function SavedQs() {
 
     const populateSavedQs = () => {
         axios
-            .get('/api/SavedQ', {email})
+            .post('/api/SavedQ', {email})
             .then((res) => setPopSavedQs(res.data))
             .catch((err) => console.log(err));
+            console.log(popSavedQs);
     };
 
     const classes = useStyles();
@@ -98,7 +99,7 @@ function SavedQs() {
                 )}
                 <div>
                     <br />
-                    {popSavedQs ? (
+                    {popSavedQs.length > 0 ? (
                         <>
                             <Box className={classes.boxStyle}>
                                 {popSavedQs.map((qa) => (

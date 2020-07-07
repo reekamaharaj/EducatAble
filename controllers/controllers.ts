@@ -68,16 +68,16 @@ export default {
         try {
             const userModel = await db.User.find({
                 email: req.body.email
-            }).populate({path: 'savedQ', model: "User"}).exec((error, found) => {
-                if (found) {
-                    res.json(found);
-                } else {
-                    console.log("Couldn't find that");
-                }
-            });
-            
+            }).exec();
+            if (userModel[0].savedQ) {
+                const questionModel = await db.Question.find({_id: userModel[0].savedQ});
+                console.log(questionModel);
+                res.json(questionModel);
+            } else {
+                console.log('Nothing saved');
+            }
         } catch (err) {
-            console.log('Something went wrong');
+            console.log('catch err for findAllSaved controller');
         }
     }
 };
