@@ -40,9 +40,8 @@ function Nav() {
 
     const guest = !token;
     const logout = () => {
-        setToken('');
-        setEmail('');
-        setAdmin('');
+       localStorage.clear();
+       location.reload();
     };
 
     React.useEffect(
