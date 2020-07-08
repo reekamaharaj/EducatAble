@@ -32,7 +32,6 @@
 -   [ ] Create user account for demoing
 -   [ ] Powerpoint presentation
 
-
 ### Extras
 -   [ ] FAQ: clear the question after it is submitted
 -   [ ] Register: Password alert shows for an acceptable password, but it will still register the user. So change the message on that case to "sucessful register" or something like that.
