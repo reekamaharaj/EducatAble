@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { TextField, Button, Card } from '@material-ui/core';
+import { TextField, Button, Card, Typography } from '@material-ui/core';
 
 const styles = {
     button: {
@@ -35,6 +35,9 @@ const styles = {
     link: {
         textDecoration: 'none',
         color: 'white'
+    },
+    passwordInfo: {
+        fontSize: '6px'
     }
 };
 
@@ -134,6 +137,8 @@ function Login() {
                             }}
                             placeholder='password'
                         />
+                        <br />
+                        <Typography variant='caption'>Password must be between 7 to 15 characters and contain at least one numeric digit and a special character</Typography>
                         <br />
                         <Button
                             variant='contained'
