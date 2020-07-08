@@ -88,11 +88,18 @@ function Login() {
                 const email = result.data.email;
                 const admin = result.data.admin;
                 if (result.status === 200) {
+                    alert("logged in");
                     setToken(token);
                     setAdmin(admin);
                     setEmail(email);
                 } else {
                     return console.log('nothing happened');
+                }
+                if (!!password) {
+                    alert('invalid password');
+                }
+                if (!!email) {
+                    alert('invalid email');
                 }
             });
     }
