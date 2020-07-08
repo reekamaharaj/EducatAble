@@ -35,6 +35,9 @@ const styles = {
     link: {
         textDecoration: 'none',
         color: 'white'
+    },
+    passwordInfo: {
+        fontSize: '6px'
     }
 };
 

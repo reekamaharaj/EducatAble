@@ -19,7 +19,7 @@ const useStyle = makeStyles({
     },
     inputStyle: {
         width: '100%',
-        backgroundColor: '#72A0C1'
+        backgroundColor: '#fdfaf6'
     },
     boxStyleTwo: {
         padding: '20px',
@@ -32,7 +32,10 @@ const useStyle = makeStyles({
         padding: '10px 20px',
         color: 'white',
         fontSize: '16px',
-        float: 'right'
+        float: 'right',
+        borderBottom: '2px solid white',
+        borderRadius: '0px'
+        
     }
 });
 
@@ -113,10 +116,13 @@ function FAQ() {
                             Have a question that wasn't answered below? Ask a
                             question and get a response from Admins!
                         </Typography>
+                        <br />
                         <form>
                             <TextField
                                 type='text'
                                 label='Ask a question'
+                                id='questionInput'
+                                variant='outlined'
                                 className={classes.inputStyle}
                                 value={newQ}
                                 onChange={(e) => {
