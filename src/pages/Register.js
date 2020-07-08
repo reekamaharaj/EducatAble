@@ -32,6 +32,10 @@ const styles = {
 
 function Register() {
     const [token, setToken] = React.useState(localStorage.getItem('token'));
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    const guest = !token;
 
     React.useEffect(
         function () {
@@ -44,10 +48,10 @@ function Register() {
         [token]
     );
 
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
     const passCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
     const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     function postRegister() {
         if (!password.match(passCheck)) {
             alert(
@@ -67,16 +71,13 @@ function Register() {
                 .then((result) => {
                     const token = result.data;
                     if (result.status === 200) {
-                        setToken(token);
-                        return console.log(token);
+                        return setToken(token);
                     } else {
                         return console.log('nothing happened');
                     }
                 });
         }
     }
-
-    const guest = !token;
 
     return (
         <>
@@ -113,7 +114,11 @@ function Register() {
                                 placeholder='password'
                             />
                             <br />
-                            <Typography variant='caption'>Password must be between 7 to 15 characters and contain at least one numeric digit and a special character</Typography>
+                            <Typography variant='caption'>
+                                Password must be between 7 to 15 characters and
+                                contain at least one numeric digit and a special
+                                character
+                            </Typography>
                             <br />
                             <Button
                                 variant='contained'

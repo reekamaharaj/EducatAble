@@ -18,6 +18,7 @@ const useStyles = makeStyles({
         width: '700px'
     }
 });
+
 export default function Logo() {
     const classes = useStyles();
 

@@ -25,7 +25,6 @@ const useStyle = makeStyles({
 
 function Question(props) {
     const [open, setOpen] = React.useState(false);
-    const [save, setSave] = React.useState(true);
     const [token, setToken] = React.useState(localStorage.getItem('token'));
 
     const classes = useStyle();
@@ -61,7 +60,11 @@ function Question(props) {
                         <ListItemIcon>{/* <StarBorder /> */}</ListItemIcon>
                         <Typography>{props.answer}</Typography>
                         <br />
-                        {guest ? (<></>) : (<FavoriteBtn email={props.email} id={props.id} />)}
+                        {guest ? (
+                            <></>
+                        ) : (
+                            <FavoriteBtn email={props.email} id={props.id} />
+                        )}
                     </ListItem>
                 </List>
             </Collapse>

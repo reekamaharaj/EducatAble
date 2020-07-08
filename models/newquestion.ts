@@ -8,14 +8,16 @@ export interface NewQ extends Document {
 }
 
 const newquestionSchema = new Schema({
-    //question
+    // new question
     newQ: { type: String, required: true },
-    //user that submitted question
+    // user that submitted question
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    //admin that answered question
+    // admin that answered question
     answeredBy: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 const NewQuestion = model<NewQ>('NewQuestion', newquestionSchema);
 
 export default NewQuestion;
+
+// Submitted questions do not send the user info yet

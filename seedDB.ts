@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import db from './models';
 const MONGODB_URI =
     process.env.MONGODB_URI || 'mongodb://localhost/educateAble';
+    
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true

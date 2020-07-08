@@ -23,11 +23,7 @@ function App() {
                     <Route path='/SavedQs' component={SavedQs} />
                     <Route path='/questions' />
                     <Route path='/SavedQs' component={SavedQs} />
-                    <Route
-                        path='/admin'
-                        component={Admin}
-                        when={localStorage.getItem('admin')}
-                    />
+                    <Route path='/admin' component={Admin} when={localStorage.getItem('admin')} />
                 </Switch>
             </div>
         </Router>
