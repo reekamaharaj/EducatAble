@@ -34,6 +34,20 @@ function Question(props) {
 
     const classes = useStyle();
 
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
+    const guest = !token;
+
+    React.useEffect(
+        function () {
+            if (!!token) {
+                localStorage.setItem('token', token);
+            } else {
+                localStorage.removeItem('token');
+            }
+        },
+        [token]
+    );
+
     return (
         <>
             <ListItem button onClick={handleClick}>
@@ -49,7 +63,7 @@ function Question(props) {
                         <ListItemIcon>{/* <StarBorder /> */}</ListItemIcon>
                         <Typography>{props.answer}</Typography>
                         <br />
-                        <FavoriteBtn email={props.email} id={props.id} />
+                        {guest ? (<></>) : (<FavoriteBtn email={props.email} id={props.id} />)}
                     </ListItem>
                 </List>
             </Collapse>

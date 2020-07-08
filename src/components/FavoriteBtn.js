@@ -46,7 +46,6 @@ function FavoriteBtn(props) {
             .catch((err) => console.log(err));
     };
     const unsavedQs = (email, id) => {
-        console.log("dfdfg");
         axios
             .post('/api/UnsavedQuestions/', { email, id })
             .then((result) => {
