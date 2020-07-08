@@ -10,6 +10,8 @@ function Admin() {
             .catch((err) => console.log(err));
     };
 
-    return <div></div>;
+    React.useEffect(populateQs());
+
+    return (<div></div>);
 }
 export default Admin;

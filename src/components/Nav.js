@@ -6,8 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import LoggedOutView from './LogInRegisterBtns';
-import Link from '@material-ui/core/Link';
-import Loginmessage from './Loginmessage';
 
 const useStyles = makeStyles({
     root: {
@@ -35,13 +33,11 @@ const useStyles = makeStyles({
 function Nav() {
     const classes = useStyles();
     const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const [email, setEmail] = React.useState(localStorage.getItem('email'));
-    const [admin, setAdmin] = React.useState(localStorage.getItem('admin'));
 
     const guest = !token;
     const logout = () => {
-       localStorage.clear();
-       location.reload();
+        localStorage.clear();
+        location.reload();
     };
 
     React.useEffect(

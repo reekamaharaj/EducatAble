@@ -26,8 +26,8 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 // Connect to the Mongo DB
-const MONGODB_URI =
-    process.env.MONGODB_URI || 'mongodb://localhost/educateAble';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/educateAble';
+
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

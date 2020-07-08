@@ -9,16 +9,18 @@ export interface Question extends Document {
 }
 
 const questionSchema = new Schema({
-    //question
+    // question
     question: { type: String, required: true },
-    //question answer
+    // answer
     answer: { type: String, required: true },
-    //user that submitted question
+    // user that submitted question
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    //admin that answered question
+    // admin that answered question
     answeredBy: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 const Question = model<Question>('Question', questionSchema);
 
 export default Question;
+
+// Currently not displaying the user or admin that answered question

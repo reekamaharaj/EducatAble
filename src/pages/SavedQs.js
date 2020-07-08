@@ -49,20 +49,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SavedQs() {
-    // Declare and initalize state with an empty map
     const [popSavedQs, setPopSavedQs] = React.useState('');
     const [email, setEmail] = React.useState(localStorage.getItem('email'));
-
-    const populateSavedQs = () => {
-        axios
-            .post('/api/SavedQ', {email})
-            .then((res) => setPopSavedQs(res.data))
-            .catch((err) => console.log(err));
-            console.log(popSavedQs);
-    };
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
 
     const classes = useStyles();
-    const [token, setToken] = React.useState(localStorage.getItem('token'));
     const guest = !token;
 
     React.useEffect(
@@ -76,6 +67,15 @@ function SavedQs() {
         },
         [token]
     );
+
+    // populates questions from the users fav
+    const populateSavedQs = () => {
+        axios
+            .post('/api/SavedQ', {email})
+            .then((res) => setPopSavedQs(res.data))
+            .catch((err) => console.log(err));
+            console.log(popSavedQs);
+    };
 
     return (
         <div style={{ width: '100%' }} className={classes.root}>
@@ -125,7 +125,9 @@ function SavedQs() {
                         </>
                     ) : (
                         <>
-                            <p>No questions</p>
+                            <Typography variant='h6'>
+                                You don't have any saved questions. :c
+                            </Typography>
                         </>
                     )}
                 </div>

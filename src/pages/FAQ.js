@@ -40,35 +40,13 @@ const useStyle = makeStyles({
 });
 
 function FAQ() {
-    // Declare and initalize state with an empty map
     const [popQs, setPopQs] = React.useState('');
     const [newQ, setNewQ] = React.useState('');
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
     const [email, setEmail] = React.useState(localStorage.getItem('email'));
 
-    const populateQs = () => {
-        axios
-            .get('/api/question')
-            .then((res) => setPopQs(res.data))
-            .catch((err) => console.log(err));
-    };
-
-    function qSubmit() {
-        axios
-            .post('/api/newQuestion', { newQ })
-            .then((result) => {
-                if (result.status === 200) {
-                    return alert('Question submitted!');
-                } else {
-                    return alert("Sorry, something didn't work!");
-                }
-            })
-            .catch((err) => console.log(err));
-    }
-
     const classes = useStyle();
-    const [token, setToken] = React.useState(localStorage.getItem('token'));
     const guest = !token;
-    const logout = () => setToken('');
 
     React.useEffect(
         function () {
@@ -81,6 +59,28 @@ function FAQ() {
         },
         [token]
     );
+
+    // will populate questions from db to the page
+    const populateQs = () => {
+        axios
+            .get('/api/question')
+            .then((res) => setPopQs(res.data))
+            .catch((err) => console.log(err));
+    };
+
+    // handles the submission of a new question
+    function qSubmit() {
+        axios
+            .post('/api/newQuestion', { newQ })
+            .then((result) => {
+                if (result.status === 200) {
+                    return alert('Question submitted!');
+                } else {
+                    return alert("Sorry, something didn't work!");
+                }
+            })
+            .catch((err) => console.log(err));
+    }
 
     return (
         <>

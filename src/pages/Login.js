@@ -47,6 +47,8 @@ function Login() {
     const [password, setPassword] = React.useState('');
     const [admin, setAdmin] = React.useState('');
 
+    const guest = !token;
+
     React.useEffect(
         function () {
             if (!!token) {
@@ -94,15 +96,16 @@ function Login() {
                     setToken(token);
                     setAdmin(admin);
                     setEmail(email);
+                    
                 } else {
-                    return console.log('nothing happened');
+                    return alert('Something wasn\'t right');
                 }
             });
     }
+
     function getAdmin() {
         axios('/auth');
     }
-    const guest = !token;
 
     return (
         <>
@@ -154,7 +157,7 @@ function Login() {
                 </>
             ) : (
                 //Registered User!
-               <Redirect to='/' />
+                <Redirect to='/' />
             )}
         </>
     );
