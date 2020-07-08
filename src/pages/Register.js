@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { TextField, Button, Card } from '@material-ui/core';
 
@@ -131,9 +131,7 @@ function Register() {
                 </>
             ) : (
                 //Registered User!
-                <Card style={styles.card}>
-                    <p>You are logged in </p>
-                </Card>
+                <Redirect to='/' />
             )}
         </>
     );
