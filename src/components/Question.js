@@ -10,7 +10,6 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 import FavoriteBtn from '../components/FavoriteBtn';
-import axios from 'axios';
 
 const useStyle = makeStyles({
     nested: {

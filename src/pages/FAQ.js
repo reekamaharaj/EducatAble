@@ -60,6 +60,7 @@ function FAQ() {
         [token]
     );
 
+    // will populate questions from db to the page
     const populateQs = () => {
         axios
             .get('/api/question')
@@ -67,6 +68,7 @@ function FAQ() {
             .catch((err) => console.log(err));
     };
 
+    // handles the submission of a new question
     function qSubmit() {
         axios
             .post('/api/newQuestion', { newQ })
@@ -79,8 +81,6 @@ function FAQ() {
             })
             .catch((err) => console.log(err));
     }
-
-    
 
     return (
         <>
