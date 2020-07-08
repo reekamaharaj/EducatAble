@@ -40,7 +40,7 @@ export default {
         try {
             const userModel = await db.User.findOneAndUpdate(
                 { email: req.body.email },
-                { $push: { savedQ: req.body.id } }
+                { $addToSet: { savedQ: req.body.id } }
             );
             if (userModel) {
                 res.json(userModel);
