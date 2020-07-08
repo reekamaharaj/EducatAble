@@ -35,6 +35,9 @@ const styles = {
     link: {
         textDecoration: 'none',
         color: 'white'
+    },
+    passwordInfo: {
+        fontSize: '6px'
     }
 };
 
@@ -152,9 +155,7 @@ function Login() {
                 </>
             ) : (
                 //Registered User!
-                <Card style={styles.card}>
-                    <p>You are logged in</p>
-                </Card>
+               <Redirect to='/' />
             )}
         </>
     );
