@@ -28,6 +28,20 @@ export default {
         }
     },
 
+    saveQCheck: async (req: Request, res: Response) => {
+        try {
+            const userModel = await db.User.find({
+                email: req.body.email
+            }).exec();
+            if (userModel[0].savedQ) {
+                const questionModel = await db.Question.find({
+                    _id: userModel[0].savedQ
+                });
+                res.json(questionModel);
+            } else {}
+        } catch(err){}
+    },
+
     // saves the question to user's favs
     save: async (req: Request, res: Response) => {
         try {

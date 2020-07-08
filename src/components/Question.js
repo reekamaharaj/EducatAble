@@ -27,15 +27,15 @@ const useStyle = makeStyles({
 
 function Question(props) {
     const [open, setOpen] = React.useState(false);
+    const [save, setSave] = React.useState(true);
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
+
+    const classes = useStyle();
+    const guest = !token;
 
     const handleClick = () => {
         setOpen(!open);
     };
-
-    const classes = useStyle();
-
-    const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const guest = !token;
 
     React.useEffect(
         function () {

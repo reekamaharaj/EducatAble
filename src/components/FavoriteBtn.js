@@ -33,6 +33,16 @@ function FavoriteBtn(props) {
         setSave(!save);
     };
 
+    const saveStatusCheck = (email, id) => {
+        axios.post('/api/saveQCheck/', { email, id }).then(result => {
+            if (result.status === 200) {
+                return alert("Question status checked");
+            } else {
+                return alert("Nothing saved");
+            }
+        }).catch(err => console.log(err));
+    };
+
     const savedQs = (email, id) => {
         axios
             .post('/api/SavedQuestions/', { email, id })
@@ -46,15 +56,13 @@ function FavoriteBtn(props) {
             .catch((err) => console.log(err));
     };
     const unsavedQs = (email, id) => {
-        axios
-            .post('/api/UnsavedQuestions/', { email, id })
-            .then((result) => {
-                if (result.status === 200) {
-                    return alert('Your question was unsaved!');
-                } else {
-                    return alert('Something happened');
-                }
-            });
+        axios.post('/api/UnsavedQuestions/', { email, id }).then((result) => {
+            if (result.status === 200) {
+                return alert('Your question was unsaved!');
+            } else {
+                return alert('Something happened');
+            }
+        });
     };
 
     return (
