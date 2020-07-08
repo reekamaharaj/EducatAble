@@ -7,7 +7,7 @@ export const router = Router();
 router.route('/question').get(controllers.findAll);
 router.route('/newQuestion').post(controllers.create);
 router.route('/SavedQuestions').post(controllers.save);
-router.route('/UnsavedQuestions').delete(controllers.unsave);
+router.route('/UnsavedQuestions').post(controllers.unsave);
 
 
 router.route("/SavedQ").post(controllers.findAllSaved);

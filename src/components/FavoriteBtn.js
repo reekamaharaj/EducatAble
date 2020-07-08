@@ -27,12 +27,9 @@ function FavoriteBtn(props) {
     const handleSave = () => {
         if (save === false) {
             unsavedQs(email, id);
-            // alert('Your question has been unsaved!');
         } else {
             savedQs(email, id);
-            // alert('Your question has been saved!');
         }
-
         setSave(!save);
     };
 
@@ -49,8 +46,9 @@ function FavoriteBtn(props) {
             .catch((err) => console.log(err));
     };
     const unsavedQs = (email, id) => {
+        console.log("dfdfg");
         axios
-            .delete('/api/UnsavedQuestions/', { email, id })
+            .post('/api/UnsavedQuestions/', { email, id })
             .then((result) => {
                 if (result.status === 200) {
                     return alert('Your question was unsaved!');

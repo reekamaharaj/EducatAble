@@ -28,7 +28,7 @@ export default {
         }
     },
 
-    // saves the user's question
+    // saves the question to user's favs
     save: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
@@ -46,6 +46,7 @@ export default {
         }
     },
 
+    // deletes the quetsion from user's favs
     unsave: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
@@ -53,7 +54,7 @@ export default {
                 { $pull: { savedQ: req.body.id } }
             );
             if (userModel) {
-                userModel.remove();
+                console.log("this did something...");
                 res.json(userModel);
             } else {
                 console.log("Couldn't find that");
@@ -62,15 +63,17 @@ export default {
             console.log('Something went wrong');
         }
     },
+
     //to find all user saved questions
-    //Need to look in the User db for the logged in user's saved Q ids and get those and post to page
     findAllSaved: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.find({
                 email: req.body.email
             }).exec();
             if (userModel[0].savedQ) {
-                const questionModel = await db.Question.find({_id: userModel[0].savedQ});
+                const questionModel = await db.Question.find({
+                    _id: userModel[0].savedQ
+                });
                 console.log(questionModel);
                 res.json(questionModel);
             } else {

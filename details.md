@@ -22,8 +22,8 @@
 -   [x] Deploy working
 
 ## Important Things
-- [ ] Auth stuff: When a user logs out, remove email and admin from local Storage.
-- [ ] Navbar: After login or logout, refresh or reload the page to make sure the nav bar is updated. 
+- [x] Auth stuff: When a user logs out, remove email and admin from local Storage.
+- [x] Login/Register: Redirect to home page or FAQ page after a user is logged in, we could then alert that they logged in or something. Maybe a little alert banner?
 - [ ] Fav: Delete fav question on the fav page
 
 ## Easy
@@ -39,15 +39,15 @@
 - [ ] Entry password twice to Register
 - [ ] Auth stuff: Token saves locally and if user doesn't log out it is still there after the server is restarted and the browser is closed. 
 - [ ] FAQ: Consider making the place to submit a question standout a little. (just my opinion xD)
-- [ ] Login/Register: Redirect to home page or FAQ page after a user is logged in, we could then alert that they logged in or something. Maybe a little alert banner?
 - [ ] Fav: icons load in the saved state, so that when clicked they are removed
+
 - [ ] (Admin) View questions submitted
 - [ ] (Admin) Ability to delete/edit existing questions
 - [ ] (Admin) Ability to add questions
 - [ ] (Admin) Ability to answer questions and submit to show on FAQ page
 - [ ] (Admin) ON FAQ page, option for Admin to edit current questions/answers
 - [ ] (Admin) ON FAQ page, option for Admin to edit current questions/answers
-- [ ] (Admin)Navbar: When user is logged in as Admin, Nav bar link for the Admin page
+- [ ] (Admin) Navbar: When user is logged in as Admin, Nav bar link for the Admin page
 
 
 
