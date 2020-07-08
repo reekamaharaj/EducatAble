@@ -24,6 +24,8 @@ function FavoriteBtn(props) {
 
     const [save, setSave] = React.useState(true);
 
+    // React.useEffect(saveStatusCheck());
+
     const handleSave = () => {
         if (save === false) {
             unsavedQs(email, id);
@@ -36,7 +38,7 @@ function FavoriteBtn(props) {
     const saveStatusCheck = (email, id) => {
         axios.post('/api/saveQCheck/', { email, id }).then(result => {
             if (result.status === 200) {
-                return alert("Question status checked");
+                return alert(result);
             } else {
                 return alert("Nothing saved");
             }

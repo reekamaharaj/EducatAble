@@ -3,7 +3,7 @@ import { Response, Request } from 'express';
 
 // Defining methods for the questions
 export default {
-    //to find all saved questions
+    // get all saved questions and displays on FAQ
     findAll: async (req: Request, res: Response) => {
         try {
             const questionModel = await db.Question.find(req.body);
@@ -17,7 +17,7 @@ export default {
         }
     },
 
-    //to create a new questions -> user and admin
+    // send user question to db for admin review
     create: async (req: Request, res: Response) => {
         try {
             await db.NewQuestion.create(req.body);
@@ -28,6 +28,7 @@ export default {
         }
     },
 
+    // checks user's save favs to set fav btn status
     saveQCheck: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.find({
@@ -42,7 +43,7 @@ export default {
         } catch(err){}
     },
 
-    // saves the question to user's favs
+    // save question to user's favs
     save: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
@@ -60,7 +61,7 @@ export default {
         }
     },
 
-    // deletes the quetsion from user's favs
+    // deletes question from user's favs
     unsave: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
@@ -78,7 +79,7 @@ export default {
         }
     },
 
-    //to find all user saved questions
+    // gets all user's saved questions and displays on Fav page
     findAllSaved: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.find({
@@ -96,5 +97,9 @@ export default {
         } catch (err) {
             console.log('catch err for findAllSaved controller');
         }
+    },
+
+    // gets all new questions and displays for adming review
+    findNew: async (req: Request, res: Response)=> {
     }
 };
