@@ -32,6 +32,7 @@ const useStyles = makeStyles({
 });
 function Nav() {
     const classes = useStyles();
+    const admin =localStorage.getItem("admin");
     const [token, setToken] = React.useState(localStorage.getItem('token'));
 
     const guest = !token;
@@ -65,7 +66,10 @@ function Nav() {
                         className={classes.mainBtn}>
                         <Icon className={classes.iconSpacing}>help</Icon>FAQ
                     </Button>
-
+                    {admin ? (
+                        <Button component='a' href='/admin' className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>Admin</Button>
+                    ):(<></>)}
+                    
                     <Typography className={classes.space}> </Typography>
                     <>
                         {guest ? (

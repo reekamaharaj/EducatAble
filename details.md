@@ -39,6 +39,7 @@
 -   [ ] Entry password twice to Register
 -   [ ] Login: Alert to user when there is a wrong password or email doesnt exist as a registered user. Only console error right now and server console log
 
+
 -   [ ] (Admin) View questions submitted
 -   [ ] (Admin) Ability to delete/edit existing questions
 -   [ ] (Admin) Ability to add questions

@@ -31,8 +31,9 @@ export default {
             }).exec();
             if (userModel[0].savedQ) {
                 res.json(userModel[0].savedQ);
-            } else {}
-        } catch(err){}
+            } else {
+            }
+        } catch (err) {}
     },
 
     // save question to user's favs
@@ -74,11 +75,22 @@ export default {
                     _id: userModel[0].savedQ
                 });
                 res.json(questionModel);
-            } else {}
+            } else {
+            }
         } catch (err) {}
     },
 
     // gets all new questions and displays for adming review
-    findNew: async (req: Request, res: Response)=> {
+    findNew: async (req: Request, res: Response) => {
+        try {
+            const dbModel = await db.NewQuestion.find(req.body);
+            if (dbModel) {
+                res.json(dbModel);
+            } else {
+                console.log("Couldn't find that");
+            }
+        } catch (err) {
+            console.log('Something went wrong');
+        }
     }
 };
