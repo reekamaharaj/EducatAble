@@ -24,6 +24,11 @@ function FavoriteBtn(props) {
 
     const [save, setSave] = React.useState(true);
 
+    React.useEffect(
+        () => {saveStatusCheck(email, id);}
+    );
+
+    // If a user is logged in, this will check if they have any saved questions and make sure the fav buttons are in the state they should be in
     const saveStatusCheck = (email, id) => {
         axios.post('/api/saveQCheck/', { email, id }).then(result => {
             if (result.status === 200) {
@@ -31,13 +36,13 @@ function FavoriteBtn(props) {
                 if (savedQArray.includes(id) === true){
                     setSave(false)
                 }
-                return console.log(result.data);
             } else {
                 return alert("Nothing saved");
             }
         }).catch(err => console.log(err));
     };
 
+    // Triggers the saving or deleting of questions to a user's account
     const handleSave = () => {
         if (save === false) {
             unsavedQs(email, id);
@@ -47,6 +52,7 @@ function FavoriteBtn(props) {
         setSave(!save);
     };
 
+    // Saving a question to a user's account
     const savedQs = (email, id) => {
         axios
             .post('/api/SavedQuestions/', { email, id })
@@ -54,24 +60,22 @@ function FavoriteBtn(props) {
                 if (result.status === 200) {
                     return alert('Question saved!');
                 } else {
-                    return alert('Something happened!');
+                    return alert('Oops. Something went wrong!');
                 }
             })
             .catch((err) => console.log(err));
     };
+
+    // Removing a question from a user's account
     const unsavedQs = (email, id) => {
         axios.post('/api/UnsavedQuestions/', { email, id }).then((result) => {
             if (result.status === 200) {
-                return alert('Your question was unsaved!');
+                return alert('Your question was removed!');
             } else {
-                return alert('Something happened');
+                return alert('Oops. Something went wrong!');
             }
         });
     };
-
-    React.useEffect(
-        () => {saveStatusCheck(email, id);}
-    )
 
     return (
         <>
