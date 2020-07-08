@@ -3,7 +3,7 @@ import { Response, Request } from "express";
 import * as jwt from "jsonwebtoken";
 
 export default {
-    //find a user on login; post controller for login
+    // Allows user to login
     findUser: (req: Request, res: Response)=>{
         const email = req.body.email;
         const password = req.body.password;
@@ -34,7 +34,7 @@ export default {
         })
     },
 
-    //for creating a new user; post controller for register
+    // Allows user to register
     createUser: async (req: Request, res: Response) => {
         try {
             const email = req.body.email;

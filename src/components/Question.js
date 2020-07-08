@@ -8,10 +8,9 @@ import Collapse from '@material-ui/core/Collapse';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import Icon from '@material-ui/core/Icon';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import FavoriteBtn from '../components/FavoriteBtn';
+import axios from 'axios';
 
 const useStyle = makeStyles({
     nested: {
@@ -33,10 +32,6 @@ function Question(props) {
     const classes = useStyle();
     const guest = !token;
 
-    const handleClick = () => {
-        setOpen(!open);
-    };
-
     React.useEffect(
         function () {
             if (!!token) {
@@ -47,6 +42,10 @@ function Question(props) {
         },
         [token]
     );
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
 
     return (
         <>

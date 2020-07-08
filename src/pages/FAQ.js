@@ -40,10 +40,25 @@ const useStyle = makeStyles({
 });
 
 function FAQ() {
-    // Declare and initalize state with an empty map
     const [popQs, setPopQs] = React.useState('');
     const [newQ, setNewQ] = React.useState('');
+    const [token, setToken] = React.useState(localStorage.getItem('token'));
     const [email, setEmail] = React.useState(localStorage.getItem('email'));
+
+    const classes = useStyle();
+    const guest = !token;
+
+    React.useEffect(
+        function () {
+            populateQs();
+            if (!!token) {
+                localStorage.setItem('token', token);
+            } else {
+                localStorage.removeItem('token');
+            }
+        },
+        [token]
+    );
 
     const populateQs = () => {
         axios
@@ -65,22 +80,7 @@ function FAQ() {
             .catch((err) => console.log(err));
     }
 
-    const classes = useStyle();
-    const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const guest = !token;
-    const logout = () => setToken('');
-
-    React.useEffect(
-        function () {
-            populateQs();
-            if (!!token) {
-                localStorage.setItem('token', token);
-            } else {
-                localStorage.removeItem('token');
-            }
-        },
-        [token]
-    );
+    
 
     return (
         <>

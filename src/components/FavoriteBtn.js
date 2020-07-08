@@ -24,7 +24,19 @@ function FavoriteBtn(props) {
 
     const [save, setSave] = React.useState(true);
 
-    // React.useEffect(saveStatusCheck());
+    const saveStatusCheck = (email, id) => {
+        axios.post('/api/saveQCheck/', { email, id }).then(result => {
+            if (result.status === 200) {
+                const savedQArray = result.data;
+                if (savedQArray.includes(id) === true){
+                    setSave(false)
+                }
+                return console.log(result.data);
+            } else {
+                return alert("Nothing saved");
+            }
+        }).catch(err => console.log(err));
+    };
 
     const handleSave = () => {
         if (save === false) {
@@ -33,16 +45,6 @@ function FavoriteBtn(props) {
             savedQs(email, id);
         }
         setSave(!save);
-    };
-
-    const saveStatusCheck = (email, id) => {
-        axios.post('/api/saveQCheck/', { email, id }).then(result => {
-            if (result.status === 200) {
-                return alert(result);
-            } else {
-                return alert("Nothing saved");
-            }
-        }).catch(err => console.log(err));
     };
 
     const savedQs = (email, id) => {
@@ -66,6 +68,10 @@ function FavoriteBtn(props) {
             }
         });
     };
+
+    React.useEffect(
+        () => {saveStatusCheck(email, id);}
+    )
 
     return (
         <>

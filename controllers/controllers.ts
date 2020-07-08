@@ -9,12 +9,8 @@ export default {
             const questionModel = await db.Question.find(req.body);
             if (questionModel) {
                 res.json(questionModel);
-            } else {
-                console.log("Couldn't find that");
             }
-        } catch (err) {
-            console.log('Something went wrong');
-        }
+        } catch (err) {}
     },
 
     // send user question to db for admin review
@@ -23,7 +19,6 @@ export default {
             await db.NewQuestion.create(req.body);
             res.send('Question submitted!');
         } catch (err) {
-            console.log(err);
             res.status(500).send("This didn't work");
         }
     },
@@ -35,10 +30,7 @@ export default {
                 email: req.body.email
             }).exec();
             if (userModel[0].savedQ) {
-                const questionModel = await db.Question.find({
-                    _id: userModel[0].savedQ
-                });
-                res.json(questionModel);
+                res.json(userModel[0].savedQ);
             } else {}
         } catch(err){}
     },
@@ -52,11 +44,8 @@ export default {
             );
             if (userModel) {
                 res.json(userModel);
-            } else {
-                console.log("Couldn't find that");
             }
         } catch (err) {
-            console.log(err);
             res.status(500).send("That didn't work!");
         }
     },
@@ -69,14 +58,9 @@ export default {
                 { $pull: { savedQ: req.body.id } }
             );
             if (userModel) {
-                console.log("this did something...");
                 res.json(userModel);
-            } else {
-                console.log("Couldn't find that");
             }
-        } catch (err) {
-            console.log('Something went wrong');
-        }
+        } catch (err) {}
     },
 
     // gets all user's saved questions and displays on Fav page
@@ -89,14 +73,9 @@ export default {
                 const questionModel = await db.Question.find({
                     _id: userModel[0].savedQ
                 });
-                console.log(questionModel);
                 res.json(questionModel);
-            } else {
-                console.log('Nothing saved');
-            }
-        } catch (err) {
-            console.log('catch err for findAllSaved controller');
-        }
+            } else {}
+        } catch (err) {}
     },
 
     // gets all new questions and displays for adming review
