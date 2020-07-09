@@ -43,9 +43,9 @@ const styles = {
 
 function Login() {
     const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const [email, setEmail] = React.useState('');
+    const [email, setEmail] = React.useState(localStorage.getItem('email'));
     const [password, setPassword] = React.useState('');
-    const [admin, setAdmin] = React.useState('');
+    const [admin, setAdmin] = React.useState(localStorage.getItem('admin'));
 
     const guest = !token;
 
@@ -53,6 +53,7 @@ function Login() {
         function () {
             if (!!token) {
                 localStorage.setItem('token', token);
+                location.href="/";
             } else {
                 localStorage.removeItem('token');
             }
@@ -101,62 +102,54 @@ function Login() {
             });
     }
 
-    function getAdmin() {
-        axios('/auth');
-    }
+    // function getAdmin() {
+    //     axios('/auth');
+    // }
 
     return (
         <>
-            {guest ? (
-                //Guest User!
-                <>
-                    <br />
-                    <Card style={styles.card}>
-                        <br />
-                        <TextField
-                            style={styles.text}
-                            id='standard-basic'
-                            label='Enter Your Email'
-                            variant='outlined'
-                            type='username'
-                            value={email}
-                            onChange={(e) => {
-                                setEmail(e.target.value);
-                            }}
-                            placeholder='email'
-                        />
-                        <br />
-                        <TextField
-                            style={styles.text}
-                            id='filled-password-input'
-                            variant='outlined'
-                            label='Enter Your Password'
-                            type='password'
-                            value={password}
-                            onChange={(e) => {
-                                setPassword(e.target.value);
-                            }}
-                            placeholder='password'
-                        />
-                        <br />
-                        <Button
-                            variant='contained'
-                            onClick={postLogin}
-                            style={styles.button}>
-                            Log-in
-                        </Button>
-                        <br />
-                        <Button style={styles.button}>
-                            <Link to='/register' style={styles.link}>
-                                Don't have an account?
-                            </Link>
-                        </Button>
-                    </Card>
-                </>
-            ) : (
-                //Registered User!
-                <Redirect to='/' />
-            )}
+            <br />
+            <Card style={styles.card}>
+                <br />
+                <TextField
+                    style={styles.text}
+                    id='standard-basic'
+                    label='Enter Your Email'
+                    variant='outlined'
+                    type='username'
+                    value={email}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                    }}
+                    placeholder='email'
+                />
+                <br />
+                <TextField
+                    style={styles.text}
+                    id='filled-password-input'
+                    variant='outlined'
+                    label='Enter Your Password'
+                    type='password'
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
+                    placeholder='password'
+                />
+                <br />
+                <Button
+                    variant='contained'
+                    onClick={postLogin}
+                    style={styles.button}>
+                    Log-in
+                </Button>
+                <br />
+                <Button style={styles.button}>
+                    <Link to='/register' style={styles.link}>
+                        Don't have an account?
+                    </Link>
+                </Button>
+            </Card>
         </>
     );
 }
