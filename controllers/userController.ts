@@ -12,8 +12,9 @@ export default {
             try {
                 if(error){}
                 if(found){
+                    console.log(process.env.SECRET)
                     if (await found.isValidPassword(password)){
-                        const token = jwt.sign(email, "secretthing");
+                        const token = jwt.sign(email, process.env.SECRET || "secret");
                         const admin = found.admin.toString();
                         let user = ({ token: token, email: email, admin: admin });
                         res.send(user);
@@ -40,8 +41,9 @@ export default {
                 res.status(418).send("Email has account");
             } else {
                 try {
+                    console.log(process.env.SECRET)
                     await db.User.create(req.body);
-                    const token = jwt.sign(email, "secretthing");
+                    const token = jwt.sign(email, process.env.SECRET || "secret");
                     const message = "Registered and logged in!";
                     const registered = { token: token, message: message };
                     res.send(registered);

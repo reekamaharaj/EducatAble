@@ -9,6 +9,8 @@ export default {
             const questionModel = await db.Question.find(req.body);
             if (questionModel) {
                 res.json(questionModel);
+            } else {
+                res.status(500).send("false");
             }
         } catch (err) {}
     },
@@ -27,11 +29,12 @@ export default {
     saveQCheck: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.find({
-                email: req.body.email
+                email: req.user
             }).exec();
             if (userModel[0].savedQ) {
                 res.json(userModel[0].savedQ);
             } else {
+                res.status(500).send("false");
             }
         } catch (err) {}
     },
@@ -40,11 +43,13 @@ export default {
     save: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
-                { email: req.body.email },
+                { email: req.user },
                 { $addToSet: { savedQ: req.body.id } }
             );
             if (userModel) {
                 res.json(userModel);
+            } else {
+                res.status(500).send("false");
             }
         } catch (err) {
             res.status(500).send("That didn't work!");
@@ -55,11 +60,13 @@ export default {
     unsave: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
-                { email: req.body.email },
+                { email: req.user },
                 { $pull: { savedQ: req.body.id } }
             );
             if (userModel) {
                 res.json(userModel);
+            } else {
+                res.status(500).send("false");
             }
         } catch (err) {}
     },
@@ -68,7 +75,7 @@ export default {
     findAllSaved: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.find({
-                email: req.body.email
+                email: req.user
             }).exec();
             if (userModel[0].savedQ) {
                 const questionModel = await db.Question.find({
@@ -76,6 +83,7 @@ export default {
                 });
                 res.json(questionModel);
             } else {
+                res.status(500).send("false");
             }
         } catch (err) {}
     },

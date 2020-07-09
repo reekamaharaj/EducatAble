@@ -35,12 +35,11 @@ function Register() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
-    const guest = !token;
-
     React.useEffect(
         function () {
             if (!!token) {
                 localStorage.setItem('token', token);
+                location.href = '/';
             } else {
                 localStorage.removeItem('token');
             }
@@ -74,10 +73,8 @@ function Register() {
                 password
             })
             .then((result) => {
-                const token = result.data.token;
-                const message = result.data.message;
-                setToken(token);
-                alert(message);
+                setToken(result.data.token);
+                alert(result.data.message);
             })
             .catch((err) => {
                 alert(err.response.data);
@@ -86,65 +83,56 @@ function Register() {
 
     return (
         <>
-            {guest ? (
-                //Guest User!
-                <>
-                    <div>
-                        <br />
-                        <Card style={styles.card}>
-                            <br />
-                            <TextField
-                                style={styles.text}
-                                id='standard-basic'
-                                label='Enter Your Email'
-                                variant='outlined'
-                                type='username'
-                                value={email}
-                                onChange={(e) => {
-                                    setEmail(e.target.value);
-                                }}
-                                placeholder='email'
-                            />
-                            <br />
-                            <TextField
-                                style={styles.text}
-                                id='filled-password-input'
-                                label='Enter Your Password'
-                                variant='outlined'
-                                type='password'
-                                value={password}
-                                onChange={(e) => {
-                                    setPassword(e.target.value);
-                                }}
-                                placeholder='password'
-                            />
-                            <br />
-                            <Typography variant='caption'>
-                                Password must be between 7 to 15 characters and
-                                contain at least one numeric digit and a special
-                                character
-                            </Typography>
-                            <br />
-                            <Button
-                                variant='contained'
-                                primary={'true'}
-                                style={styles.button}
-                                onClick={validation}>
-                                Register
-                            </Button>
-                            <br />
-                            <Button style={styles.button}>
-                                <Link to='/login' style={styles.link}>
-                                    Already have an account?
-                                </Link>
-                            </Button>
-                        </Card>
-                    </div>
-                </>
-            ) : (
-                //Registered User!
-                <Redirect to='/' />
-            )}
+            <div>
+                <br />
+                <Card style={styles.card}>
+                    <br />
+                    <TextField
+                        style={styles.text}
+                        id='standard-basic'
+                        label='Enter Your Email'
+                        variant='outlined'
+                        type='username'
+                        value={email}
+                        onChange={(e) => {
+                            setEmail(e.target.value);
+                        }}
+                        placeholder='email'
+                    />
+                    <br />
+                    <TextField
+                        style={styles.text}
+                        id='filled-password-input'
+                        label='Enter Your Password'
+                        variant='outlined'
+                        type='password'
+                        value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                        }}
+                        placeholder='password'
+                    />
+                    <br />
+                    <Typography variant='caption'>
+                        Password must be between 7 to 15 characters and contain
+                        at least one numeric digit and a special character
+                    </Typography>
+                    <br />
+                    <Button
+                        variant='contained'
+                        primary={'true'}
+                        style={styles.button}
+                        onClick={validation}>
+                        Register
+                    </Button>
+                    <br />
+                    <Button style={styles.button}>
+                        <Link to='/login' style={styles.link}>
+                            Already have an account?
+                        </Link>
+                    </Button>
+                </Card>
+            </div>
         </>
     );
 }

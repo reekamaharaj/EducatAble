@@ -1,10 +1,11 @@
 //Dependencies
 import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 import * as express from 'express';
 import * as mongoose from 'mongoose';
 import { routes } from './routes';
-
-dotenv.config();
 
 //Express setup
 const app = express();

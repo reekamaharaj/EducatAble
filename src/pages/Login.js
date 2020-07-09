@@ -43,11 +43,9 @@ const styles = {
 
 function Login() {
     const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const [email, setEmail] = React.useState(localStorage.getItem('email'));
-    const [password, setPassword] = React.useState('');
     const [admin, setAdmin] = React.useState(localStorage.getItem('admin'));
-
-    const guest = !token;
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
     React.useEffect(
         function () {
@@ -59,17 +57,6 @@ function Login() {
             }
         },
         [token]
-    );
-
-    React.useEffect(
-        function () {
-            if (!!email) {
-                localStorage.setItem('email', email);
-            } else {
-                localStorage.removeItem('email');
-            }
-        },
-        [email]
     );
 
     React.useEffect(
@@ -90,21 +77,13 @@ function Login() {
                 password
             })
             .then((result) => {
-                const token = result.data.token;
-                const email = result.data.email;
-                const admin = result.data.admin;
-                setToken(token);
-                setAdmin(admin);
-                setEmail(email);
+                setToken(result.data.token);
+                setAdmin(result.data.admin);
             })
             .catch((err) => {
                 alert(err.response.data);
             });
     }
-
-    // function getAdmin() {
-    //     axios('/auth');
-    // }
 
     return (
         <>

@@ -63,7 +63,7 @@ function Question(props) {
                         {guest ? (
                             <></>
                         ) : (
-                            <FavoriteBtn email={props.email} id={props.id} />
+                            <FavoriteBtn token={token} id={props.id} />
                         )}
                     </ListItem>
                 </List>
