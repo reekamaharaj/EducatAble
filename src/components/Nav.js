@@ -66,9 +66,9 @@ function Nav() {
                         className={classes.mainBtn}>
                         <Icon className={classes.iconSpacing}>help</Icon>FAQ
                     </Button>
-                    {admin ? (
+                    {/* {admin === true ? (
                         <Button component='a' href='/admin' className={classes.mainBtn}><Icon className={classes.iconSpacing}>help</Icon>Admin</Button>
-                    ):(<></>)}
+                    ):(<></>)} */}
                     
                     <Typography className={classes.space}> </Typography>
                     <>

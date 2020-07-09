@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { TextField, Button, Card } from '@material-ui/core';
 
@@ -43,7 +43,7 @@ const styles = {
 
 function Login() {
     const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const [admin, setAdmin] = React.useState(localStorage.getItem('admin'));
+    // const [admin, setAdmin] = React.useState(localStorage.getItem('admin'));
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -59,16 +59,16 @@ function Login() {
         [token]
     );
 
-    React.useEffect(
-        function () {
-            if (!!admin) {
-                localStorage.setItem('admin', admin.toString());
-            } else {
-                localStorage.removeItem('admin');
-            }
-        },
-        [admin]
-    );
+    // React.useEffect(
+    //     function () {
+    //         if (!!admin) {
+    //             localStorage.setItem('admin', admin.toString());
+    //         } else {
+    //             localStorage.removeItem('admin');
+    //         }
+    //     },
+    //     [admin]
+    // );
 
     function postLogin() {
         axios
@@ -78,7 +78,7 @@ function Login() {
             })
             .then((result) => {
                 setToken(result.data.token);
-                setAdmin(result.data.admin);
+                // setAdmin(result.data.admin);
             })
             .catch((err) => {
                 alert(err.response.data);
