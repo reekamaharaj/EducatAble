@@ -15,13 +15,13 @@ export default {
                     if (await found.isValidPassword(password)){
                         const token = jwt.sign(email, "secretthing");
                         const admin = found.admin.toString();
-                        let user = ({token:token,email:email,admin:admin});
+                        let user = ({ token: token, email: email, admin: admin });
                         res.send(user);
                     } else {
                         res.status(401).send("Password was wrong");
                     }
                 } else {
-                    res.status(401).send("Account does not exist for this email, register or try another email");
+                    res.status(401).send("An account does not exist for this email, register or try another email");
                 }
             } catch(err) {
                 res.status(500).send(err);
@@ -42,7 +42,9 @@ export default {
                 try {
                     await db.User.create(req.body);
                     const token = jwt.sign(email, "secretthing");
-                    res.send(token);
+                    const message = "Registered and logged in!";
+                    const registered = { token: token, message: message };
+                    res.send(registered);
                 } catch (createFailed) {
                     res.status(500).send("something broke");
                 }
@@ -52,3 +54,5 @@ export default {
         }
     }
 };
+
+

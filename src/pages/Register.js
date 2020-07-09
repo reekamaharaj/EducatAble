@@ -48,35 +48,40 @@ function Register() {
         [token]
     );
 
-    const passCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-
     const emailCheck = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+    const passCheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
+    function validation() {
+        const emailVal = email.match(emailCheck);
+        const passwordVal = password.match(passCheck);
+
+        if (emailVal) {
+            if (passwordVal) {
+                postRegister();
+            } else {
+                alert('Password requirements not met.');
+            }
+        } else {
+            alert('Email is not valid.');
+        }
+    }
+
     function postRegister() {
-        if (!password.match(passCheck)) {
-            alert(
-                'password password between 7 to 15 characters which contain at least one numeric digit and a special character'
-            );
-        } else {
-            alert('Registered!');
-        }
-        if (!email.match(emailCheck)) {
-            alert("This isn't a valid email");
-        } else {
-            axios
-                .post('/auth/register', {
-                    email,
-                    password
-                })
-                .then((result) => {
-                    const token = result.data;
-                    if (result.status === 200) {
-                        return setToken(token);
-                    } else {
-                        return console.log('nothing happened');
-                    }
-                });
-        }
+        axios
+            .post('/auth/register', {
+                email,
+                password
+            })
+            .then((result) => {
+                const token = result.data.token;
+                const message = result.data.message;
+                setToken(token);
+                alert(message);
+            })
+            .catch((err) => {
+                alert(err.response.data);
+            });
     }
 
     return (
@@ -124,7 +129,7 @@ function Register() {
                                 variant='contained'
                                 primary={'true'}
                                 style={styles.button}
-                                onClick={postRegister}>
+                                onClick={validation}>
                                 Register
                             </Button>
                             <br />

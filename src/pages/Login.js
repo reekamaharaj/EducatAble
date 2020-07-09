@@ -92,14 +92,12 @@ function Login() {
                 const token = result.data.token;
                 const email = result.data.email;
                 const admin = result.data.admin;
-                if (result.status === 200) {
-                    setToken(token);
-                    setAdmin(admin);
-                    setEmail(email);
-                    
-                } else {
-                    return alert('Something wasn\'t right');
-                }
+                setToken(token);
+                setAdmin(admin);
+                setEmail(email);
+            })
+            .catch((err) => {
+                alert(err.response.data);
             });
     }
 
