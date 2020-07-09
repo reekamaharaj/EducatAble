@@ -43,7 +43,6 @@ function FAQ() {
     const [popQs, setPopQs] = React.useState('');
     const [newQ, setNewQ] = React.useState('');
     const [token, setToken] = React.useState(localStorage.getItem('token'));
-    const [email, setEmail] = React.useState(localStorage.getItem('email'));
 
     const classes = useStyle();
     const guest = !token;
@@ -71,7 +70,7 @@ function FAQ() {
     // handles the submission of a new question
     function qSubmit() {
         axios
-            .post('/api/newQuestion', { newQ })
+            .post('/api/newQuestion', { newQ }, { headers: { Authorization: "Bearer " + token } })
             .then((result) => {
                 if (result.status === 200) {
                     return alert('Question submitted!');
@@ -149,7 +148,6 @@ function FAQ() {
                                         key={qa._id}
                                         question={qa.question}
                                         answer={qa.answer}
-                                        email={email}
                                         id={qa._id}
                                     />
                                 </>

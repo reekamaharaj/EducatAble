@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import controllers from '../../controllers/controllers';
+import { auth } from '../../controllers/auth';
 
 export const router = Router();
 
@@ -7,20 +8,20 @@ export const router = Router();
 router.route('/question').get(controllers.findAll);
 
 // send user question to db for admin review
-router.route('/newQuestion').post(controllers.create);
+router.post('/newQuestion', auth, controllers.create);
 
 // checks user's save favs to set fav btn status
-router.route('/saveQCheck').post(controllers.saveQCheck);
+router.post('/saveQCheck', auth, controllers.saveQCheck);
 
 // save question to user's favs
-router.route('/SavedQuestions').post(controllers.save);
+router.post('/SavedQuestions', auth, controllers.save);
 
 // deletes question from user's favs
-router.route('/UnsavedQuestions').post(controllers.unsave);
+router.post('/UnsavedQuestions', auth, controllers.unsave);
 
 // gets all user's saved questions and displays on Fav page
-router.route("/SavedQ").post(controllers.findAllSaved);
+router.post("/SavedQ", auth, controllers.findAllSaved);
 
-// gets all new questions and displays for adming review
-router.route('/newQuestion').get(controllers.findNew);
+// gets all new questions and displays for admin review
+router.post('/newQuestion', auth, controllers.findNew);
 

@@ -27,17 +27,18 @@
 -   [x] Fav: Delete fav question on the fav page
 -   [x] Register: Display on the page the password requirements so a user knows when signing up what is expected
 -   [x] Fav: icons load in the saved state, so that when clicked they are removed
+-   [x] Seed db through user/admin functionalities to test as well as seed
+-   [x] Create user account for demoing
+-   [x] Register: Password alert shows for an acceptable password, but it will still register the user. So change the message on that case to "sucessful register" or something like that.
+-   [x] Login: Alert to user when there is a wrong password or email doesnt exist as a registered user. Only console error right now and server console log
 
 ## Have to do
--   [ ] Seed db through user/admin functionalities to test as well as seed
--   [ ] Create user account for demoing
+
 -   [ ] Powerpoint presentation
 
 ### Extras
 -   [ ] FAQ: clear the question after it is submitted
--   [ ] Register: Password alert shows for an acceptable password, but it will still register the user. So change the message on that case to "sucessful register" or something like that.
 -   [ ] Entry password twice to Register
--   [ ] Login: Alert to user when there is a wrong password or email doesnt exist as a registered user. Only console error right now and server console log
 
 -   [ ] (Admin) View questions submitted
 -   [ ] (Admin) Ability to delete/edit existing questions

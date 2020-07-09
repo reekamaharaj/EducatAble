@@ -9,6 +9,8 @@ export default {
             const questionModel = await db.Question.find(req.body);
             if (questionModel) {
                 res.json(questionModel);
+            } else {
+                res.status(500).send("false");
             }
         } catch (err) {}
     },
@@ -27,23 +29,27 @@ export default {
     saveQCheck: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.find({
-                email: req.body.email
+                email: req.user
             }).exec();
             if (userModel[0].savedQ) {
                 res.json(userModel[0].savedQ);
-            } else {}
-        } catch(err){}
+            } else {
+                res.status(500).send("false");
+            }
+        } catch (err) {}
     },
 
     // save question to user's favs
     save: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
-                { email: req.body.email },
+                { email: req.user },
                 { $addToSet: { savedQ: req.body.id } }
             );
             if (userModel) {
                 res.json(userModel);
+            } else {
+                res.status(500).send("false");
             }
         } catch (err) {
             res.status(500).send("That didn't work!");
@@ -54,11 +60,13 @@ export default {
     unsave: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.findOneAndUpdate(
-                { email: req.body.email },
+                { email: req.user },
                 { $pull: { savedQ: req.body.id } }
             );
             if (userModel) {
                 res.json(userModel);
+            } else {
+                res.status(500).send("false");
             }
         } catch (err) {}
     },
@@ -67,18 +75,30 @@ export default {
     findAllSaved: async (req: Request, res: Response) => {
         try {
             const userModel = await db.User.find({
-                email: req.body.email
+                email: req.user
             }).exec();
             if (userModel[0].savedQ) {
                 const questionModel = await db.Question.find({
                     _id: userModel[0].savedQ
                 });
                 res.json(questionModel);
-            } else {}
+            } else {
+                res.status(500).send("false");
+            }
         } catch (err) {}
     },
 
     // gets all new questions and displays for adming review
-    findNew: async (req: Request, res: Response)=> {
+    findNew: async (req: Request, res: Response) => {
+        try {
+            const dbModel = await db.NewQuestion.find(req.body);
+            if (dbModel) {
+                res.json(dbModel);
+            } else {
+                console.log("Couldn't find that");
+            }
+        } catch (err) {
+            console.log('Something went wrong');
+        }
     }
 };

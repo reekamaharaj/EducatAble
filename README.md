@@ -2,6 +2,10 @@
 
 EducatAble is a safe space to ask questions and learn information from people who live their different abilities everyday.
 
+Want to Demo as a user?
+Email: guest@educatable.com
+Password: password1!
+
 [Link to Page](https://educatable.herokuapp.com/)
 
 ## Description

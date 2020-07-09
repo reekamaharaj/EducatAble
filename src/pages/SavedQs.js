@@ -50,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
 
 function SavedQs() {
     const [popSavedQs, setPopSavedQs] = React.useState('');
-    const [email, setEmail] = React.useState(localStorage.getItem('email'));
     const [token, setToken] = React.useState(localStorage.getItem('token'));
 
     const classes = useStyles();
@@ -71,7 +70,7 @@ function SavedQs() {
     // populates questions from the users fav
     const populateSavedQs = () => {
         axios
-            .post('/api/SavedQ', {email})
+            .post('/api/SavedQ', {}, { headers: { Authorization: "Bearer " + token }})
             .then((res) => setPopSavedQs(res.data))
             .catch((err) => console.log(err));
             console.log(popSavedQs);
@@ -116,7 +115,6 @@ function SavedQs() {
                                             key={qa._id}
                                             question={qa.question}
                                             answer={qa.answer}
-                                            email={email}
                                             id={qa._id}
                                         />
                                     </>
