@@ -79,6 +79,8 @@ function FAQ() {
                 }
             })
             .catch((err) => console.log(err));
+            setNewQ("");
+            window.render();
     }
 
     return (

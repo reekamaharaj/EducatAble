@@ -31,15 +31,11 @@
 -   [x] Create user account for demoing
 -   [x] Register: Password alert shows for an acceptable password, but it will still register the user. So change the message on that case to "sucessful register" or something like that.
 -   [x] Login: Alert to user when there is a wrong password or email doesnt exist as a registered user. Only console error right now and server console log
-
-## Have to do
-
--   [ ] Powerpoint presentation
+-   [x] Powerpoint presentation
+-   [x] FAQ: clear the question after it is submitted
 
 ### Extras
--   [ ] FAQ: clear the question after it is submitted
 -   [ ] Entry password twice to Register
-
 -   [ ] (Admin) View questions submitted
 -   [ ] (Admin) Ability to delete/edit existing questions
 -   [ ] (Admin) Ability to add questions
