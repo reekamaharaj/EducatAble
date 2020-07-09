@@ -73,7 +73,6 @@ function SavedQs() {
             .post('/api/SavedQ', {}, { headers: { Authorization: "Bearer " + token }})
             .then((res) => setPopSavedQs(res.data))
             .catch((err) => console.log(err));
-            console.log(popSavedQs);
     };
 
     return (

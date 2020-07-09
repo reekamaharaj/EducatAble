@@ -10,9 +10,11 @@ export default {
             if (questionModel) {
                 res.json(questionModel);
             } else {
-                res.status(500).send("false");
+                res.status(500).send("No questions in DB");
             }
-        } catch (err) {}
+        } catch (err) {
+            res.status(500).send("Error");
+        }
     },
 
     // send user question to db for admin review
@@ -21,7 +23,7 @@ export default {
             await db.NewQuestion.create(req.body);
             res.send('Question submitted!');
         } catch (err) {
-            res.status(500).send("This didn't work");
+            res.status(500).send("Error");
         }
     },
 
@@ -34,7 +36,7 @@ export default {
             if (userModel[0].savedQ) {
                 res.json(userModel[0].savedQ);
             } else {
-                res.status(500).send("false");
+                res.status(500).send("Nothing saved.");
             }
         } catch (err) {}
     },
@@ -49,10 +51,10 @@ export default {
             if (userModel) {
                 res.json(userModel);
             } else {
-                res.status(500).send("false");
+                res.status(500).send("Couldn't save.");
             }
         } catch (err) {
-            res.status(500).send("That didn't work!");
+            res.status(500).send("Error");
         }
     },
 
@@ -66,9 +68,11 @@ export default {
             if (userModel) {
                 res.json(userModel);
             } else {
-                res.status(500).send("false");
+                res.status(500).send("Couldn't find that saved.");
             }
-        } catch (err) {}
+        } catch (err) {
+            res.status(500).send("Error");
+        }
     },
 
     // gets all user's saved questions and displays on Fav page
@@ -83,9 +87,11 @@ export default {
                 });
                 res.json(questionModel);
             } else {
-                res.status(500).send("false");
+                res.status(500).send("Nothing Saved");
             }
-        } catch (err) {}
+        } catch (err) {
+            res.status(500).send("Error");
+        }
     },
 
     // gets all new questions and displays for adming review
@@ -95,10 +101,10 @@ export default {
             if (dbModel) {
                 res.json(dbModel);
             } else {
-                console.log("Couldn't find that");
+                res.status(500).send("Nothing found");
             }
         } catch (err) {
-            console.log('Something went wrong');
+            res.status(500).send("Error");
         }
     }
 };

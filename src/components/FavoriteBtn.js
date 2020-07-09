@@ -37,7 +37,7 @@ function FavoriteBtn(props) {
                     setSave(false)
                 }
             } else {
-                return alert("Nothing saved");
+                alert("Nothing saved");
             }
         }).catch(err => console.log(err));
     };
@@ -58,9 +58,9 @@ function FavoriteBtn(props) {
             .post('/api/SavedQuestions/', { id }, { headers: { Authorization: "Bearer " + token }})
             .then((result) => {
                 if (result.status === 200) {
-                    return alert('Question saved!');
+                    alert('Question saved!');
                 } else {
-                    return alert('Oops. Something went wrong!');
+                    alert('Oops. Something went wrong!');
                 }
             })
             .catch((err) => console.log(err));
@@ -70,9 +70,9 @@ function FavoriteBtn(props) {
     const unsavedQs = (token, id) => {
         axios.post('/api/UnsavedQuestions/', { id }, { headers: { Authorization: "Bearer " + token }}).then((result) => {
             if (result.status === 200) {
-                return alert('Your question was removed!');
+                alert('Your question was removed!');
             } else {
-                return alert('Oops. Something went wrong!');
+                alert('Oops. Something went wrong!');
             }
         });
     };
