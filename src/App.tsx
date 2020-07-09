@@ -7,7 +7,6 @@ import FAQ from './pages/FAQ';
 import Nav from './components/Nav';
 import LearnMore from './pages/LearnMore';
 import SavedQs from './pages/SavedQs';
-import Admin from './pages/Admin';
 
 function App() {
     return (
@@ -23,7 +22,7 @@ function App() {
                     <Route path='/SavedQs' component={SavedQs} />
                     <Route path='/questions' />
                     <Route path='/SavedQs' component={SavedQs} />
-                    <Route path='/admin' component={Admin} when={localStorage.getItem('admin')} />
+                    {/* <Route path='/admin' component={Admin} when={localStorage.getItem('admin')} /> */}
                 </Switch>
             </div>
         </Router>
